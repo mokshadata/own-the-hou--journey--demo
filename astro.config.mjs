@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://mokshadata.github.io/own-the-hou--journey--demo/',
+  site: '/own-the-hou--journey--demo/',
   integrations: [solidJs()],
 
   vite: {

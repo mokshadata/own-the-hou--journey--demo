@@ -1,3 +1,6 @@
-<script type="text/javascript">
-	window.location = `${window.location.origin}/chapters/c01-welcome/s01-welcome/`
+---
+const base_url = `${import.meta.env.BASE_URL}`;
+---
+<script type="text/javascript" define:vars={{base_url}}>
+	window.location = `${base_url}./chapters/c01-welcome/s01-welcome/`
 </script>
