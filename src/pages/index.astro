@@ -1,29 +1,3 @@
----
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-import { getCollection, getEntry, getEntries } from 'astro:content';
-
-const chapters = await getCollection('chapters');
-const chaptersWithSections = await Promise.all(chapters.map(async (chapter) => ({
-	...chapter.data,
-	sections: (await getEntries(chapter.data.contains)).map((section) => (section.data)),
-})))
-
-// const chapter = await getEntry('chapters', 'c01-welcome')
-// const blogPost = await getEntry('blog', 'welcome');
-
-// // Resolve a singular reference (e.g. `{collection: "authors", id: "ben-holmes"}`)
-// const author = await getEntry(blogPost.data.author);
-// // Resolve an array of references
-// // (e.g. `[{collection: "blog", id: "about-me"}, {collection: "blog", id: "my-year-in-review"}]`)
-// const relatedPosts = await getEntries(blogPost.data.relatedPosts);
-
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
-
-<Layout>
-	<Welcome />
-</Layout>
+<script type="text/javascript">
+	window.location = `${window.location.origin}/chapters/c01-welcome/s01-welcome/`
+</script>
