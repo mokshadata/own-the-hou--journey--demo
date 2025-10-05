@@ -1,0 +1,72 @@
+---
+import "../styles/journey.css";
+
+const { chaptersWithSections } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    > -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/versions/bulma-no-dark-mode.css"
+    />
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="has-navbar-fixed-top">
+    <header>
+        <nav class="navbar is-fixed-top has-background-primary has-text-white-bis" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <img src="https://ownthehou.org/wp-content/themes/twentytwentyfive--own-the-hou/assets/images/logo-header.svg"/>
+    </a>
+  </div>
+</nav>
+    </header>
+    <main class="container is-fluid">
+        <div class="columns">
+            <nav class="column is-one-third">
+              <aside class="menu journey-map p-4">
+                <p class="menu-label">Your Journey</p>
+                <ul class="menu-list">
+                  
+                  {
+                      chaptersWithSections.map((topLevel) => (
+                      <li>
+                          <a>{topLevel.title}</a>
+                          <ul>
+                              {topLevel.sections.map((midLevel) => (
+                                  <li><a>{midLevel.title}</a></li>
+                              ))}
+                          </ul>
+                      </li>
+                      ))
+                  }
+                </ul>
+              </aside>
+            </nav>
+            <article class="column">
+              <div class="p-6">
+                <slot />
+                </div>
+                <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                    <a href="#" class="pagination-previous">Previous</a>
+                    <a href="#" class="pagination-next">Next page</a>
+                </nav>
+            </article>
+        </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
