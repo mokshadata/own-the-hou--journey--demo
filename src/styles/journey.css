@@ -1,49 +1,18 @@
-
-
-/* main {
-    display: flex;
-    height: 80vh;
-}
-
-nav {
-    flex: 1;
-} */
+ /* https://coolors.co/1c335f-e86e24-fcb900-00d084-0693e3-503aa8-fbfaf3 */
 
 .journey-map {
     max-height: calc(100vh - 100px);
     top: 0;
     position: sticky;
-    /* width: 32%; */
     overflow: auto;
     scrollbar-color: #868686 transparent;
-    /* align-self: flex-start; */
-    /* padding: 1rem; */
-    /* padding: var(--pico-block-spacing-vertical) var(--pico-block-spacing-horizontal); */
 }
-/* 
-nav ul {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-article {
-    flex: 2;
-} */
-
-/* 
-.outfit-<uniquifier> {
-  font-family: "Outfit", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
-  font-style: normal;
-} */
 
 html {
     scrollbar-color: #868686 transparent;
-
     background-position: fixed;
-
+    
+    /* https://coolors.co/gradient-maker/adc2eb-d9bbdd-fcd19c?position=0,60,100&opacity=100,100,100&type=linear&rotation=90 */
     background: hsla(220, 61%, 80%, 1);
     background: linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
     background: -moz-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
@@ -55,5 +24,4 @@ main.container {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     margin-top: 10px;
-    /* position: relative; */
 }
