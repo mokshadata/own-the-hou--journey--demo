@@ -44,10 +44,12 @@ article > div {
 [role="navigation"] .button small,
 [role="navigation"] .button strong {
     line-height: 1em;
+    text-wrap: wrap;
 }
 
 [role="navigation"] .button {
     --bulma-button-background-a: 0.25;
+    height: 100%;
 }
 [role="navigation"] .button:hover {
     --bulma-button-background-a: 0.5;
@@ -93,4 +95,19 @@ article > div {
 .menu-list > li [data-menu-type="section"]::before {
     counter-increment: section;
     content: counter(section, lower-alpha) ". ";
+}
+
+article {
+    counter-reset: reading-section reading-chapter;
+}
+
+article [data-section-order]::before {
+    /* counter-set: reading-section attr(data-section-order); */
+    content: attr(data-section-label) ". ";
+}
+
+article [data-chapter-order]::before {
+    --reading-chapter: attr(data-chapter-order);
+    /* counter-set: reading-chapter var(--reading-chapter); */
+    content: var(--reading-chapter) ". ";
 }
