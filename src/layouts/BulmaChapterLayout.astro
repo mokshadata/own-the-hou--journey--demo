@@ -84,12 +84,32 @@ const prevSection = sections[sectionIndex - 1]
             <slot />
           </div>
           <nav
-            class="pagination is-centered pt-4"
+            class="pt-4 grid"
             role="navigation"
             aria-label="pagination"
           >
-            {prevSection && <a href={`${base_url}chapters/${prevSection.chapterInfo.chapter}/${prevSection.section}/`} class="pagination-previous">Previous</a> || <a class="pagination-previous">Previous</a>}
-            {nextSection && <a href={`${base_url}chapters/${nextSection.chapterInfo.chapter}/${nextSection.section}/`} class="pagination-next">Next</a> || <a class="pagination-next">Next</a>}
+            <div class="cell">
+              {prevSection && <a
+                href={`${base_url}chapters/${prevSection.chapterInfo.chapter}/${prevSection.section}/`}
+                class="button py-3 is-flex is-justify-content-flex-start"
+                aria-label="Previous"
+              >
+                <div class="is-flex is-flex-direction-column is-align-items-flex-start">
+                  <small class="has-text-weight-normal">{prevSection.chapterInfo.title}</small><strong class="is-size-5">{prevSection.title}</strong>
+                </div>
+              </a> || ''}
+            </div>
+            <div class="cell">
+              {nextSection && <a
+                href={`${base_url}chapters/${nextSection.chapterInfo.chapter}/${nextSection.section}/`}
+                class="button py-3 is-flex is-justify-content-flex-end"
+                aria-label="Next"
+              >
+                <div class="is-flex is-flex-direction-column is-align-items-flex-end">
+                  <small class="has-text-weight-normal">{nextSection.chapterInfo.title}</small><strong class="is-size-5">{nextSection.title}</strong>
+                </div>
+              </a> || ''}
+            </div>
           </nav>
         </article>
       </div>

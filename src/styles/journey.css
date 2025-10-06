@@ -35,7 +35,32 @@ article > div {
     border-radius: var(--bulma-radius);
 }
 
+.button {
+    background-color: hsla(var(--bulma-button-h), var(--bulma-button-s), calc(var(--bulma-button-background-l) + var(--bulma-button-background-l-delta)),
+        var(--bulma-button-background-a)
+    );
+}
 
+[role="navigation"] .button small,
+[role="navigation"] .button strong {
+    line-height: 1em;
+}
+
+[role="navigation"] .button {
+    --bulma-button-background-a: 0.25;
+}
+[role="navigation"] .button:hover {
+    --bulma-button-background-a: 0.5;
+}
+
+[role="navigation"] .button[aria-label="Previous"]::before {
+    content: "←";
+    margin-right: 1rem;
+}
+[role="navigation"] .button[aria-label="Next"]::after {
+    content: "→";
+    margin-left: 1rem;
+}
 
 .menu-list a, .menu-list button, .menu-list .menu-item {
     background-color: hsla(var(--bulma-menu-item-h), var(--bulma-menu-item-s), calc(var(--bulma-menu-item-background-l) + var(--bulma-menu-item-background-l-delta)),
