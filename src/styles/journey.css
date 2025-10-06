@@ -52,7 +52,7 @@ article > div {
     height: 100%;
 }
 [role="navigation"] .button:hover {
-    --bulma-button-background-a: 0.5;
+    --bulma-button-background-a: 1;
 }
 
 [role="navigation"] .button[aria-label="Previous"]::before {
