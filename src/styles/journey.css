@@ -25,3 +25,21 @@ main.container {
     backdrop-filter: blur(10px);
     margin-top: 10px;
 }
+
+.menu-list {
+    counter-reset: chapter;
+}
+
+[data-menu-type="chapter"]::before {
+    counter-increment: chapter;
+    content: counter(chapter) ". ";
+}
+
+.menu-list > li {
+    counter-reset: section;
+}
+
+.menu-list > li [data-menu-type="section"]::before {
+    counter-increment: section;
+    content: counter(section, lower-alpha) ". ";
+}

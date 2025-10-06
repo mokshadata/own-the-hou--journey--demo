@@ -52,11 +52,19 @@ const base_url = `${import.meta.env.BASE_URL}`;
               {
                 chaptersWithSections.map((topLevel) => (
                   <li>
-                    <a class={topLevel.chapter === activeChapter && 'is-active' || ''} href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/`}>{topLevel.title}</a>
+                    <a
+                      data-menu-type="chapter"
+                      class={topLevel.chapter === activeChapter && 'is-active' || ''}
+                      href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/`}
+                    >{topLevel.title}</a>
                     <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
-                          <a class={midLevel.section === activeSection && 'is-active' || ''} href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/`}>{midLevel.title}</a>
+                          <a
+                            data-menu-type="section"
+                            class={midLevel.section === activeSection && 'is-active' || ''}
+                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/`}
+                          >{midLevel.title}</a>
                         </li>
                       ))}
                     </ul>
