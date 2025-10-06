@@ -1,7 +1,8 @@
 ---
 import "../styles/journey.css";
+import { ClientRouter } from "astro:transitions";
 
-const { chaptersWithSections } = Astro.props;
+const { chaptersWithSections, activeChapter, activeSection, title } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---
 
@@ -10,7 +11,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Your Own the HOU Journey: {title}</title>
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/svg+xml" href={`${base_url}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,6 +25,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/versions/bulma-no-dark-mode.css"
     />
     <link rel="stylesheet" href={`${base_url}assets/styles.css`} />
+    <ClientRouter />
   </head>
   <body class="has-navbar-fixed-top">
     <header>
@@ -50,11 +52,11 @@ const base_url = `${import.meta.env.BASE_URL}`;
               {
                 chaptersWithSections.map((topLevel) => (
                   <li>
-                    <a>{topLevel.title}</a>
-                    <ul>
+                    <a class={topLevel.chapter === activeChapter && 'is-active' || ''} href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/`}>{topLevel.title}</a>
+                    <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
-                          <a>{midLevel.title}</a>
+                          <a class={midLevel.section === activeSection && 'is-active' || ''} href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/`}>{midLevel.title}</a>
                         </li>
                       ))}
                     </ul>

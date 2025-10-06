@@ -11,7 +11,7 @@
 html {
     scrollbar-color: #868686 transparent;
     background-position: fixed;
-    
+
     /* https://coolors.co/gradient-maker/adc2eb-d9bbdd-fcd19c?position=0,60,100&opacity=100,100,100&type=linear&rotation=90 */
     background: hsla(220, 61%, 80%, 1);
     background: linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
@@ -21,7 +21,7 @@ html {
 }
 
 main.container {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(10px);
     margin-top: 10px;
 }
