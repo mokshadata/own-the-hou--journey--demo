@@ -4,6 +4,11 @@ import { ClientRouter } from "astro:transitions";
 
 const { chaptersWithSections, activeChapter, activeSection, title } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
+
+const sections = chaptersWithSections.map((chapterInfo) => (chapterInfo.sections.map((sectionInfo) => ({ ...sectionInfo, chapterInfo })))).reduce((result, current) => ([...result, ...current]), [])
+const sectionIndex = sections.findIndex((section) => (section.section === activeSection && section.chapterInfo.chapter === activeChapter))
+const nextSection = sections[sectionIndex + 1]
+const prevSection = sections[sectionIndex - 1]
 ---
 
 <!doctype html>
@@ -75,16 +80,16 @@ const base_url = `${import.meta.env.BASE_URL}`;
           </aside>
         </nav>
         <article class="column">
-          <div class="p-6">
+          <div class="p-6 mt-6">
             <slot />
           </div>
           <nav
-            class="pagination is-centered"
+            class="pagination is-centered pt-4"
             role="navigation"
             aria-label="pagination"
           >
-            <a href="#" class="pagination-previous">Previous</a>
-            <a href="#" class="pagination-next">Next page</a>
+            {prevSection && <a href={`${base_url}chapters/${prevSection.chapterInfo.chapter}/${prevSection.section}/`} class="pagination-previous">Previous</a> || <a class="pagination-previous">Previous</a>}
+            {nextSection && <a href={`${base_url}chapters/${nextSection.chapterInfo.chapter}/${nextSection.section}/`} class="pagination-next">Next</a> || <a class="pagination-next">Next</a>}
           </nav>
         </article>
       </div>
