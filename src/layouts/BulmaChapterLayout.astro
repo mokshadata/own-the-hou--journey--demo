@@ -2,13 +2,8 @@
 import "../styles/journey.css";
 import { ClientRouter } from "astro:transitions";
 
-const { chaptersWithSections, activeChapter, activeSection, title } = Astro.props;
+const { chaptersWithSections, activeChapter, activeSection, title, activeTitles } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
-
-const sections = chaptersWithSections.map((chapterInfo) => (chapterInfo.sections.map((sectionInfo) => ({ ...sectionInfo, chapterInfo })))).reduce((result, current) => ([...result, ...current]), [])
-const sectionIndex = sections.findIndex((section) => (section.section === activeSection && section.chapterInfo.chapter === activeChapter))
-const nextSection = sections[sectionIndex + 1]
-const prevSection = sections[sectionIndex - 1]
 ---
 
 <!doctype html>
@@ -57,19 +52,34 @@ const prevSection = sections[sectionIndex - 1]
               {
                 chaptersWithSections.map((topLevel) => (
                   <li>
-                    <a
+                    {topLevel.sections[0].modules && topLevel.sections[0].modules.length && <a
+                      data-menu-type="chapter"
+                      class={topLevel.chapter === activeChapter && 'is-active' || ''}
+                      href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/${ topLevel.sections[0].modules[0].module && `${topLevel.sections[0].modules[0].module}/` || ''}`}
+                    >{topLevel.title}</a> || <a
                       data-menu-type="chapter"
                       class={topLevel.chapter === activeChapter && 'is-active' || ''}
                       href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/`}
-                    >{topLevel.title}</a>
+                    >{topLevel.title}</a>}
                     <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
-                          <a
+                          {midLevel.modules.length && (<a
                             data-menu-type="section"
                             class={midLevel.section === activeSection && 'is-active' || ''}
-                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/`}
+                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules[0].module && `${midLevel.modules[0].module}/` || ''}`}
                           >{midLevel.title}</a>
+                          <ul class={midLevel.section !== activeSection && 'is-hidden' || ''}>
+                            {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
+                              <li>
+                                <a
+                                  data-menu-type="page"
+                                  class={pageLevel.module === Astro.props.activePage && 'is-active' || ''}
+                                  href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
+                                >{pageLevel.item.data.name}</a>
+                              </li>
+                            ))}
+                          </ul>) || midLevel.title}
                         </li>
                       ))}
                     </ul>
@@ -81,6 +91,8 @@ const prevSection = sections[sectionIndex - 1]
         </nav>
         <article class="column">
           <div class="p-6 mt-6">
+            <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
+
             <slot />
           </div>
           <nav
@@ -89,24 +101,24 @@ const prevSection = sections[sectionIndex - 1]
             aria-label="pagination"
           >
             <div class="cell">
-              {prevSection && <a
-                href={`${base_url}chapters/${prevSection.chapterInfo.chapter}/${prevSection.section}/`}
+              {Astro.props.prevPage && <a
+                href={`${base_url}chapters/${Astro.props.prevPage.params.chapter}/${Astro.props.prevPage.params.section}/${Astro.props.prevPage.params.module}/`}
                 class="button py-3 is-flex is-justify-content-flex-end is-justify-content-space-between"
                 aria-label="Previous"
               >
                 <div class="is-flex is-flex-direction-column is-align-items-flex-end">
-                  <small class="has-text-right has-text-weight-normal">{prevSection.chapterInfo.title}</small><strong class="has-text-right is-size-5">{prevSection.title}</strong>
+                  <small class="has-text-right has-text-weight-normal"><strong>{Astro.props.prevPage.props.chapterTitle}</strong> <i>{Astro.props.prevPage.props.sectionTitle}</i></small><strong class="has-text-right is-size-5">{Astro.props.prevPage.props.moduleTitle}</strong>
                 </div>
               </a> || ''}
             </div>
             <div class="cell">
-              {nextSection && <a
-                href={`${base_url}chapters/${nextSection.chapterInfo.chapter}/${nextSection.section}/`}
+              {Astro.props.nextPage && <a
+                href={`${base_url}chapters/${Astro.props.nextPage.params.chapter}/${Astro.props.nextPage.params.section}/${Astro.props.nextPage.params.module}/`}
                 class="button py-3 is-flex is-justify-content-flex-start is-justify-content-space-between"
                 aria-label="Next"
               >
                 <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-                  <small class="has-text-left has-text-weight-normal">{nextSection.chapterInfo.title}</small><strong class="has-text-left is-size-5">{nextSection.title}</strong>
+                  <small class="has-text-left has-text-weight-normal"><strong>{Astro.props.nextPage.props.chapterTitle}</strong> <i>{Astro.props.nextPage.props.sectionTitle}</i></small><strong class="has-text-left is-size-5">{Astro.props.nextPage.props.moduleTitle}</strong>
                 </div>
               </a> || ''}
             </div>

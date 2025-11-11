@@ -1,0 +1,62 @@
+---
+import ChapterLayout from '../../../../layouts/BulmaChapterLayout.astro';
+import { getCollection, getEntry, getEntries, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('chapters');
+  const structure = await Promise.all(chapters.map(async (chapter) => ({
+      chapter: chapter.id,
+      ...chapter.data,
+      sections: (await getEntries(chapter.data.contains)).map((section) => ({
+        section: section.id,
+        ...section.data,
+        modules: (section.data.contains).map((module) => ({
+            module: module.id,
+        }))
+      })),
+  })));
+
+  const pageLookup = structure.map(({
+      chapter, title: chapterTitle, order: chapterOrder,
+      sections
+    }) => (sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, }) => ({
+      params: { chapter, section, },
+      props: {
+        chapterTitle, chapterOrder,
+        sectionTitle, sectionOrder,
+        structure,
+      }
+    }))))))
+    .reduce((result, current) => ([...result, ...current]), [])
+    .reduce((result, current) => ([...result, ...current]), [])
+    .map((page, index, pages) => ({
+      params: page.params,
+      props: {
+        ...page.props,
+      }
+    }))
+    
+  return pageLookup
+}
+
+const { 
+    chapterTitle, chapterOrder,
+    sectionTitle, sectionOrder,
+    structure,
+} = Astro.props;
+
+const { chapter, section, } = Astro.params;
+
+// const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrder-1])
+---
+<ChapterLayout
+  chaptersWithSections={structure}
+  activeChapter={chapter} activeSection={section}
+  title={`${chapterTitle}: ${sectionTitle}`}
+
+  activeTitles={{
+    chapter: chapterTitle,
+    section: sectionTitle,
+  }}
+>
+</ChapterLayout>

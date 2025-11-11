@@ -1,0 +1,87 @@
+---
+import ChapterLayout from '../../../../layouts/BulmaChapterLayout.astro';
+import { getCollection, getEntry, getEntries, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const chapters = await getCollection('chapters');
+  const chaptersWithSections = await Promise.all(chapters.map(async (chapter) => ({
+      chapter: chapter.id,
+      ...chapter.data,
+      sections: (await getEntries(chapter.data.contains)).map((section) => ({
+        section: section.id,
+        ...section.data,
+      })),
+  })));
+
+  const structure = await Promise.all(chaptersWithSections.map(async (chapter) => ({
+    ...chapter,
+    sections: await Promise.all(chapter.sections.map(async (section) => ({
+      ...section,
+      modules: (await getEntries(section.contains)).filter((module) => (module)).map((module) => ({
+        module: module.slug,
+        lookup: `${chapter.chapter}--${section.section}--${module.id}`,
+        item: module,
+      }))
+    })))
+  })))
+
+  // console.log({ page: structure[2].sections[0].modules})
+
+  const pageLookup = structure.map(({
+      chapter, title: chapterTitle, order: chapterOrder,
+      sections
+    }) => (sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, lookup, item, }) => ({
+      params: { chapter, section, module },
+      props: {
+        chapterTitle, chapterOrder,
+        sectionTitle, sectionOrder,
+        moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
+        structure,
+      }
+    }))))))
+    .reduce((result, current) => ([...result, ...current]), [])
+    .reduce((result, current) => ([...result, ...current]), [])
+    .map((page, index, pages) => ({
+      params: page.params,
+      props: {
+        ...page.props,
+        prevPage: index > 0 && pages[index - 1] || null,
+        nextPage: index < pages.length - 1 && pages[index + 1] || null,
+      }
+    }))
+  // console.log(pageLookup)
+    
+  return pageLookup
+}
+
+
+const { 
+  chapterTitle, chapterOrder,
+  sectionTitle, sectionOrder,
+  moduleTitle, moduleOrder, moduleEntry, moduleLookup,
+  structure,
+  prevPage, nextPage,
+ } = Astro.props;
+// console.log('hello?', Astro.params)
+
+const { chapter, section, module } = Astro.params;
+const renderedSection = await render(moduleEntry)
+
+const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrder-1])
+---
+<ChapterLayout
+  chaptersWithSections={structure}
+  activeChapter={chapter} activeSection={section} activePage={module}
+  title={`${chapterTitle}: ${sectionTitle}: ${moduleTitle}`}
+  prevPage={prevPage} nextPage={nextPage}
+
+  activeTitles={{
+    chapter: chapterTitle,
+    section: sectionTitle,
+    module: moduleTitle,
+  }}
+>
+  <h2 class="is-size-3 book--module-title">{moduleTitle}</h2>
+  <p class="book--read-time">{renderedSection.remarkPluginFrontmatter.minutesRead}</p>
+  <renderedSection.Content/>
+</ChapterLayout>

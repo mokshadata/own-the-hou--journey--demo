@@ -80,7 +80,7 @@ article > div {
 }
 
 .menu-list {
-    counter-reset: chapter;
+    counter-reset: chapter -1;
 }
 
 [data-menu-type="chapter"]::before {
@@ -110,4 +110,74 @@ article [data-chapter-order]::before {
     --reading-chapter: attr(data-chapter-order);
     /* counter-set: reading-chapter var(--reading-chapter); */
     content: var(--reading-chapter) ". ";
+}
+
+article p,
+article li {
+    margin-bottom: 1em;
+}
+
+article li > p {
+    margin-bottom: 0;
+}
+
+article ul {
+    margin-left: 2em;
+}
+
+article ul li {
+    list-style-type: disc;
+}
+/* article li {
+    list-style-type: disc;
+} */
+.term {
+    display: inline-block;
+}
+
+.term--definition {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    line-height: 1.25em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    font-weight: 400;
+}
+
+.term--term {
+    border-bottom: 1px dotted var(--bulma-body-color);
+}
+
+.term--term:hover + .term--definition {
+    display: block;
+}
+
+.book--breadcrumb {
+    margin-bottom: 0;
+}
+
+.book--module-title {
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+}
+
+.book--read-time {
+    font-style: italic;
+}
+
+article table {
+    margin-bottom: 1em;
+}
+
+article table td:first-child {
+    padding-right: 1em;
+    text-align: right;
+    font-weight: 600;
+}
+
+article tr {
+    border-bottom: 1px dotted var(--bulma-body-color);
 }

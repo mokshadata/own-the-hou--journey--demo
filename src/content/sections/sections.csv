@@ -1,40 +1,41 @@
-﻿,Name,Order,slug,Chapters,Order (from Chapters),Modules
-,Welcome!,1,s01-welcome,Welcome,1,"Introduction to the kit,Welcome Video"
-,What is the Toolkit?,2,s02-what-is-the-toolkit,Welcome,1,What is the Toolkit?
-,Who is it for?,3,s03-who-is-it-for,Welcome,1,
-,Start learning about the journey!,4,s04-start-learning-about-the-journey,Welcome,1,
-,Are you ready to start your journey?,1,s01-are-you-ready-to-start-your-journey,Get Ready to Buy a Home,2,
-,Top tips,2,s02-top-tips,Get Ready to Buy a Home,2,
-,What it costs to own a home,1,s01-what-it-costs-to-own-a-home,What's Your Budget?,3,
-,How much house can you afford?,2,s02-how-much-house-can-you-afford,What's Your Budget?,3,
-,Understanding your credit,3,s03-understanding-your-credit,What's Your Budget?,3,
-,How to increase your budget,4,s04-how-to-increase-your-budget,What's Your Budget?,3,
-,Meet the Team!,1,s01-meet-the-team,Choose Your Homebuying Team,4,
-,Get a Housing Counselor!,2,s02-get-a-housing-counselor,Choose Your Homebuying Team,4,
-,Find a Realtor,3,s03-find-a-realtor,Choose Your Homebuying Team,4,
-,Find financial help to buy a home,4,s04-find-financial-help-to-buy-a-home,Choose Your Homebuying Team,4,
-,Loan terms,1,s01-loan-terms,Get a Mortgage,5,
-,Shopping for loans and finding a lender,2,s02-shopping-for-loans-and-finding-a-lender,Get a Mortgage,5,
-,Getting pre-approved,3,s03-getting-pre-approved,Get a Mortgage,5,
-,FAQ on mortgage options,4,s04-faq-on-mortgage-options,Get a Mortgage,5,
-,"""No money down"" loans",5,s05-no-money-down-loans,Get a Mortgage,5,
-,Decide what you need and want in a home,1,s01-decide-what-you-need-and-want-in-a-home,Find a Home and Make an Offer,6,
-,What to know about any home you might buy,2,s02-what-to-know-about-any-home-you-might-buy,Find a Home and Make an Offer,6,
-,The Offer Process,3,s03-the-offer-process,Find a Home and Make an Offer,6,
-,Selecting an inspector,4,s04-selecting-an-inspector,Find a Home and Make an Offer,6,
-,Understanding your appraisal,5,s05-understanding-your-appraisal,Find a Home and Make an Offer,6,
-,Credits and negotiating,6,s06-credits-and-negotiating,Find a Home and Make an Offer,6,
-,Sales price versus loan amount,1,s01-sales-price-versus-loan-amount,Make Your Mortgage Application,7,
-,Loan approval process,2,s02-loan-approval-process,Make Your Mortgage Application,7,
-,Putting money into escrow,1,s01-putting-money-into-escrow,Close on Your Home,8,
-,Homeowners insurance & other coverage,2,s02-homeowners-insurance-other-coverage,Close on Your Home,8,
-,Reviewing your closing documents,3,s03-reviewing-your-closing-documents,Close on Your Home,8,
-,Closing day,4,s04-closing-day,Close on Your Home,8,
-,Congratulations! You're a homeowner!,5,s05-congratulations-you-re-a-homeowner,Close on Your Home,8,
-,What to do after closing,6,s06-what-to-do-after-closing,Close on Your Home,8,
-,Preventative maintenance,1,s01-preventative-maintenance,You're a Homeowner - Protect Your Home,9,
-,Disaster preparedness and recovery,2,s02-disaster-preparedness-and-recovery,You're a Homeowner - Protect Your Home,9,
-,Insurance coverage & shopping for insurance annually,3,s03-insurance-coverage-shopping-for-insurance-annually,You're a Homeowner - Protect Your Home,9,
-,Taxes & protesting your assessment,4,s04-taxes-protesting-your-assessment,You're a Homeowner - Protect Your Home,9,
-,Passing your home down to the next generation,5,s05-passing-your-home-down-to-the-next-generation,You're a Homeowner - Protect Your Home,9,
-,Help to keep your home,6,s06-help-to-keep-your-home,You're a Homeowner - Protect Your Home,9,
+﻿,Name,Order,slug,Chapters,slug (from Chapters),Order (from Chapters),Modules (Names),Modules,Chapter Section Slug
+,Welcome!,1,s01-welcome,Welcome,c01-welcome,1,,,c01-welcome--s01-welcome
+,What is the Toolkit?,2,s02-what-is-the-toolkit,Welcome,c01-welcome,1,,,c01-welcome--s02-what-is-the-toolkit
+,Choose Your Own Adventure,3,s03-choose-your-own-adventure,Welcome,c01-welcome,1,,,c01-welcome--s03-choose-your-own-adventure
+,Take the Homeownership Class,4,s04-take-the-homeownership-class,Welcome,c01-welcome,1,,,c01-welcome--s04-take-the-homeownership-class
+,Are you ready to start your journey?,1,s01-are-you-ready-to-start-your-journey,Get Ready to Buy a Home,c02-get-ready-to-buy-a-home,2,,,c02-get-ready-to-buy-a-home--s01-are-you-ready-to-start-your-journey
+,Top tips,2,s02-top-tips,Get Ready to Buy a Home,c02-get-ready-to-buy-a-home,2,,,c02-get-ready-to-buy-a-home--s02-top-tips
+,What it Costs to Own a Home,1,s01-what-it-costs-to-own-a-home,What's Your Budget?,c03-what-s-your-budget,3,"Mortgages and How They Work,Upfront Costs of Buying a Home,Ongoing Costs of Homeownership","m01-mortgages-and-how-they-work, m02-upfront-costs-of-buying-a-home, m03-ongoing-costs-of-homeownership",c03-what-s-your-budget--s01-what-it-costs-to-own-a-home
+,What Homes Can You Afford?,2,s02-what-homes-can-you-afford,What's Your Budget?,c03-what-s-your-budget,3,"Choose How to Estimate Your Budget,Option 1: The Quickest Budget Estimator,Option 2: Affordable Home Price Calculator Tool,Option 3: Get a Pre-Approval","m01-choose-how-to-estimate-your-budget, m02-option-1-the-quickest-budget-estimator, m03-option-2-affordable-home-price-calculator-tool, m04-option-3-get-a-pre-approval",c03-what-s-your-budget--s02-what-homes-can-you-afford
+,Setting and Sticking to a Budget,3,s03-setting-and-sticking-to-a-budget,What's Your Budget?,c03-what-s-your-budget,3,Calculating Your Monthly Budget,m01-calculating-your-monthly-budget,c03-what-s-your-budget--s03-setting-and-sticking-to-a-budget
+,Understanding Your Credit,4,s04-understanding-your-credit,What's Your Budget?,c03-what-s-your-budget,3,"Learning About Your Credit Score,Resources to Improve Your Credit","m01-learning-about-your-credit-score, m02-resources-to-improve-your-credit",c03-what-s-your-budget--s04-understanding-your-credit
+,How to Increase Your Budget,5,s05-how-to-increase-your-budget,What's Your Budget?,c03-what-s-your-budget,3,Steps that can Increase Your Home Budget,m01-steps-that-can-increase-your-home-budget,c03-what-s-your-budget--s05-how-to-increase-your-budget
+,Meet the Team!,1,s01-meet-the-team,Choose Your Homebuying Team,c04-choose-your-homebuying-team,4,,,c04-choose-your-homebuying-team--s01-meet-the-team
+,Get a Housing Counselor!,2,s02-get-a-housing-counselor,Choose Your Homebuying Team,c04-choose-your-homebuying-team,4,,,c04-choose-your-homebuying-team--s02-get-a-housing-counselor
+,Finding a Realtor,3,s03-finding-a-realtor,Choose Your Homebuying Team,c04-choose-your-homebuying-team,4,,,c04-choose-your-homebuying-team--s03-finding-a-realtor
+,Finding financial help to buy a home,4,s04-finding-financial-help-to-buy-a-home,Choose Your Homebuying Team,c04-choose-your-homebuying-team,4,,,c04-choose-your-homebuying-team--s04-finding-financial-help-to-buy-a-home
+,Loan terms,1,s01-loan-terms,Get Pre-Approved for a Mortgage,c05-get-pre-approved-for-a-mortgage,5,,,c05-get-pre-approved-for-a-mortgage--s01-loan-terms
+,Shopping for loans and finding a lender,2,s02-shopping-for-loans-and-finding-a-lender,Get Pre-Approved for a Mortgage,c05-get-pre-approved-for-a-mortgage,5,,,c05-get-pre-approved-for-a-mortgage--s02-shopping-for-loans-and-finding-a-lender
+,Getting pre-approved,3,s03-getting-pre-approved,Get Pre-Approved for a Mortgage,c05-get-pre-approved-for-a-mortgage,5,,,c05-get-pre-approved-for-a-mortgage--s03-getting-pre-approved
+,FAQ on mortgage options,4,s04-faq-on-mortgage-options,Get Pre-Approved for a Mortgage,c05-get-pre-approved-for-a-mortgage,5,,,c05-get-pre-approved-for-a-mortgage--s04-faq-on-mortgage-options
+,Decide what you need and want in a home,1,s01-decide-what-you-need-and-want-in-a-home,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s01-decide-what-you-need-and-want-in-a-home
+,What to know about any home you might buy,2,s02-what-to-know-about-any-home-you-might-buy,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s02-what-to-know-about-any-home-you-might-buy
+,The Offer Process,3,s03-the-offer-process,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s03-the-offer-process
+,Selecting an inspector,4,s04-selecting-an-inspector,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s04-selecting-an-inspector
+,Understanding your appraisal,5,s05-understanding-your-appraisal,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s05-understanding-your-appraisal
+,Credits and negotiating,6,s06-credits-and-negotiating,Find a Home and Make an Offer,c06-find-a-home-and-make-an-offer,6,,,c06-find-a-home-and-make-an-offer--s06-credits-and-negotiating
+,Sales price versus loan amount,1,s01-sales-price-versus-loan-amount,Finalize Your Mortgage,c07-finalize-your-mortgage,7,,,c07-finalize-your-mortgage--s01-sales-price-versus-loan-amount
+,Loan approval process,2,s02-loan-approval-process,Finalize Your Mortgage,c07-finalize-your-mortgage,7,,,c07-finalize-your-mortgage--s02-loan-approval-process
+,Putting money into escrow,1,s01-putting-money-into-escrow,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s01-putting-money-into-escrow
+,Homeowners insurance & other coverage,2,s02-homeowners-insurance-other-coverage,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s02-homeowners-insurance-other-coverage
+,Reviewing your closing documents,3,s03-reviewing-your-closing-documents,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s03-reviewing-your-closing-documents
+,Closing day,4,s04-closing-day,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s04-closing-day
+,Congratulations! You're a homeowner!,5,s05-congratulations-you-re-a-homeowner,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s05-congratulations-you-re-a-homeowner
+,What to do after closing,6,s06-what-to-do-after-closing,Close on Your Home,c08-close-on-your-home,8,,,c08-close-on-your-home--s06-what-to-do-after-closing
+,Homeownership 101: What you can do to protect your home,1,s01-homeownership-101-what-you-can-do-to-protect-your-home,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s01-homeownership-101-what-you-can-do-to-protect-your-home
+,Preventative maintenance,2,s02-preventative-maintenance,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s02-preventative-maintenance
+,Disaster preparedness and recovery,3,s03-disaster-preparedness-and-recovery,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s03-disaster-preparedness-and-recovery
+,Insurance coverage & shopping for insurance annually,4,s04-insurance-coverage-shopping-for-insurance-annually,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s04-insurance-coverage-shopping-for-insurance-annually
+,Taxes & protesting your assessment,5,s05-taxes-protesting-your-assessment,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s05-taxes-protesting-your-assessment
+,Passing your home down to the next generation,6,s06-passing-your-home-down-to-the-next-generation,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s06-passing-your-home-down-to-the-next-generation
+,Help to keep your home,7,s07-help-to-keep-your-home,You're a Homeowner - Protect Your Home,c09-you-re-a-homeowner-protect-your-home,9,,,c09-you-re-a-homeowner-protect-your-home--s07-help-to-keep-your-home
