@@ -49,6 +49,7 @@ const terms = defineCollection({
           id: item['slug'],
           term: item['Term'],
           definition: item['Definition'],
+          chapter: item['Chapter'],
         }
       })
       return result
@@ -57,6 +58,7 @@ const terms = defineCollection({
   schema: z.object({
     term: z.string(),
     definition: z.string(),
+    chapter: reference('chapter'),
   }),
 })
 
@@ -68,9 +70,25 @@ const modules = defineCollection({
   }),
 })
 
+const intros = defineCollection({
+  type: "content",
+  schema: () => z.object({
+    name: z.string(),
+  }),
+})
+
+const reviews = defineCollection({
+  type: "content",
+  schema: () => z.object({
+    name: z.string(),
+  }),
+})
+
 export const collections = {
   chapters,
   sections,
   terms,
   modules,
+  intros,
+  reviews,
 }

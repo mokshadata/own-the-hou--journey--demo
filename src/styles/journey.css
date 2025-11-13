@@ -19,6 +19,8 @@ html {
     background-image: -moz-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
     background-image: -webkit-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ADC2EB", endColorstr="#D9BBDD", GradientType=1 );
+
+    font-size: 18px;
 }
 
 body {
@@ -97,40 +99,6 @@ article > div {
     content: counter(section, lower-alpha) ". ";
 }
 
-article {
-    counter-reset: reading-section reading-chapter;
-}
-
-article [data-section-order]::before {
-    /* counter-set: reading-section attr(data-section-order); */
-    content: attr(data-section-label) ". ";
-}
-
-article [data-chapter-order]::before {
-    --reading-chapter: attr(data-chapter-order);
-    /* counter-set: reading-chapter var(--reading-chapter); */
-    content: var(--reading-chapter) ". ";
-}
-
-article p,
-article li {
-    margin-bottom: 1em;
-}
-
-article li > p {
-    margin-bottom: 0;
-}
-
-article ul {
-    margin-left: 2em;
-}
-
-article ul li {
-    list-style-type: disc;
-}
-/* article li {
-    list-style-type: disc;
-} */
 .term {
     display: inline-block;
 }
@@ -147,7 +115,13 @@ article ul li {
 }
 
 .term--term {
+    transition: 100ms all linear;
     border-bottom: 1px dotted var(--bulma-body-color);
+    cursor: pointer;
+}
+
+.term--term:hover {
+    background-color: hsla(220, 61%, 80%, 0.5);
 }
 
 .term--term:hover + .term--definition {
@@ -168,6 +142,43 @@ article ul li {
     font-style: italic;
 }
 
+
+article {
+    counter-reset: reading-section reading-chapter;
+    /* font-size: 18px; */
+}
+
+article [data-section-order]::before {
+    /* counter-set: reading-section attr(data-section-order); */
+    content: attr(data-section-label) ". ";
+}
+
+article [data-chapter-order]::before {
+    --reading-chapter: attr(data-chapter-order);
+    /* counter-set: reading-chapter var(--reading-chapter); */
+    content: var(--reading-chapter) ". ";
+}
+
+article p,
+article li {
+    margin-bottom: 1em;
+}
+
+article li > p {
+    margin-bottom: 0.5em;
+}
+
+article ul, article ol {
+    margin-left: 2em;
+}
+
+article ul li {
+    list-style-type: disc;
+}
+/* article li {
+    list-style-type: disc;
+} */
+
 article table {
     margin-bottom: 1em;
 }
@@ -180,4 +191,78 @@ article table td:first-child {
 
 article tr {
     border-bottom: 1px dotted var(--bulma-body-color);
+}
+
+article .chapter--intro > ol > li,
+article .chapter--review > ol > li {
+    list-style-type: lower-alpha;
+}
+
+article li li {
+    margin-bottom: 0.5em;
+}
+
+article li ul,
+article li ol {
+    margin-top: 0.5em;
+}
+
+h1 {
+    font-size: 2.027rem;
+    font-weight: 900;
+}
+h2 {
+    font-size: 1.802rem;
+    font-weight: 700;
+}
+h3 {
+    font-size: 1.602rem;
+    font-weight: 600;
+}
+h4 {
+    font-size: 1.424rem;
+    font-weight: 600;
+}
+h5 {
+    font-size: 1.266rem;
+    font-weight: 600;
+}
+h6 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+p, li {
+    font-size: 1rem;
+}
+small{
+    font-size:  0.889rem;
+}
+
+dd {
+    margin-bottom: 0.5rem;
+}
+
+dt {
+    text-transform: capitalize;
+    display: inline-block;
+    font-weight: 600;
+    font-style: italic;
+}
+
+details {
+    border-radius: 0.25rem;
+    border: 1px dotted var(--bulma-body-color);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+details summary {
+    font-weight: 600;
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    cursor: pointer;
+}
+
+details p {
+    margin: 0.5rem 0.25rem;
 }

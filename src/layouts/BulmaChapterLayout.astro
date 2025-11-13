@@ -1,4 +1,5 @@
 ---
+// import "../styles/global.css";
 import "../styles/journey.css";
 import { ClientRouter } from "astro:transitions";
 
@@ -52,15 +53,11 @@ const base_url = `${import.meta.env.BASE_URL}`;
               {
                 chaptersWithSections.map((topLevel) => (
                   <li>
-                    {topLevel.sections[0].modules && topLevel.sections[0].modules.length && <a
+                    <a
                       data-menu-type="chapter"
                       class={topLevel.chapter === activeChapter && 'is-active' || ''}
-                      href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/${ topLevel.sections[0].modules[0].module && `${topLevel.sections[0].modules[0].module}/` || ''}`}
-                    >{topLevel.title}</a> || <a
-                      data-menu-type="chapter"
-                      class={topLevel.chapter === activeChapter && 'is-active' || ''}
-                      href={`${base_url}chapters/${topLevel.chapter}/${topLevel.sections[0].section}/`}
-                    >{topLevel.title}</a>}
+                      href={`${base_url}chapters/${topLevel.chapter}/`}
+                    >{topLevel.title}</a>
                     <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
@@ -82,6 +79,13 @@ const base_url = `${import.meta.env.BASE_URL}`;
                           </ul>) || midLevel.title}
                         </li>
                       ))}
+                      <li>
+                        <a
+                          data-menu-type="page"
+                          class={'Review' === Astro.props.activeSection && 'is-active' || ''}
+                          href={`${base_url}chapters/${topLevel.chapter}/review/`}
+                        >Check-In</a>
+                      </li>
                     </ul>
                   </li>
                 ))
@@ -92,7 +96,6 @@ const base_url = `${import.meta.env.BASE_URL}`;
         <article class="column">
           <div class="p-6 mt-6">
             <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
-
             <slot />
           </div>
           <nav

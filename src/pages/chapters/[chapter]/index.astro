@@ -1,5 +1,5 @@
 ---
-import ChapterLayout from '../../../../layouts/BulmaChapterLayout.astro';
+import ChapterLayout from '../../../layouts/BulmaChapterLayout.astro';
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -20,10 +20,9 @@ export async function getStaticPaths() {
       chapter, title: chapterTitle, order: chapterOrder,
       sections
     }) => (sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, }) => ({
-      params: { chapter, section, },
+      params: { chapter, },
       props: {
         chapterTitle, chapterOrder,
-        sectionTitle, sectionOrder,
         structure,
       }
     }))))))
@@ -40,12 +39,11 @@ export async function getStaticPaths() {
 }
 
 const { 
-    chapterTitle, chapterOrder,
-    sectionTitle, sectionOrder,
+    chapterTitle,
     structure,
 } = Astro.props;
 
-const { chapter, section, } = Astro.params;
+const { chapter, } = Astro.params;
 
 async function getContent() {
   try {
@@ -57,19 +55,19 @@ async function getContent() {
 }
 
 const intro = await getContent()
-console.log({intro})
-
-// const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrder-1])
 ---
 <ChapterLayout
   chaptersWithSections={structure}
-  activeChapter={chapter} activeSection={section}
-  title={`${chapterTitle}: ${sectionTitle}`}
+  activeChapter={chapter}
+  title={`${chapterTitle}: Introduction`}
 
   activeTitles={{
     chapter: chapterTitle,
-    section: sectionTitle,
   }}
 >
-  {intro && <intro.Content/> || <></>}
+  <h2 class="is-size-3 book--module-title">{chapterTitle} Introduction</h2>
+  {intro && <p class="book--read-time">{intro.remarkPluginFrontmatter.minutesRead}</p> || <></>}
+  <div class="chapter--intro">
+      {intro && <intro.Content/> || <></>}
+  </div>
 </ChapterLayout>
