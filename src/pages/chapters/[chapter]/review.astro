@@ -76,6 +76,7 @@ const review = await getContent()
   <div class="chapter--review">
     <h2>Summary</h2>
       {review && <review.Content/> || <></>}
+      <p>Below, you'll see the decisons you made, terms we learned, resources, and videos from throughout the chapter.</p>
   </div>
   <div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
@@ -140,6 +141,9 @@ const review = await getContent()
   </div>
   <div class="chapter--review--checklists">
     <h2>Checklists</h2>
+  </div>
+  <div class="chapter--review--videolist">
+    <h2>Video Playlist</h2>
   </div>
   
 </ChapterLayout>
