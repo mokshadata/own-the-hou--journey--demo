@@ -61,10 +61,10 @@ const base_url = `${import.meta.env.BASE_URL}`;
                     <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
-                          {midLevel.modules.length && (<a
+                          <a
                             data-menu-type="section"
                             class={midLevel.section === activeSection && 'is-active' || ''}
-                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules[0].module && `${midLevel.modules[0].module}/` || ''}`}
+                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
                           >{midLevel.title}</a>
                           <ul class={midLevel.section !== activeSection && 'is-hidden' || ''}>
                             {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
@@ -76,7 +76,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
                                 >{pageLevel.item.data.name}</a>
                               </li>
                             ))}
-                          </ul>) || midLevel.title}
+                          </ul>
                         </li>
                       ))}
                       <li>
@@ -105,7 +105,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
           >
             <div class="cell">
               {Astro.props.prevPage && <a
-                href={`${base_url}chapters/${Astro.props.prevPage.params.chapter}/${Astro.props.prevPage.params.section}/${Astro.props.prevPage.params.module}/`}
+                href={`${base_url}chapters/${[Astro.props.prevPage.params.chapter, Astro.props.prevPage.params.section, Astro.props.prevPage.params.module].filter((param) => param).join('/')}/`}
                 class="button py-3 is-flex is-justify-content-flex-end is-justify-content-space-between"
                 aria-label="Previous"
               >
@@ -116,7 +116,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
             </div>
             <div class="cell">
               {Astro.props.nextPage && <a
-                href={`${base_url}chapters/${Astro.props.nextPage.params.chapter}/${Astro.props.nextPage.params.section}/${Astro.props.nextPage.params.module}/`}
+                href={`${base_url}chapters/${[Astro.props.nextPage.params.chapter, Astro.props.nextPage.params.section, Astro.props.nextPage.params.module].filter((param) => param).join('/')}/`}
                 class="button py-3 is-flex is-justify-content-flex-start is-justify-content-space-between"
                 aria-label="Next"
               >

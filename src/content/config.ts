@@ -28,7 +28,7 @@ const sections = defineCollection({
           id: item['slug'],
           title: item['Name'],
           order: item['Order'] * 1,
-          contains: item['Modules'].split(', '),
+          contains: item['Modules'].split(', ').filter((module) => (module.length > 0)),
         }
       })
       return result

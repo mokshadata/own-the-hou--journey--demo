@@ -30,15 +30,29 @@ export async function getStaticPaths() {
   const pageLookup = structure.map(({
       chapter, title: chapterTitle, order: chapterOrder,
       sections
-    }) => (sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, lookup, item, }) => ({
-      params: { chapter, section, module },
-      props: {
-        chapterTitle, chapterOrder,
-        sectionTitle, sectionOrder,
-        moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
-        structure,
-      }
-    }))))))
+    }) => ([
+      [{
+        params: { chapter, },
+        props: {
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Intro',
+        },
+      }],
+      ...sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, lookup, item, }) => ({
+        params: { chapter, section, module },
+        props: {
+          chapterTitle, chapterOrder,
+          sectionTitle, sectionOrder,
+          moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
+          structure,
+        }
+      })))),
+      [{
+        params: { chapter, section: 'review', },
+        props: {
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Check-In',
+        },
+      }],
+    ]))
     .reduce((result, current) => ([...result, ...current]), [])
     .reduce((result, current) => ([...result, ...current]), [])
     .map((page, index, pages) => ({
@@ -49,6 +63,7 @@ export async function getStaticPaths() {
         nextPage: index < pages.length - 1 && pages[index + 1] || null,
       }
     }))
+    .filter((page) => (page.params.module))
   // console.log(pageLookup)
     
   return pageLookup

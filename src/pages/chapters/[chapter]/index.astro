@@ -16,23 +16,61 @@ export async function getStaticPaths() {
       })),
   })));
 
-  const pageLookup = structure.map(({
+  const pageLookup = await Promise.all(structure.map(({
       chapter, title: chapterTitle, order: chapterOrder,
       sections
-    }) => (sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, }) => ({
-      params: { chapter, },
-      props: {
-        chapterTitle, chapterOrder,
-        structure,
-      }
-    }))))))
-    .reduce((result, current) => ([...result, ...current]), [])
-    .reduce((result, current) => ([...result, ...current]), [])
-    .map((page, index, pages) => ({
-      params: page.params,
-      props: {
-        ...page.props,
-      }
+    }) => (
+        {
+            params: { chapter, },
+            props: {
+                chapterTitle, chapterOrder,
+                structure,
+            }
+        }
+    ))
+    .map(async (page, index, pages) => {
+        let firstChapterModule
+
+        if (structure[index].sections[0].modules.length) {
+            firstChapterModule = await getEntry('modules', structure[index].sections[0].modules[0].module)
+        }
+        let base = {
+            params: page.params,
+            props: {
+                ...page.props,
+                nextPage: {
+                    params: {
+                        ...page.params,
+                        section: structure[index].sections[0].section,
+                        module: structure[index].sections[0].modules.length && structure[index].sections[0].modules[0].module || null,
+                    },
+                    props: {
+                        chapterTitle: structure[index].title,
+                        chapterOrder: structure[index].order,
+                        sectionTitle: structure[index].sections[0].title,
+                        moduleTitle: firstChapterModule?.data.name,
+
+                    }
+                }
+            }
+        }
+
+        if (index > 0) {
+            base.props.prevPage = {
+                params: {
+                    chapter: structure[index-1].chapter,
+                    section: 'review',
+                },
+                props: {
+                    chapterTitle: structure[index-1].title,
+                    chapterOrder: structure[index-1].order,
+                    sectionTitle: null,
+                    moduleTitle: 'Check-In',
+                },
+            }
+        }
+
+        return base
     }))
     
   return pageLookup
@@ -60,7 +98,8 @@ const intro = await getContent()
   chaptersWithSections={structure}
   activeChapter={chapter}
   title={`${chapterTitle}: Introduction`}
-
+  prevPage={Astro.props.prevPage}
+  nextPage={Astro.props.nextPage}
   activeTitles={{
     chapter: chapterTitle,
   }}
