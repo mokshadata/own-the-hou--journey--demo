@@ -2,6 +2,8 @@
 import ChapterLayout from '../../../layouts/BulmaChapterLayout.astro';
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
 
+import AnnualEstimator from '../../../components/calculators/annual-estimator';
+
 export async function getStaticPaths() {
   const chapters = await getCollection('chapters');
   const structure = await Promise.all(chapters.map(async (chapter) => ({
@@ -118,6 +120,7 @@ const review = await getContent()
   </div>
   <div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
+    <AnnualEstimator client:only="solid"/>
   </div>
   <div class="chapter--review--terms">
     <h2>Terms</h2>

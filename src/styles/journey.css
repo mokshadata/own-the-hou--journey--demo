@@ -266,3 +266,49 @@ details summary {
 details p {
     margin: 0.5rem 0.25rem;
 }
+
+.workbook--exercise {
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 4px;
+}
+
+.workbook--exercise div {
+    justify-content: flex-end;
+}
+
+.workbook--exercise--explanation p {
+    margin: 0 0.25rem 0.5rem;
+}
+
+.workbook--exercise--calc,
+.workbook--exercise--calc input {
+    font-size: 20px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.workbook--exercise--calc input {
+    width: 100%;
+    border: 1px dotted var(--bulma-body-color);
+}
+
+.workbook--exercise--calc[data-prefix]::before {
+    content: attr(data-prefix);
+    line-height: 2rem;
+    padding-right: 0.25rem;
+    font-weight: 700;
+    /* justify-items: center; */
+}
+
+.workbook--exercise--calc input[readonly] {
+    color: rgba(0, 0, 0, 0.5);
+    background: transparent;
+}
+
+.workbook--exercise--calc--result input[readonly] {
+    color: var(--bulma-body-color);
+    background-color: white;
+    border: 2px solid rgb(41, 66, 255);
+}
