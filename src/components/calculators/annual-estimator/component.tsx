@@ -1,4 +1,4 @@
-import { annualIncome, setAnnualIncome } from "../../store/navigation";
+import { annualIncome, setAnnualIncome, } from "../../../store/navigation";
 
 export default function AnnualEstimator() {
     const estimate = () => (annualIncome() * 2.5)
