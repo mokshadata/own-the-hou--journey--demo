@@ -3,7 +3,7 @@
 import "../styles/journey.css";
 import { ClientRouter } from "astro:transitions";
 
-const { chaptersWithSections, activeChapter, activeSection, title, activeTitles } = Astro.props;
+const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---
 
@@ -94,9 +94,11 @@ const base_url = `${import.meta.env.BASE_URL}`;
           </aside>
         </nav>
         <article class="column">
-          <div class="p-5 mt-6">
+          <div class={`mt-6 book--area ${pageType}`} data-chapter={chapter}>
             <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
-            <slot />
+            <div class={`${pageType}--content book--content`}>
+              <slot />
+            </div>
           </div>
           <nav
             class="pt-4 grid"

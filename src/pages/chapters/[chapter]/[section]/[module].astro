@@ -88,8 +88,9 @@ const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrde
   chaptersWithSections={structure}
   activeChapter={chapter} activeSection={section} activePage={module}
   title={`${chapterTitle}: ${sectionTitle}: ${moduleTitle}`}
+  chapter={chapter}
   prevPage={prevPage} nextPage={nextPage}
-
+  pageType="chapter--module"
   activeTitles={{
     chapter: chapterTitle,
     section: sectionTitle,

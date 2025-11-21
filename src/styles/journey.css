@@ -1,4 +1,26 @@
  /* https://coolors.co/1c335f-e86e24-fcb900-00d084-0693e3-503aa8-fbfaf3 */
+ :root {
+    /* CSS HEX */
+    --oth--twilight-indigo: #1c335fff;
+    --oth--autumn-leaf: #e86e24ff;
+    --oth--amber-flame: #fcb900ff;
+    --oth--aquamarine: #70FFCB;
+    --oth--emerald: #00CC81;
+    --oth--forest-green: #008C25;
+    --oth--blue-bell: #0693e3ff;
+    --oth--rebecca-purple: #503aa8ff;
+    --oth--porcelain: #fbfaf3ff;
+    --oth--blurple: var(--bulma-link-base);
+
+    /* CSS HSL */
+    --oth--twilight-indigo: hsla(219, 54%, 24%, 1);
+    --oth--autumn-leaf: hsla(23, 81%, 53%, 1);
+    --oth--amber-flame: hsla(44, 100%, 49%, 1);
+    --oth--emerald: hsla(158, 100%, 41%, 1);
+    --oth--blue-bell: hsla(202, 95%, 46%, 1);
+    --oth--rebecca-purple: hsla(252, 49%, 44%, 1);
+    --oth--porcelain: hsla(53, 50%, 97%, 1);
+}
 
 .journey-map {
     max-height: calc(100vh - 100px);
@@ -34,7 +56,7 @@ main.container {
 article > div {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(10px);
-    border-radius: var(--bulma-radius);
+    /* border-radius: var(--bulma-radius); */
 }
 
 .button {
@@ -130,16 +152,22 @@ article > div {
 
 .book--breadcrumb {
     margin-bottom: 0;
+    padding: 0.5rem 2rem 0.25rem 2rem;
 }
 
 .book--module-title {
     line-height: 1em;
     margin-top: 0;
     margin-bottom: 0.25em;
+    /* padding: 0 1rem; */
 }
 
 .book--read-time {
     font-style: italic;
+}
+
+.book--content {
+    padding: 1rem 2rem;
 }
 
 
@@ -311,4 +339,71 @@ details p {
     color: var(--bulma-body-color);
     background-color: white;
     border: 2px solid rgb(41, 66, 255);
+}
+
+.journey-map .menu-list a.is-active {
+    /* background-color: var(--journey--chapter--scheme);
+    color: var(--journey--chapter--scheme--subtitle); */
+    background-color: rgba(255, 255, 255);
+    color: var(--bulma-body-color);
+    border-bottom: 8px solid var(--journey--chapter--scheme);
+}
+
+[data-chapter="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
+    --journey--chapter--scheme: var(--oth--amber-flame);
+    --journey--chapter--scheme--subtitle: var(--bulma-body-color);
+}
+
+[data-chapter="c03-what-s-your-budget"],
+.journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
+    --journey--chapter--scheme: var(--oth--emerald);
+    --journey--chapter--scheme--subtitle: var(--bulma-body-color);
+}
+
+[data-chapter="c04-choose-your-homebuying-team"],
+.journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"]{
+    --journey--chapter--scheme: var(--oth--blurple);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c05-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
+    --journey--chapter--scheme: var(--oth--forest-green);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c06-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
+    --journey--chapter--scheme: var(--oth--autumn-leaf);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c07-finalize-your-mortgage"],
+.journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
+    --journey--chapter--scheme: var(--oth--twilight-indigo);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+.book--module-title {
+    border-bottom: 4px solid var(--journey--chapter--scheme);
+    margin-top: 1rem;
+}
+
+.book--breadcrumb {
+    background-color: var(--journey--chapter--scheme);
+}
+
+.book--breadcrumb strong,
+.book--breadcrumb {
+    color: var(--journey--chapter--scheme--subtitle);
+}
+
+.book--area {
+    border: 2px solid var(--journey--chapter--scheme);
+}
+
+.menu-list li ul {
+    margin: 0.5em;
+    padding-inline-start: 0.5em;
 }

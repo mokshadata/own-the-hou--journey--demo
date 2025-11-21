@@ -103,17 +103,17 @@ const review = await getContent()
   activeChapter={chapter}
   activeSection='Review'
   title={`${chapterTitle}: Review`}
+  chapter={chapter}
   prevPage={Astro.props.prevPage}
   nextPage={Astro.props.nextPage}
-
+  pageType="chapter--review"
   activeTitles={{
     chapter: chapterTitle,
-    section: 'Review',
   }}
 >
-  <h2 class="is-size-3 book--module-title">{chapterTitle} Review</h2>
+  <h2 class="is-size-3 book--module-title">Review</h2>
   {review && <p class="book--read-time">{review.remarkPluginFrontmatter.minutesRead}</p> || <></>}
-  <div class="chapter--review">
+  <div class="chapter--review--summary">
     <h2>Summary</h2>
       {review && <review.Content/> || <></>}
       <p>Below, you'll see the decisons you made, terms we learned, resources, and videos from throughout the chapter.</p>

@@ -98,15 +98,17 @@ const intro = await getContent()
   chaptersWithSections={structure}
   activeChapter={chapter}
   title={`${chapterTitle}: Introduction`}
+  chapter={chapter}
   prevPage={Astro.props.prevPage}
   nextPage={Astro.props.nextPage}
+  pageType="chapter--intro"
   activeTitles={{
     chapter: chapterTitle,
   }}
 >
-  <h2 class="is-size-3 book--module-title">{chapterTitle} Introduction</h2>
+  <h2 class="is-size-3 book--module-title">Introduction</h2>
   {intro && <p class="book--read-time">{intro.remarkPluginFrontmatter.minutesRead}</p> || <></>}
-  <div class="chapter--intro">
+  <div class="chapter--intro--content">
       {intro && <intro.Content/> || <></>}
   </div>
 </ChapterLayout>
