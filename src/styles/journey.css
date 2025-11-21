@@ -347,6 +347,7 @@ details p {
     background-color: rgba(255, 255, 255);
     color: var(--bulma-body-color);
     border-bottom: 8px solid var(--journey--chapter--scheme);
+    margin-bottom: -8px;
 }
 
 [data-chapter="c02-get-ready-to-buy-a-home"],
