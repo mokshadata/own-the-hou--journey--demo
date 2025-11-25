@@ -1,0 +1,435 @@
+:root {
+    /* CSS HEX */
+    --oth--chapter--twilight-indigo: #1c335fff;
+    --oth--chapter--dusty-grape: #524d87ff;
+    --oth--chapter--lavender-purple: #8866afff;
+    --oth--chapter--bright-lavender: #be80d7ff;
+    --oth--chapter--violet: #d98debff;
+    --oth--chapter--violet-2: #f399ffff;
+    --oth--chapter--pink-carnation: #f18fc9ff;
+    --oth--chapter--cotton-candy: #ee8492ff;
+    --oth--chapter--burnt-peach: #eb795bff;
+    --oth--chapter--autumn-leaf: #e86e24ff;
+
+    /* CSS HSL */
+    --oth--chapter--twilight-indigo--hsl: hsla(219, 54%, 24%, 1);
+    --oth--chapter--dusty-grape--hsl: hsla(245, 27%, 42%, 1);
+    --oth--chapter--lavender-purple--hsl: hsla(268, 31%, 54%, 1);
+    --oth--chapter--bright-lavender--hsl: hsla(283, 52%, 67%, 1);
+    --oth--chapter--violet--hsl: hsla(289, 70%, 74%, 1);
+    --oth--chapter--violet-2--hsl: hsla(293, 100%, 80%, 1);
+    --oth--chapter--pink-carnation--hsl: hsla(324, 78%, 75%, 1);
+    --oth--chapter--cotton-candy--hsl: hsla(352, 76%, 73%, 1);
+    --oth--chapter--burnt-peach--hsl: hsla(12, 78%, 64%, 1);
+    --oth--chapter--autumn-leaf--hsl: hsla(23, 81%, 53%, 1);
+}
+
+
+html {
+    height: 100%;
+    scrollbar-color: #868686 transparent;
+    background-attachment: fixed;
+
+    /* https://coolors.co/gradient-maker/adc2eb-d9bbdd-fcd19c?position=0,60,100&opacity=100,100,100&type=linear&rotation=90 */
+    background-color: hsla(220, 61%, 80%, 1);
+    background-image: linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
+    background-image: -moz-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
+    background-image: -webkit-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ADC2EB", endColorstr="#D9BBDD", GradientType=1 );
+
+    font-size: 18px;
+}
+
+main {
+    padding: 2rem;
+}
+
+
+[role="navigation"] .button[aria-label="Previous"]::before {
+    content: "←";
+    margin-right: 1rem;
+}
+[role="navigation"] .button[aria-label="Next"]::after {
+    content: "→";
+    margin-left: 1rem;
+}
+
+.menu-list a, .menu-list button, .menu-list .menu-item {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-weight: 300;
+    --pico-color: rgb(64, 70, 84);
+    line-height: 1em;
+}
+
+.menu-list a.is-active, .menu-list a.is-selected, .menu-list button.is-active, .menu-list button.is-selected, .menu-list .menu-item.is-active, .menu-list .menu-item.is-selected {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+nav li :where(a, [role="link"]) {
+    margin: 0;
+}
+
+nav ol:last-of-type, nav ul:last-of-type {
+    margin-right: 0;
+}
+
+nav ol:first-of-type, nav ul:first-of-type {
+    margin-left: 0;
+}
+
+aside li {
+    padding: 0;
+}
+
+.menu-list :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus), [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+    /* --bulma-menu-item-background-a: 1; */
+    --pico-text-decoration: none;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.menu-list {
+    counter-reset: chapter -1;
+}
+
+[data-menu-type="chapter"]::before {
+    counter-increment: chapter;
+    content: counter(chapter) ". ";
+}
+
+.menu-list > li {
+    counter-reset: section;
+}
+
+.menu-list > li [data-menu-type="section"]::before {
+    counter-increment: section;
+    content: counter(section, lower-alpha) ". ";
+}
+
+nav .journey-map ol ol {
+    margin-left: 1rem;
+}
+
+.term {
+    display: inline-block;
+}
+
+.term--definition {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 0.25em 0.5em;
+    border-radius: 0.25em;
+    line-height: 1.25em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    font-weight: 400;
+}
+
+.term--term {
+    transition: 100ms all linear;
+    border-bottom: 1px dotted var(--pico-color);
+    cursor: pointer;
+    margin-right: 0.2rem;
+}
+
+.term--term:hover {
+    background-color: hsla(220, 61%, 80%, 0.5);
+}
+
+.term--term:hover + .term--definition {
+    display: block;
+}
+
+.book--breadcrumb {
+    margin-bottom: 0;
+    padding: 0.5rem 2rem 0.25rem 2rem;
+}
+
+.book--module-title {
+    line-height: 1em;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+    /* padding: 0 1rem; */
+}
+
+.book--read-time {
+    font-style: italic;
+}
+
+.book--content {
+    padding: 1rem 2rem;
+}
+
+
+article {
+    counter-reset: reading-section reading-chapter;
+    /* font-size: 18px; */
+}
+
+article [data-section-order]::before {
+    /* counter-set: reading-section attr(data-section-order); */
+    content: attr(data-section-label) ". ";
+}
+
+article [data-chapter-order]::before {
+    --reading-chapter: attr(data-chapter-order);
+    /* counter-set: reading-chapter var(--reading-chapter); */
+    content: var(--reading-chapter) ". ";
+}
+
+.is-hidden {
+    /* max-height: 0; */
+    display: none;
+}
+
+
+dt {
+    text-transform: capitalize;
+    display: inline-block;
+    font-weight: 600;
+    font-style: italic;
+}
+dd {
+    margin-bottom: 0.5rem;
+}
+
+.journey-map .menu-list a {
+    padding-left: 1rem;
+}
+
+.journey-map .menu-list a {
+    --pico-border-radius: 0;
+}
+.journey-map .menu-list > li:first-of-type > a {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+.journey-map .menu-list > li:last-of-type > a {
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+/* .journey-map .menu-list a[data-menu-type="chapter"], */
+.journey-map .menu-list a.is-active {
+    /* background-color: var(--journey--chapter--scheme);
+    color: var(--journey--chapter--scheme--subtitle); */
+    /* background-color: rgba(255, 255, 255); */
+    /* color: var(--bulma-body-color); */
+    border-bottom: 6px solid var(--journey--chapter--scheme);
+    padding-bottom: 3px;
+}
+
+
+[data-chapter="c01-welcome"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c01-welcome"],
+.journey-map .menu-list a.is-active[href*="c01-welcome"] {
+    --journey--chapter--scheme: var(--oth--chapter--twilight-indigo);
+    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme: var(--oth--autumn-leaf);
+    --journey--chapter--scheme--subtitle: #FFF;
+    --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
+}
+
+[data-chapter="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
+    
+    /* --journey--chapter--scheme: var(--oth--amber-flame); */
+    --journey--chapter--scheme: var(--oth--chapter--dusty-grape);
+    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme: var(--oth--amber-flame); */
+    /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
+}
+
+[data-chapter="c03-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c03-what-s-your-budget"],
+.journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
+    --journey--chapter--scheme: var(--oth--chapter--lavender-purple);
+    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme: var(--oth--emerald); */
+    /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
+}
+
+[data-chapter="c04-choose-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c04-choose-your-homebuying-team"],
+.journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"] {
+    
+    /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
+    --journey--chapter--scheme: var(--oth--chapter--bright-lavender);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c05-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c05-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
+    
+    /* --journey--chapter--scheme: var(--oth--forest-green); */
+    --journey--chapter--scheme: var(--oth--chapter--violet);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c06-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c06-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
+    
+    /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
+    --journey--chapter--scheme: var(--oth--chapter--violet-2);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+[data-chapter="c07-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c07-finalize-your-mortgage"],
+.journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
+    
+    /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
+    --journey--chapter--scheme: var(--oth--chapter--pink-carnation);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+[data-chapter="c08-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c08-close-on-your-home"],
+.journey-map .menu-list a.is-active[href*="c08-close-on-your-home"] {
+    
+    --journey--chapter--scheme: var(--oth--chapter--cotton-candy);
+    --journey--chapter--scheme--subtitle: #FFF;
+
+    /* --journey--chapter--scheme: var(--oth--aquamarine); */
+}
+[data-chapter="c09-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c09-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a.is-active[href*="c09-you-re-a-homeowner-protect-your-home"] {
+    
+    /* --journey--chapter--scheme: var(--oth--blue-bell); */
+    --journey--chapter--scheme: var(--oth--chapter--burnt-peach);
+    --journey--chapter--scheme--subtitle: #FFF;
+}
+
+.book--module-title {
+    border-bottom: 4px solid var(--journey--chapter--scheme);
+    margin-top: 1rem;
+}
+
+.journey-map .menu-list a[data-menu-type="chapter"],
+.book--breadcrumb {
+    background-color: var(--journey--chapter--scheme);
+    --pico-color: var(--journey--chapter--scheme--subtitle);
+}
+
+.book--area {
+    border: 2px solid var(--journey--chapter--scheme);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+
+    border-top-right-radius: var(--pico-border-radius);
+    border-top-left-radius: var(--pico-border-radius);
+}
+
+.journey-map {
+    max-height: calc(100vh - 100px);
+    top: 62px;
+    position: sticky;
+    overflow: auto;
+    scrollbar-color: #868686 transparent;
+}
+/* 
+:where(a:not([role="button"])), [role="link"] {
+    --pico-primary: 
+} */
+
+main [role="navigation"] {
+    margin-top: 0.5rem;
+    justify-items: stretch;
+}
+
+main [role="navigation"] [role="button"] {
+    --pico-color: #373c44;
+}
+
+main [role="navigation"] > div {
+    flex-grow: 1;
+    width: 50%;
+}
+
+main [role="navigation"] [aria-label] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: rgba(255, 255, 255, 0.25);
+    --pico-border-color: var(--journey--chapter--scheme);
+    color: var(--pico-color);
+
+    height: 100%;
+}
+
+main [role="navigation"] [aria-label]:hover {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+main [role="navigation"] [aria-label] small {
+    display: block;
+}
+
+main [role="navigation"] [aria-label] div > strong {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+main [role="navigation"] [aria-label="Previous"] {
+    text-align: right;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+}
+main [role="navigation"] [aria-label="Next"] {
+    text-align: left;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+}
+
+main [role="navigation"] [aria-label="Previous"]::before {
+    content: "←";
+    margin-right: 1rem;
+}
+main [role="navigation"] [aria-label="Next"]::after {
+    content: "→";
+    margin-left: 1rem;
+}
+
+header nav {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background-color: var(--oth--twilight-indigo);
+}
+
+header nav img {
+    max-height: 2.5rem;
+}
+
+header nav a {
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+body > header {
+    --pico-block-spacing-vertical: 0;
+}
+
+body > main {
+    margin-top: 4rem;
+}
+
+.menu-label {
+    /* font-family: var(--oth-family-code); */
+    font-weight: 300;
+}

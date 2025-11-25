@@ -1,6 +1,8 @@
 ---
 // import "../styles/global.css";
-import "../styles/journey.css";
+import "../styles/journey-vars.css";
+import "../styles/journey-colors.css";
+import "../styles/journey-theme.css";
 import { ClientRouter } from "astro:transitions";
 
 const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter } = Astro.props;
@@ -21,22 +23,26 @@ const base_url = `${import.meta.env.BASE_URL}`;
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/versions/bulma-no-dark-mode.css"
-    />
-    <link rel="stylesheet" href={`${base_url}assets/styles.css`} />
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+    <!-- <link rel="stylesheet" href={`${base_url}assets/styles.css`} /> -->
     <ClientRouter />
   </head>
-  <body class="has-navbar-fixed-top">
+  <body>
     <header>
       <nav
-        class="navbar is-fixed-top has-background-primary has-text-white-bis"
         role="navigation"
         aria-label="main navigation"
       >
-        <div class="navbar-brand">
-          <a class="navbar-item" href={base_url}>
+        <div>
+          <a href={base_url}>
             <img
               src="https://ownthehou.org/wp-content/themes/twentytwentyfive--own-the-hou/assets/images/logo-header.svg"
             />
@@ -44,91 +50,96 @@ const base_url = `${import.meta.env.BASE_URL}`;
         </div>
       </nav>
     </header>
-    <main class="container is-fluid">
-      <div class="columns">
-        <nav class="column is-one-third">
-          <aside class="menu journey-map p-3">
-            <p class="menu-label">Your Journey</p>
-            <ul class="menu-list">
+    <main>
+      <div class="row">
+        <nav class="col-xs-12 col-md-3">
+          <aside class="menu journey-map">
+            <ol class="menu-list">
               {
                 chaptersWithSections.map((topLevel) => (
                   <li>
                     <a
+                      role="link"
                       data-menu-type="chapter"
                       class={topLevel.chapter === activeChapter && 'is-active' || ''}
                       href={`${base_url}chapters/${topLevel.chapter}/`}
                     >{topLevel.title}</a>
-                    <ul class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
+                    <ol class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
                           <a
+                          role="link"
                             data-menu-type="section"
                             class={midLevel.section === activeSection && 'is-active' || ''}
                             href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
                           >{midLevel.title}</a>
-                          <ul class={midLevel.section !== activeSection && 'is-hidden' || ''}>
+                          <ol class={midLevel.section !== activeSection && 'is-hidden' || ''}>
                             {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
                               <li>
                                 <a
+                                  role="link"
                                   data-menu-type="page"
                                   class={pageLevel.module === Astro.props.activePage && 'is-active' || ''}
                                   href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
                                 >{pageLevel.item.data.name}</a>
                               </li>
                             ))}
-                          </ul>
+                          </ol>
                         </li>
                       ))}
                       <li>
                         <a
+                          role="link"
                           data-menu-type="page"
                           class={'Review' === Astro.props.activeSection && 'is-active' || ''}
                           href={`${base_url}chapters/${topLevel.chapter}/review/`}
                         >Check-In</a>
                       </li>
-                    </ul>
+                    </ol>
                   </li>
                 ))
               }
-            </ul>
+            </ol>
           </aside>
         </nav>
-        <article class="column">
-          <div class={`mt-6 book--area ${pageType}`} data-chapter={chapter}>
+        <div class="col-xs-12 col-md-9">
+          <div class={`book--area ${pageType}`} data-chapter={chapter}>
             <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
             <div class={`${pageType}--content book--content`}>
               <slot />
             </div>
           </div>
           <nav
-            class="pt-4 grid"
             role="navigation"
             aria-label="pagination"
+            data-chapter={chapter}
           >
-            <div class="cell">
+            <div>
               {Astro.props.prevPage && <a
+                role="button"
                 href={`${base_url}chapters/${[Astro.props.prevPage.params.chapter, Astro.props.prevPage.params.section, Astro.props.prevPage.params.module].filter((param) => param).join('/')}/`}
-                class="button py-3 is-flex is-justify-content-flex-end is-justify-content-space-between"
                 aria-label="Previous"
               >
-                <div class="is-flex is-flex-direction-column is-align-items-flex-end">
-                  <small class="has-text-right has-text-weight-normal"><strong>{Astro.props.prevPage.props.chapterTitle}</strong> <i>{Astro.props.prevPage.props.sectionTitle}</i></small><strong class="has-text-right is-size-5">{Astro.props.prevPage.props.moduleTitle}</strong>
+                <div>
+                  <small><strong>{Astro.props.prevPage.props.chapterTitle}</strong> <i>{Astro.props.prevPage.props.sectionTitle}</i></small>
+                  <strong>{Astro.props.prevPage.props.moduleTitle}</strong>
                 </div>
               </a> || ''}
             </div>
-            <div class="cell">
+            <div>
               {Astro.props.nextPage && <a
+                role="button"
                 href={`${base_url}chapters/${[Astro.props.nextPage.params.chapter, Astro.props.nextPage.params.section, Astro.props.nextPage.params.module].filter((param) => param).join('/')}/`}
-                class="button py-3 is-flex is-justify-content-flex-start is-justify-content-space-between"
                 aria-label="Next"
               >
-                <div class="is-flex is-flex-direction-column is-align-items-flex-start">
-                  <small class="has-text-left has-text-weight-normal"><strong>{Astro.props.nextPage.props.chapterTitle}</strong> <i>{Astro.props.nextPage.props.sectionTitle}</i></small><strong class="has-text-left is-size-5">{Astro.props.nextPage.props.moduleTitle}</strong>
+                <div>
+                  <small><strong>{Astro.props.nextPage.props.chapterTitle}</strong> <i>{Astro.props.nextPage.props.sectionTitle}</i></small>
+                  <strong>{Astro.props.nextPage.props.moduleTitle}</strong>
                 </div>
               </a> || ''}
             </div>
           </nav>
-        </article>
+        </div>
       </div>
     </main>
     <footer></footer>

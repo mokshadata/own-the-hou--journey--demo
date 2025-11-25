@@ -53,7 +53,9 @@ export default function Term(props) {
   const item = termsList.find((term) => (props.term.toLowerCase() === term.term ))
   return (
     <span class="term">
-        <dfn class="term--term" title={item?.definition}>{props.children}</dfn>
+        <dfn class="term--term"
+        // title={item?.definition}
+            >{props.children}</dfn>
         {props.mode !== 'definer' && <span class="term--definition">{item?.definition}</span> || <></>}
     </span>
   );
