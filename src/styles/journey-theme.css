@@ -41,7 +41,13 @@ html {
 }
 
 main {
-    padding: 2rem;
+    padding: 2rem 0.5rem;
+}
+
+@media only screen and (min-width: 75em) {
+    main {
+        padding: 2rem;
+    }
 }
 
 
@@ -55,15 +61,26 @@ main {
 }
 
 .menu-list a, .menu-list button, .menu-list .menu-item {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     font-weight: 300;
     --pico-color: rgb(64, 70, 84);
     line-height: 1em;
 }
 
-.menu-list a.is-active, .menu-list a.is-selected, .menu-list button.is-active, .menu-list button.is-selected, .menu-list .menu-item.is-active, .menu-list .menu-item.is-selected {
+.menu-list a.is-active,
+.menu-list a.is-selected,
+.menu-list button.is-active,
+.menu-list button.is-selected,
+.menu-list .menu-item.is-active,
+.menu-list .menu-item.is-selected,
+.menu-list a[data-menu-type="section"].is-active + ol {
     background-color: rgba(255, 255, 255, 1);
+}
+
+.menu-list [data-menu-type="page"].is-active,
+.menu-list [data-menu-type="section"].is-active {
+    font-weight: 600;
 }
 
 nav li :where(a, [role="link"]) {
@@ -106,8 +123,12 @@ aside li {
     content: counter(section, lower-alpha) ". ";
 }
 
-nav .journey-map ol ol {
-    margin-left: 1rem;
+nav .journey-map > ol.menu-list > li > ol > li > a {
+    padding-left: 2rem;
+}
+
+nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
+    padding-left: 3rem;
 }
 
 .term {
@@ -210,18 +231,42 @@ dd {
 }
 
 /* .journey-map .menu-list a[data-menu-type="chapter"], */
-.journey-map .menu-list a.is-active {
-    /* background-color: var(--journey--chapter--scheme);
-    color: var(--journey--chapter--scheme--subtitle); */
-    /* background-color: rgba(255, 255, 255); */
-    /* color: var(--bulma-body-color); */
-    border-bottom: 6px solid var(--journey--chapter--scheme);
-    padding-bottom: 3px;
+/* background-color: var(--journey--chapter--scheme);
+color: var(--journey--chapter--scheme--subtitle); */
+/* background-color: rgba(255, 255, 255); */
+/* color: var(--bulma-body-color); */
+/* .journey-map .menu-list a.is-active {
+    border-bottom: 2px solid var(--journey--chapter--scheme);
+    padding-bottom: 7px;
+} */
+
+.journey-map .menu-list a[data-menu-type="page"] {
+    position: relative;
+}
+/* 
+.journey-map .menu-list a[data-menu-type="page"]::after {
+    position: absolute;
+    background-color: red;
+    height: 2px;
+    width: 100%;
+    display: block;
+    content: "";
+} */
+
+.journey-map .menu-list a[data-menu-type="section"],
+.journey-map .menu-list a[data-menu-type="page"] {
+    border-right: 2px solid var(--journey--chapter--scheme);
+    border-left: 2px solid var(--journey--chapter--scheme);
 }
 
+.journey-map .menu-list > li > ol > li:last-of-type [data-menu-type="page"] {
+    border-bottom: 2px solid var(--journey--chapter--scheme);
+}
 
 [data-chapter="c01-welcome"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c01-welcome"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c01-welcome"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c01-welcome"],
 .journey-map .menu-list a.is-active[href*="c01-welcome"] {
     --journey--chapter--scheme: var(--oth--chapter--twilight-indigo);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -232,6 +277,8 @@ dd {
 
 [data-chapter="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
     
     /* --journey--chapter--scheme: var(--oth--amber-flame); */
@@ -243,6 +290,8 @@ dd {
 
 [data-chapter="c03-what-s-your-budget"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c03-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c03-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c03-what-s-your-budget"],
 .journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
     --journey--chapter--scheme: var(--oth--chapter--lavender-purple);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -252,6 +301,8 @@ dd {
 
 [data-chapter="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c04-choose-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c04-choose-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"] {
     
     /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
@@ -261,41 +312,51 @@ dd {
 
 [data-chapter="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c05-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c05-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
     
     /* --journey--chapter--scheme: var(--oth--forest-green); */
     --journey--chapter--scheme: var(--oth--chapter--violet);
-    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
 [data-chapter="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c06-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c06-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
     
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
     --journey--chapter--scheme: var(--oth--chapter--violet-2);
-    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
 [data-chapter="c07-finalize-your-mortgage"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c07-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c07-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c07-finalize-your-mortgage"],
 .journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
     
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
     --journey--chapter--scheme: var(--oth--chapter--pink-carnation);
-    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 [data-chapter="c08-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c08-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c08-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a.is-active[href*="c08-close-on-your-home"] {
     
     --journey--chapter--scheme: var(--oth--chapter--cotton-candy);
-    --journey--chapter--scheme--subtitle: #FFF;
+    /* --journey--chapter--scheme--subtitle: #FFF; */
 
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
 [data-chapter="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c09-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c09-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a.is-active[href*="c09-you-re-a-homeowner-protect-your-home"] {
     
     /* --journey--chapter--scheme: var(--oth--blue-bell); */
@@ -325,10 +386,11 @@ dd {
 
 .journey-map {
     max-height: calc(100vh - 100px);
-    top: 62px;
+    top: 72px;
     position: sticky;
     overflow: auto;
     scrollbar-color: #868686 transparent;
+    width: 100%;
 }
 /* 
 :where(a:not([role="button"])), [role="link"] {
