@@ -5,6 +5,8 @@ import "../styles/journey-colors.css";
 import "../styles/journey-theme.css";
 import { ClientRouter } from "astro:transitions";
 
+import ChangeListener from "../components/model-wrapper";
+
 const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---

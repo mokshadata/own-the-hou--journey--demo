@@ -12,16 +12,16 @@
     --oth--chapter--autumn-leaf: #e86e24ff;
 
     /* CSS HSL */
-    --oth--chapter--twilight-indigo--hsl: hsla(219, 54%, 24%, 1);
-    --oth--chapter--dusty-grape--hsl: hsla(245, 27%, 42%, 1);
-    --oth--chapter--lavender-purple--hsl: hsla(268, 31%, 54%, 1);
-    --oth--chapter--bright-lavender--hsl: hsla(283, 52%, 67%, 1);
-    --oth--chapter--violet--hsl: hsla(289, 70%, 74%, 1);
-    --oth--chapter--violet-2--hsl: hsla(293, 100%, 80%, 1);
-    --oth--chapter--pink-carnation--hsl: hsla(324, 78%, 75%, 1);
-    --oth--chapter--cotton-candy--hsl: hsla(352, 76%, 73%, 1);
-    --oth--chapter--burnt-peach--hsl: hsla(12, 78%, 64%, 1);
-    --oth--chapter--autumn-leaf--hsl: hsla(23, 81%, 53%, 1);
+    --oth--chapter--twilight-indigo--hsl: 219, 54%, 24%;
+    --oth--chapter--dusty-grape--hsl: 245, 27%, 42%;
+    --oth--chapter--lavender-purple--hsl: 268, 31%, 54%;
+    --oth--chapter--bright-lavender--hsl: 283, 52%, 67%;
+    --oth--chapter--violet--hsl: 289, 70%, 74%;
+    --oth--chapter--violet-2--hsl: 293, 100%, 80%;
+    --oth--chapter--pink-carnation--hsl: 324, 78%, 75%;
+    --oth--chapter--cotton-candy--hsl: 352, 76%, 73%;
+    --oth--chapter--burnt-peach--hsl: 12, 78%, 64%;
+    --oth--chapter--autumn-leaf--hsl: 23, 81%, 53%;
 }
 
 
@@ -122,6 +122,15 @@ aside li {
     counter-increment: section;
     content: counter(section, lower-alpha) ". ";
 }
+
+/* .menu-list > li > ol > li {
+    counter-reset: module;
+} */
+
+/* .menu-list > li li li [data-menu-type="page"]::before {
+    counter-increment: module;
+    content: counter(module, lower-roman) ". ";
+} */
 
 nav .journey-map > ol.menu-list > li > ol > li > a {
     padding-left: 2rem;
@@ -269,7 +278,9 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][href*="c01-welcome"],
 .journey-map .menu-list a.is-active[href*="c01-welcome"] {
     --journey--chapter--scheme: var(--oth--chapter--twilight-indigo);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--twilight-indigo--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
+
     /* --journey--chapter--scheme: var(--oth--autumn-leaf);
     --journey--chapter--scheme--subtitle: #FFF;
     --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
@@ -280,10 +291,11 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
-    
-    /* --journey--chapter--scheme: var(--oth--amber-flame); */
     --journey--chapter--scheme: var(--oth--chapter--dusty-grape);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--dusty-grape--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
+
+    /* --journey--chapter--scheme: var(--oth--amber-flame); */
     /* --journey--chapter--scheme: var(--oth--amber-flame); */
     /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
 }
@@ -294,7 +306,9 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][href*="c03-what-s-your-budget"],
 .journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
     --journey--chapter--scheme: var(--oth--chapter--lavender-purple);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--lavender-purple--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
+
     /* --journey--chapter--scheme: var(--oth--emerald); */
     /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
 }
@@ -304,10 +318,11 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"] {
-    
-    /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
     --journey--chapter--scheme: var(--oth--chapter--bright-lavender);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--bright-lavender--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
+
+    /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
 }
 
 [data-chapter="c05-get-pre-approved-for-a-mortgage"],
@@ -315,9 +330,10 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
-    
-    /* --journey--chapter--scheme: var(--oth--forest-green); */
     --journey--chapter--scheme: var(--oth--chapter--violet);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--violet--hsl);
+
+    /* --journey--chapter--scheme: var(--oth--forest-green); */
     /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
@@ -326,9 +342,10 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
+    --journey--chapter--scheme: var(--oth--chapter--violet-2);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--violet-2--hsl);
     
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
-    --journey--chapter--scheme: var(--oth--chapter--violet-2);
     /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
@@ -337,9 +354,10 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c07-finalize-your-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c07-finalize-your-mortgage"],
 .journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
+    --journey--chapter--scheme: var(--oth--chapter--pink-carnation);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--pink-carnation--hsl);
     
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
-    --journey--chapter--scheme: var(--oth--chapter--pink-carnation);
     /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 [data-chapter="c08-close-on-your-home"],
@@ -347,10 +365,10 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a.is-active[href*="c08-close-on-your-home"] {
-    
     --journey--chapter--scheme: var(--oth--chapter--cotton-candy);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--cotton-candy--hsl);
+    
     /* --journey--chapter--scheme--subtitle: #FFF; */
-
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
 [data-chapter="c09-you-re-a-homeowner-protect-your-home"],
@@ -358,10 +376,11 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a.is-active[href*="c09-you-re-a-homeowner-protect-your-home"] {
+    --journey--chapter--scheme: var(--oth--chapter--burnt-peach);
+    --journey--chapter--scheme--hsl: var(--oth--chapter--burnt-peach--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
     
     /* --journey--chapter--scheme: var(--oth--blue-bell); */
-    --journey--chapter--scheme: var(--oth--chapter--burnt-peach);
-    --journey--chapter--scheme--subtitle: #FFF;
 }
 
 .book--module-title {
@@ -494,4 +513,132 @@ body > main {
 .menu-label {
     /* font-family: var(--oth-family-code); */
     font-weight: 300;
+}
+
+figure.video-placeholder {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 2px solid var(--journey--chapter--scheme);
+}
+
+figure.video-placeholder figcaption {
+    background-color: var(--journey--chapter--scheme);
+    color: var(--journey--chapter--scheme--subtitle);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+    font-weight: 600;
+}
+
+figure.video-placeholder figcaption a {
+    color: var(--journey--chapter--scheme--subtitle);
+    text-decoration: none;
+}
+
+figure.video-placeholder::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-size: 12rem;
+    line-height: 1em;
+    border: 2px solid transparent;
+    color: hsla(var(--journey--chapter--scheme--hsl), 0.9);
+    content: "▶";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(1px);
+    cursor: pointer;
+
+    transition: color ease-in-out 50ms, background-color ease-in-out 50ms, backdrop-filter ease-in-out 50ms;
+}
+
+figure.video-placeholder:hover::after {
+    /* color: hsla(var(--journey--chapter--scheme--hsl), 1); */
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0);
+}
+/* 
+.workbook--exercise strong {
+    color: var(--journey--chapter--scheme);
+} */
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.chapter--intro--content > ol {
+    list-style-type: lower-alpha;
+}
+
+.chapter--intro--content > ol ol {
+    list-style-type: lower-roman;
+}
+
+.book--decision fieldset legend p {
+    font-weight: 700;
+}
+
+.book--decision fieldset .book--decision--option--input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: 50ms background-color ease-in-out;
+
+    border: 1px solid var(--journey--chapter--scheme);
+    border-left-width: 2px;
+    border-right-width: 2px;
+}
+
+.book--decision fieldset .book--decision--option:first-of-type .book--decision--option--input {
+    border-top-width: 2px;
+    border-top-left-radius: var(--pico-border-radius);
+    border-top-right-radius: var(--pico-border-radius);
+}
+
+.book--decision fieldset .book--decision--option:last-of-type .book--decision--option--input {
+    border-bottom-width: 2px;
+    border-bottom-left-radius: var(--pico-border-radius);
+    border-bottom-right-radius: var(--pico-border-radius);
+}
+
+.book--decision fieldset .book--decision--option--icon {
+    font-size: 4rem;
+
+    transition: 50ms transform ease-in-out;
+}
+
+.book--decision fieldset .book--decision--option--input label {
+    cursor: pointer;
+}
+
+.book--decision fieldset .book--decision--option input {
+    display: none;
+}
+
+.book--decision fieldset .book--decision--option--input:hover {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.book--decision fieldset .book--decision--option input:checked + div.book--decision--option--input {
+    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.4)
+}
+
+.book--decision fieldset .book--decision--option--input:hover .book--decision--option--icon {
+    transform: scale(1.1);
+}
+
+.book--decision fieldset .book--decision--option label strong {
+    display: block;
 }
