@@ -413,6 +413,11 @@ color: var(--journey--chapter--scheme--subtitle); */
     border-top-left-radius: var(--pico-border-radius);
 }
 
+.book--area td:first-child {
+    text-align: right;
+    font-weight: 700;
+}
+
 .journey-map {
     max-height: calc(100vh - 100px);
     top: 72px;
@@ -528,6 +533,7 @@ body > main {
 figure.video-placeholder {
     position: relative;
     margin-bottom: 1rem;
+    min-height: 12rem;
     border: 2px solid var(--journey--chapter--scheme);
 }
 
@@ -593,7 +599,7 @@ figure.video-placeholder:hover::after {
     list-style-type: lower-roman;
 }
 
-.book--decision fieldset legend p {
+.book--decision fieldset legend {
     font-weight: 700;
 }
 
@@ -641,7 +647,7 @@ figure.video-placeholder:hover::after {
     background-color: rgba(255, 255, 255, 1);
 }
 
-.book--decision fieldset .book--decision--option input:checked + div.book--decision--option--input {
+.book--decision fieldset .book--decision--option input:checked + .book--decision--option--input {
     background-color: hsla(var(--journey--chapter--scheme--hsl), 0.4)
 }
 
@@ -649,6 +655,89 @@ figure.video-placeholder:hover::after {
     transform: scale(1.1);
 }
 
-.book--decision fieldset .book--decision--option label strong {
-    display: block;
+.book--decision fieldset .book--decision--option label p {
+    margin-bottom: 0;
+}
+
+.workbook--exercise {
+    background-color: rgba(255, 255, 255, 1);
+    margin: 1rem -2rem;
+    padding: 0.5rem 2rem;
+
+    border-top: 2px solid var(--journey--chapter--scheme);
+    border-bottom: 2px solid var(--journey--chapter--scheme);
+}
+
+.workbook--exercise--explanation {
+    padding: 0.5rem 0;
+}
+
+.workbook--exercise--explanation p:last-child {
+    margin-bottom: 0;
+}
+
+.workbook--exercise--calc input {
+    margin-bottom: 0;
+}
+
+.workbook--exercise--calc[data-prefix] {
+    display: flex;
+    align-items: center;
+}
+
+.workbook--exercise--calc[data-prefix]::before {
+    content: attr(data-prefix);
+    font-size: 1.5rem;
+    padding-right: 0.5rem;
+    margin-left: -0.3rem;
+}
+
+.workbook--exercise--calc input[readonly] {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.workbook--exercise--calc--result input[readonly] {
+    background-color: rgba(255, 255, 255, 1);
+    color: var(--journey--chapter--scheme);
+    border: 2px solid var(--journey--chapter--scheme);
+    font-weight: 700;
+}
+
+.book--decision > p:first-child {
+    font-weight: 700;
+}
+
+.book--decision details:hover,
+.book--decision details:open {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.book--decision details summary {
+    font-weight: 700;
+}
+
+.book--decision details p:last-child {
+    margin-bottom: 0;
+}
+
+.book--decision details {
+    margin: 0;
+    padding: 1rem;
+    border-top: 1px solid var(--journey--chapter--scheme);
+    border-bottom: 1px solid var(--journey--chapter--scheme);
+    border-left: 2px solid var(--journey--chapter--scheme);
+    border-right: 2px solid var(--journey--chapter--scheme);
+    transition: background-color 50ms ease-in-out;
+}
+
+.book--decision details:first-of-type {
+    border-top: 2px solid var(--journey--chapter--scheme);
+    border-top-left-radius: var(--pico-border-radius);
+    border-top-right-radius: var(--pico-border-radius);
+}
+
+.book--decision details:last-of-type {
+    border-bottom: 2px solid var(--journey--chapter--scheme);
+    border-bottom-left-radius: var(--pico-border-radius);
+    border-bottom-right-radius: var(--pico-border-radius);
 }

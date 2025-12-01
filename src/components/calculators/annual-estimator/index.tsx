@@ -7,8 +7,8 @@ export default function () {
     return (
         <Suspense fallback={<AnnualEstimatorSkeleton
             handleAnnualIncomeChange={()=>{}}
-            annualIncomeValue={()=>{}}
-            estimateValue={()=>{}}
+            annualIncomeValue={()=>('')}
+            estimateValue={()=>('')}
         />}>
             <AnnualEstimator/>
         </Suspense>

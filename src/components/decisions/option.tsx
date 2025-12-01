@@ -31,12 +31,13 @@ export default function BookDecisionOption({
   return (
     <div class="book--decision--option">
       <input type={optionType} id={option} value={option} name={name} checked={checked()} onChange={handleChange}/>
-      <div class="book--decision--option--input">
+      <label class="book--decision--option--input" for={option}>
         <div class="book--decision--option--icon">{icon}</div>
-        <label for={option}>
-          <strong>{label}</strong> {detail}
-        </label>
-      </div>
+        <div class="book--decision--option--label">
+          <p><strong>{label}</strong></p>
+          <p>{detail}</p>
+        </div>
+      </label>
     </div>
   );
 }
