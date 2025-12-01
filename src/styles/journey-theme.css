@@ -133,11 +133,11 @@ aside li {
 } */
 
 nav .journey-map > ol.menu-list > li > ol > li > a {
-    padding-left: 2rem;
+    padding-left: 1.5rem;
 }
 
 nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
-    padding-left: 3rem;
+    padding-left: 2.5rem;
 }
 
 .term {
@@ -251,6 +251,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 
 .journey-map .menu-list a[data-menu-type="page"] {
     position: relative;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
 }
 /* 
 .journey-map .menu-list a[data-menu-type="page"]::after {
@@ -261,6 +263,14 @@ color: var(--journey--chapter--scheme--subtitle); */
     display: block;
     content: "";
 } */
+.journey-map .menu-list > li > ol > li > ol {
+    font-size: 0.9rem;
+    margin-top: -0.2rem;
+}
+
+.journey-map .menu-list > li > ol > li > ol > li:last-child a {
+    padding-bottom: 0.7rem;
+}
 
 .journey-map .menu-list a[data-menu-type="section"],
 .journey-map .menu-list a[data-menu-type="page"] {

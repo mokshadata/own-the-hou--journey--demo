@@ -67,6 +67,7 @@ const modules = defineCollection({
   schema: () => z.object({
     name: z.string(),
     order: z.number(),
+    'option-group': z.string().optional(),
   }),
 })
 

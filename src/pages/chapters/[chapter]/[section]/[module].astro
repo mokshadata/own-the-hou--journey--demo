@@ -25,7 +25,55 @@ export async function getStaticPaths() {
     })))
   })))
 
-  // console.log({ page: structure[2].sections[0].modules})
+  const pagesIndex = structure.map(({
+      chapter, title: chapterTitle, order: chapterOrder,
+      sections
+    }) => ([
+      [{
+        params: { chapter, },
+        props: {
+          chapterTitle, chapterOrder,
+          sectionTitle: null, sectionOrder: 0,
+          moduleTitle: 'Intro', 
+          grouping: null,
+        },
+      }],
+      ...sections.toSorted((a, b) => (a.order - b.order)).map(({ title: sectionTitle, order: sectionOrder, section, modules }) => {
+        if (modules.length) {
+          return modules.toSorted((a, b) => (a.item.data.order - b.item.data.order)).map(({ module, lookup, item, }) => ({
+            params: { chapter, section, module },
+            props: {
+              chapterTitle, chapterOrder,
+              sectionTitle, sectionOrder,
+              moduleTitle: item.data.name, moduleOrder: item.data.order,
+              grouping: item.data['option-group'] || null,
+            }
+          }))
+        } else {
+          return [{
+            params: { chapter, section },
+            props: {
+              chapterTitle, chapterOrder,
+              sectionTitle, sectionOrder,
+              grouping: null,
+            }
+          }]
+        }
+      }),
+      [{
+        params: { chapter, section: 'review', },
+        props: {
+          chapterTitle, chapterOrder,
+          sectionTitle: null, sectionOrder: sections.length + 1,
+          moduleTitle: 'Check-In',
+          grouping: null,
+        },
+      }],
+    ]))
+    .reduce((result, current) => ([...result, ...current]), [])
+    .reduce((result, current) => ([...result, ...current]), [])
+
+  const optionGroups = Object.groupBy(pagesIndex, (index) => (index.props.grouping))
 
   const pageLookup = structure.map(({
       chapter, title: chapterTitle, order: chapterOrder,
@@ -37,13 +85,14 @@ export async function getStaticPaths() {
           chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Intro',
         },
       }],
-      ...sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.map(({ module, lookup, item, }) => ({
+      ...sections.toSorted((a, b) => (a.order - b.order)).map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (modules.toSorted((a, b) => (a.item.data.order - b.item.data.order)).map(({ module, lookup, item, }) => ({
         params: { chapter, section, module },
         props: {
           chapterTitle, chapterOrder,
           sectionTitle, sectionOrder,
           moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
           structure,
+          grouping: item.data['option-group'],
         }
       })))),
       [{
@@ -61,10 +110,10 @@ export async function getStaticPaths() {
         ...page.props,
         prevPage: index > 0 && pages[index - 1] || null,
         nextPage: index < pages.length - 1 && pages[index + 1] || null,
+        nextPageOptions: (page.params.module && optionGroups[page.params.module]) || [],
       }
     }))
     .filter((page) => (page.params.module))
-  // console.log(pageLookup)
     
   return pageLookup
 }
@@ -75,7 +124,7 @@ const {
   sectionTitle, sectionOrder,
   moduleTitle, moduleOrder, moduleEntry, moduleLookup,
   structure,
-  prevPage, nextPage,
+  prevPage, nextPage, nextPageOptions,
  } = Astro.props;
 // console.log('hello?', Astro.params)
 
@@ -89,7 +138,7 @@ const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrde
   activeChapter={chapter} activeSection={section} activePage={module}
   title={`${chapterTitle}: ${sectionTitle}: ${moduleTitle}`}
   chapter={chapter}
-  prevPage={prevPage} nextPage={nextPage}
+  prevPage={prevPage} nextPage={nextPage} nextPageOptions={nextPageOptions}
   pageType="chapter--module"
   activeTitles={{
     chapter: chapterTitle,

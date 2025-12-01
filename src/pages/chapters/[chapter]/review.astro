@@ -106,6 +106,7 @@ const review = await getContent()
   chapter={chapter}
   prevPage={Astro.props.prevPage}
   nextPage={Astro.props.nextPage}
+  nextPageOptions={[]}
   pageType="chapter--review"
   activeTitles={{
     chapter: chapterTitle,
@@ -120,7 +121,7 @@ const review = await getContent()
   </div>
   <div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
-    <AnnualEstimator client:only="solid"/>
+    <AnnualEstimator client:only="solid-js"/>
   </div>
   <div class="chapter--review--terms">
     <h2>Terms</h2>

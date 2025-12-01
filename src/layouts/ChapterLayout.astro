@@ -5,9 +5,9 @@ import "../styles/journey-colors.css";
 import "../styles/journey-theme.css";
 import { ClientRouter } from "astro:transitions";
 
-import ChangeListener from "../components/model-wrapper";
+import Paging from "../components/paging";
 
-const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter } = Astro.props;
+const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter, activePage } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---
 
@@ -111,36 +111,15 @@ const base_url = `${import.meta.env.BASE_URL}`;
               <slot />
             </div>
           </div>
-          <nav
-            role="navigation"
-            aria-label="pagination"
-            data-chapter={chapter}
-          >
-            <div>
-              {Astro.props.prevPage && <a
-                role="button"
-                href={`${base_url}chapters/${[Astro.props.prevPage.params.chapter, Astro.props.prevPage.params.section, Astro.props.prevPage.params.module].filter((param) => param).join('/')}/`}
-                aria-label="Previous"
-              >
-                <div>
-                  <small><strong>{Astro.props.prevPage.props.chapterTitle}</strong> <i>{Astro.props.prevPage.props.sectionTitle}</i></small>
-                  <strong>{Astro.props.prevPage.props.moduleTitle}</strong>
-                </div>
-              </a> || ''}
-            </div>
-            <div>
-              {Astro.props.nextPage && <a
-                role="button"
-                href={`${base_url}chapters/${[Astro.props.nextPage.params.chapter, Astro.props.nextPage.params.section, Astro.props.nextPage.params.module].filter((param) => param).join('/')}/`}
-                aria-label="Next"
-              >
-                <div>
-                  <small><strong>{Astro.props.nextPage.props.chapterTitle}</strong> <i>{Astro.props.nextPage.props.sectionTitle}</i></small>
-                  <strong>{Astro.props.nextPage.props.moduleTitle}</strong>
-                </div>
-              </a> || ''}
-            </div>
-          </nav>
+          <Paging
+            prevPage={Astro.props.prevPage}
+            nextPage={Astro.props.nextPage}
+            nextPageOptions={Astro.props.nextPageOptions}
+            module={activePage}
+            chapter={chapter}
+            baseURL={base_url}
+            client:only="solid-js"
+          />
         </div>
       </div>
     </main>

@@ -7,14 +7,32 @@ export const [annualIncome, setAnnualIncome, initializeAnnualIncome] = makePersi
     name: 'c03.annualIncome',
 })
 
-export const [budgetEstimationMethod, setBudgetEstimationMethod, initializeBudgetEstimationMethod] = makePersisted(createSignal('m02-option-1-the-quickest-budget-estimator'), {
+export const [budgetEstimationMethod, setBudgetEstimationMethod, initializeBudgetEstimationMethod] = makePersisted(createSignal(''), {
     storage: localforage,
     name: 'c03.budgetEstimationMethod',
 })
 
+export const [journeyMap, setJourneyMap, initializeJourneyMap] = makePersisted(createSignal([]), {
+    storage: localforage,
+    name: 'book.journeyMap',
+})
+
+
+
 export const valuesByName = {
     'decision--c03-budget--estimation-method': budgetEstimationMethod,
     'decision--c03-budget--annual-income--value': annualIncome,
+}
+
+export const nextPageByDecision = (module) => {
+    const lookup = {
+        'm01-choose-how-to-estimate-your-budget': budgetEstimationMethod,
+    }
+    if (lookup[module]) {
+        return lookup[module]()
+    }
+
+    return null
 }
 
 export const settersByName = {
