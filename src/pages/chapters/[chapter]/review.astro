@@ -4,6 +4,8 @@ import { getCollection, getEntry, getEntries, render } from 'astro:content';
 
 import AnnualEstimator from '../../../components/calculators/annual-estimator/component';
 
+import BookDecisions from '../../../components/decisions/component';
+
 export async function getStaticPaths() {
   const chapters = await getCollection('chapters');
   const structure = await Promise.all(chapters.map(async (chapter) => ({
@@ -138,6 +140,34 @@ const base_url = `${import.meta.env.BASE_URL}`;
   </div>
   <div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
+
+    <BookDecisions
+        client:only="solid-js"
+        name="decision--c03-budget--estimation-method"
+        optionType="radio"
+        readOnly={true}
+        options={[
+            {
+            option: 'm02-option-1-the-quickest-budget-estimator',
+            label: "I'm just starting out on this journey!",
+            detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
+            icon: '🧭',
+            },
+            {
+            option: 'm03-option-2-affordable-home-price-calculator-tool',
+            label: "I'm getting serious about buying a home!",
+            detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
+            icon: '🧮',
+            },
+            {
+            option: 'm04-option-3-get-a-pre-approval',
+            label: "I'm ready to go get a pre-approval for a mortage",
+            detail: "I know my financial situation well, but a pre-approval will give me confidence that a lender will see my situation the same way.",
+            icon: '💸',
+            },
+        ]}
+    />
+
     <AnnualEstimator client:only="solid-js"/>
   </div>
   <div class="chapter--review--terms">

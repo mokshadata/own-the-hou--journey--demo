@@ -6,13 +6,15 @@ export default function BookDecisions({
     name,
     optionType,
     options,
+    readOnly,
 }) {
     return (<BookDecisionsSkeleton
         legend={legend}
         name={name}
+        readOnly={readOnly}
         optionType={optionType}
         options={options}
         modelValue={valuesByName[name]}
-        setValue={settersByName[name]}
+        setValue={(!readOnly && settersByName[name])}
     />)
 }

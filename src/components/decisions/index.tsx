@@ -8,6 +8,7 @@ export default function ({
     name,
     optionType,
     options,
+    readOnly,
 }) {
     return (
     <Suspense fallback={<BookDecisionsSkeleton
@@ -19,6 +20,7 @@ export default function ({
         setValue={()=>{}}
     />}>
         <BookDecisions
+            readOnly={readOnly}
             legend={legend}
             name={name}
             optionType={optionType}

@@ -7,6 +7,7 @@ export default function BookDecisionOption({
   icon,
   optionType,
   setValue,
+  readOnly,
 }) {
   const checked = () => (
       (optionType === 'radio' && modelValue() === option) ||
@@ -15,6 +16,11 @@ export default function BookDecisionOption({
   )
 
   const handleChange = (changeEvent) => {
+    changeEvent.preventDefault()
+    if (readOnly) {
+      return
+    }
+
     if (optionType === 'radio' && changeEvent.target.checked) {
         setValue(option)
     }
@@ -30,7 +36,7 @@ export default function BookDecisionOption({
 
   return (
     <div class="book--decision--option">
-      <input type={optionType} id={option} value={option} name={name} checked={checked()} onChange={handleChange}/>
+      <input type={optionType} id={option} value={option} name={name} checked={checked()} onChange={handleChange} disabled={readOnly}/>
       <label class="book--decision--option--input" for={option}>
         <div class="book--decision--option--icon">{icon}</div>
         <div class="book--decision--option--label">

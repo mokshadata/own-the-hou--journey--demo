@@ -7,6 +7,7 @@ export default function BookDecisionsSkeleton({
   modelValue,
   options,
   setValue,
+  readOnly,
 }) {
   return (
     <div class="book--decision" data-model-name={name}>
@@ -18,6 +19,7 @@ export default function BookDecisionsSkeleton({
                 optionType={optionType}
                 modelValue={modelValue}
                 setValue={setValue}
+                readOnly={readOnly}
 
                 option={option}
                 label={label}
