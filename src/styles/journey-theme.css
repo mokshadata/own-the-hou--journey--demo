@@ -741,3 +741,56 @@ figure.video-placeholder:hover::after {
     border-bottom-left-radius: var(--pico-border-radius);
     border-bottom-right-radius: var(--pico-border-radius);
 }
+
+.chapter--review--videolist--playlist {
+    padding-left: 0;
+}
+
+.chapter--review--videolist--playlist li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chapter--review--videolist--playlist li a {
+    border: 1px solid var(--journey--chapter--scheme);
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    --pico-color: rgb(55, 60, 68);
+    gap: 0.75rem;
+}
+
+.chapter--review--videolist--playlist li a > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.chapter--review--videolist--playlist li:first-of-type a {
+    border-top-width: 2px;
+    border-top-left-radius: var(--pico-border-radius);
+    border-top-right-radius: var(--pico-border-radius);
+}
+
+.chapter--review--videolist--playlist li:last-of-type a {
+    border-bottom-width: 2px;
+    border-bottom-left-radius: var(--pico-border-radius);
+    border-bottom-right-radius: var(--pico-border-radius);
+}
+
+.chapter--review--videolist--playlist li a:hover {
+    background-color: rgba(255, 255, 255, 1);
+    --pico-color: rgb(55, 60, 68);
+}
+
+.chapter--review--videolist--playlist li a::before {
+    color: hsla(var(--journey--chapter--scheme--hsl), 0.9);
+    content: "▶";
+    font-size: 2rem;
+}

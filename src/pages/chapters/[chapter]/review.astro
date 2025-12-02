@@ -36,13 +36,28 @@ export async function getStaticPaths() {
     .map(async (page, index, pages) => {
         let lastChapterModule
 
+        const modules = await getEntries(structure[index].sections.map(({ contains }) => (contains)).reduce((acc, curr) => ([...acc, ...curr]), []))
+        const renderedModules = await Promise.all(modules.map(render))
+        const chapterVideoPlaylist = renderedModules
+            .map((mod) => (mod.remarkPluginFrontmatter))
+            .map((data) => (data.videos.map((video) => ({ video,
+                module: {
+                    name: data.name,
+                    order: data.order,
+                    slug: data.slug,
+                },
+                section: structure[index].sections.find((section) => (section.modules.map(({module}) => (module)).includes(data.slug)))
+            }))))
+            .reduce((acc, curr) => ([...acc, ...curr]), [])
+
         if (structure[index].sections[structure[index].sections.length - 1].modules.length) {
-            lastChapterModule = await getEntry('modules', structure[index].sections[structure[index].sections.length - 1].modules[structure[index].sections[structure[index].sections.length - 1].modules.length-1].module)
+            lastChapterModule = modules[modules.length -1]
         }
         let base = {
             params: page.params,
             props: {
                 ...page.props,
+                chapterVideoPlaylist,
                 prevPage: {
                     params: {
                         ...page.params,
@@ -83,6 +98,7 @@ const {
     chapterTitle,
     structure,
     terms,
+    chapterVideoPlaylist,
 } = Astro.props;
 
 const { chapter, } = Astro.params;
@@ -97,6 +113,7 @@ async function getContent() {
 }
 
 const review = await getContent()
+const base_url = `${import.meta.env.BASE_URL}`;
 ---
 <ChapterLayout
   chaptersWithSections={structure}
@@ -186,6 +203,18 @@ const review = await getContent()
   </div>
   <div class="chapter--review--videolist">
     <h2>Video Playlist</h2>
+    <ul class="chapter--review--videolist--playlist">
+        {chapterVideoPlaylist.map((item) => (<li>
+            <a href={`${base_url}chapters/${chapter}/${item.section.section}/${item.module.slug}#${item.video.slug}`} role="button">
+                <div>
+                    <div><small><strong>{'abcdefg'[item.section.order - 1]}. {item.section.title}</strong> <i>{item.module.name}</i></small></div>
+                    <div>
+                        <strong>{item.video.alt}</strong>
+                    </div>
+                </div>
+            </a>
+        </li>))}
+    </ul>
   </div>
   
 </ChapterLayout>
