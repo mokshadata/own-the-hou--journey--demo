@@ -44,12 +44,19 @@ main {
     padding: 2rem 0.5rem;
 }
 
-@media only screen and (min-width: 75em) {
-    main {
-        padding: 2rem;
-    }
+.book--content {
+    padding: 0.5rem 1rem 2rem 1rem;
 }
 
+:root {
+    --pico-form-element-spacing-vertical: 0.5rem;
+    --pico-form-element-spacing-horizontal: 0.5rem;
+}
+
+main > .row > [class^="col-"] {
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+}
 
 [role="navigation"] .button[aria-label="Previous"]::before {
     content: "←";
@@ -185,11 +192,6 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 .book--read-time {
     font-style: italic;
 }
-
-.book--content {
-    padding: 1rem 2rem;
-}
-
 
 article {
     counter-reset: reading-section reading-chapter;
@@ -420,7 +422,7 @@ color: var(--journey--chapter--scheme--subtitle); */
 
 .journey-map {
     max-height: calc(100vh - 100px);
-    top: 72px;
+    top: 1rem;
     position: sticky;
     overflow: auto;
     scrollbar-color: #868686 transparent;
@@ -432,7 +434,7 @@ color: var(--journey--chapter--scheme--subtitle); */
 } */
 
 main [role="navigation"] {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
     justify-items: stretch;
 }
 
@@ -501,10 +503,10 @@ main [role="navigation"] [aria-label="Next"]::after {
 }
 
 header nav {
-    position: fixed;
+    /* position: fixed;
     top: 0;
-    z-index: 50;
-    width: 100%;
+    z-index: 50; */
+    /* width: 100%; */
     background-color: var(--oth--twilight-indigo);
 }
 
@@ -522,7 +524,7 @@ body > header {
 }
 
 body > main {
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .menu-label {
@@ -661,8 +663,8 @@ figure.video-placeholder:hover::after {
 
 .workbook--exercise {
     background-color: rgba(255, 255, 255, 1);
-    margin: 1rem -2rem;
-    padding: 0.5rem 2rem;
+    margin: 1rem -1rem;
+    padding: 0.5rem 1rem;
 
     border-top: 2px solid var(--journey--chapter--scheme);
     border-bottom: 2px solid var(--journey--chapter--scheme);
@@ -714,6 +716,9 @@ figure.video-placeholder:hover::after {
 
 .book--decision details summary {
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .book--decision details p:last-child {
@@ -793,4 +798,27 @@ figure.video-placeholder:hover::after {
     color: hsla(var(--journey--chapter--scheme--hsl), 0.9);
     content: "▶";
     font-size: 2rem;
+}
+
+
+@media only screen and (min-width: 64em) {
+    main {
+        padding: 2rem 0.5rem;
+    }
+    .book--content {
+        padding: 0.5rem 1.5rem 2rem 1.5rem;
+    }
+    .workbook--exercise {
+        margin: 1rem -1.5rem;
+        padding: 0.5rem 1.5rem;
+    }
+    main [role="navigation"] {
+        margin-top: 0.5rem;
+    }
+}
+
+@media only screen and (min-width: 75em) {
+    main {
+        padding: 2rem;
+    }
 }
