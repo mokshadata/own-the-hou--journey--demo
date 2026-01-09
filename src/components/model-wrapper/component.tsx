@@ -1,21 +1,14 @@
 import {
-    annualIncome, setAnnualIncome,
-    budgetEstimationMethod, setBudgetEstimationMethod,
+    valuesByName, settersByName,
 } from "../../store/navigation";
 
 
-export default function ChangeListener({ children }) {
+export default function ChangeListener({ storeName, children }) {
     function handleChange(formChangeEvent) {
         if (
-            formChangeEvent.target.name === 'decision--c03-budget--estimation-method' &&
-            formChangeEvent.target.checked
+            formChangeEvent.target.name && !['checkbox', 'radio'].includes(formChangeEvent.target.type)
         ) {
-            setBudgetEstimationMethod(formChangeEvent.target.value)
-        }
-        if (
-            formChangeEvent.target.name === 'decision--c03-budget--annual-income--value'
-        ) {
-            setAnnualIncome(formChangeEvent.target.value)
+            settersByName(storeName)(formChangeEvent.target.name, formChangeEvent.target.value)
         }
     }
     return (

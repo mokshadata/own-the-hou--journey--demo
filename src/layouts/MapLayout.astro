@@ -1,0 +1,98 @@
+---
+// import "../styles/global.css";
+import "../styles/journey-vars.css";
+import "../styles/journey-colors.css";
+import "../styles/journey-theme.css";
+import { ClientRouter } from "astro:transitions";
+
+import JourneyMap from "../components/map/component.tsx";
+
+import Paging from "../components/paging";
+
+import BookDecisions from "../components/decisions/";
+
+import ModelWrapper from "../components/model-wrapper";
+
+const { journeyMap } = Astro.props;
+const base_url = `${import.meta.env.BASE_URL}`;
+---
+
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Own the HOU Journey: Your Map to Homeownership</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/svg+xml" href={`${base_url}favicon.svg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/versions/bulma-no-dark-mode.css"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+    <!-- <link rel="stylesheet" href={`${base_url}assets/styles.css`} /> -->
+    <ClientRouter />
+  </head>
+  <body>
+    <header>
+      <nav
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div>
+          <a href={base_url}>
+            <img
+              src="https://ownthehou.org/wp-content/themes/twentytwentyfive--own-the-hou/assets/images/logo-header.svg"
+            />
+          </a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- <ModelWrapper storeName={'decision--c00-mapping--journey'}> -->
+            <BookDecisions
+              client:only="solid-js"
+              legend="Please select the option that best describes you below, so we can take you to the right tools to calculate your budget."
+              name="decision--c00-mapping--journey--type"
+              readOnly={false}
+              optionType="radio"
+              options={[
+                {
+                  option: 'homebuyer',
+                  label: "I'm a homebuyer.",
+                  detail: "I'm interested, started or starting, or in the middle of homebuying.",
+                  icon: '🧭',
+                },
+                {
+                  option: 'homeowner',
+                  label: "I already own a home!",
+                  detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
+                  icon: '🧮',
+                },
+              ]}
+            />
+          <!-- </ModelWrapper> -->
+        </div>
+      </div>
+      <div class="row">
+        <nav class="col-xs-12">
+          <aside class="menu journey-map" data-mode="map">
+            <JourneyMap client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
+          </aside>
+        </nav>
+      </div>
+    </main>
+  </body>
+</html>

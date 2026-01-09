@@ -18,6 +18,7 @@ export default function ({
         options={options}
         modelValue={()=>('')}
         setValue={()=>{}}
+        readOnly={true}
     />}>
         <BookDecisions
             readOnly={readOnly}

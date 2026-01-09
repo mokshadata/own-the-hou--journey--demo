@@ -55,7 +55,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <main>
       <div class="row">
         <nav class="col-xs-12 col-md-3">
-          <aside class="menu journey-map">
+          <aside class="menu journey-map" data-mode="side">
             <ol class="menu-list">
               {
                 chaptersWithSections.map((topLevel) => (
@@ -65,12 +65,12 @@ const base_url = `${import.meta.env.BASE_URL}`;
                       data-menu-type="chapter"
                       class={topLevel.chapter === activeChapter && 'is-active' || ''}
                       href={`${base_url}chapters/${topLevel.chapter}/`}
-                    >{topLevel.title}</a>
+                    ><div>{topLevel.title}</div></a>
                     <ol class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
                       {topLevel.sections.map((midLevel) => (
                         <li>
                           <a
-                          role="link"
+                            role="link"
                             data-menu-type="section"
                             class={midLevel.section === activeSection && 'is-active' || ''}
                             href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
@@ -92,7 +92,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
                       <li>
                         <a
                           role="link"
-                          data-menu-type="page"
+                          data-menu-type="section"
                           class={'Review' === Astro.props.activeSection && 'is-active' || ''}
                           href={`${base_url}chapters/${topLevel.chapter}/review/`}
                         >Check-In</a>

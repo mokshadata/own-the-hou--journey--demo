@@ -116,16 +116,23 @@ aside li {
     counter-reset: chapter -1;
 }
 
-[data-menu-type="chapter"]::before {
+[data-menu-type="chapter"] > div,
+.menu-list [data-menu-type="section"] {
+    display: flex;
+    gap: 4px
+}
+
+[data-menu-type="chapter"] div::before {
     counter-increment: chapter;
     content: counter(chapter) ". ";
 }
 
-.menu-list > li {
+.menu-list > li,
+.menu-list > div {
     counter-reset: section;
 }
 
-.menu-list > li [data-menu-type="section"]::before {
+.menu-list [data-menu-type="section"]:not([href$="/review/"])::before {
     counter-increment: section;
     content: counter(section, lower-alpha) ". ";
 }
@@ -265,7 +272,8 @@ color: var(--journey--chapter--scheme--subtitle); */
     display: block;
     content: "";
 } */
-.journey-map .menu-list > li > ol > li > ol {
+.journey-map .menu-list > li > ol > li > ol,
+.journey-map .menu-list > div > ol > li > ol {
     font-size: 0.9rem;
     margin-top: -0.2rem;
 }
@@ -280,7 +288,8 @@ color: var(--journey--chapter--scheme--subtitle); */
     border-left: 2px solid var(--journey--chapter--scheme);
 }
 
-.journey-map .menu-list > li > ol > li:last-of-type [data-menu-type="page"] {
+.journey-map .menu-list > li > ol > li:last-of-type [data-menu-type="section"],
+.journey-map .menu-list > div > ol > li:last-of-type [data-menu-type="section"] {
     border-bottom: 2px solid var(--journey--chapter--scheme);
 }
 
@@ -420,7 +429,7 @@ color: var(--journey--chapter--scheme--subtitle); */
     font-weight: 700;
 }
 
-.journey-map {
+.journey-map[data-mode="side"] {
     max-height: calc(100vh - 100px);
     top: 1rem;
     position: sticky;
@@ -822,3 +831,270 @@ figure.video-placeholder:hover::after {
         padding: 2rem;
     }
 }
+
+.journey-map[data-mode="map"] {
+    width: 100%;
+}
+
+.journey-map[data-mode="map"] .menu-list {
+    width: 100%;
+    /* display: grid;
+    gap: 10px;
+    grid-template-columns: 200px auto 1fr; */
+    /* grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); */
+    /* grid-template-columns: repeat(minmax(240px, 1fr)); */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* height: 720px; */
+    gap: 0.75rem;
+}
+
+.journey-map[data-mode="map"] .menu-list > div {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+@media only screen and (min-width: 576px) {
+
+    .journey-map[data-mode="map"] .menu-list > div {
+        width: 49%;
+    }
+
+    .journey-map[data-mode="map"] .menu-list {
+        height: 1500px;
+    }
+    
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(2n+1) {
+        order: 1;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(2n) {
+        order: 2;
+    }
+}
+
+@media only screen and (min-width: 648px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 1400px;
+    }
+}
+
+@media only screen and (min-width: 728px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 1300px;
+    }
+}
+
+@media only screen and (min-width: 986px) {
+    .journey-map[data-mode="map"] .menu-list > div {
+        width: 32%;
+    }
+    .journey-map[data-mode="map"] .menu-list {
+        height: 760px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(3n+1) {
+        order: 1;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(3n+2) {
+        order: 2;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(3n) {
+        order: 3;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: -600px;
+    }
+}
+
+@media only screen and (min-width: 1097px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 720px;
+    }
+}
+
+@media only screen and (min-width: 1148px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 720px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div {
+        /* width: 15%; */
+        width: 19%;
+    }
+    
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(5n+1) {
+        order: 1;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(5n+2) {
+        order: 2;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(5n+3) {
+        order: 3;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(5n+4) {
+        order: 4;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(5n) {
+        order: 5;
+    }
+    /* .journey-map[data-mode="map"] .menu-list > div:nth-child(5n) {
+        order: 6;
+    } */
+    
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(7) {
+        margin-bottom: 200px;
+    }
+    /* .journey-map[data-mode="map"] .menu-list > div:nth-child(8), */
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: -200px;
+    }
+}
+
+@media only screen and (min-width: 1148px) and (max-width: 1634px) {
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8) {
+        margin-bottom: -200px;
+    }
+}
+
+@media only screen and (min-width: 1485px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 600px;
+    }
+
+    /* .journey-map[data-mode="map"] .menu-list > div:nth-child(7),
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8),
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: 0;
+    } */
+}
+
+@media only screen and (min-width: 2064px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 500px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div {
+        width: 15%;
+    }
+    
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n+1) {
+        order: 1;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n+2) {
+        order: 2;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n+3) {
+        order: 3;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n+4) {
+        order: 4;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n+5) {
+        order: 5;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(6n) {
+        order: 6;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(4) {
+        margin-bottom: 240px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(7) {
+        margin-bottom: -40px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: -240px;
+    }
+}
+@media only screen and (min-width: 2094px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 400px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div {
+        width: 12%;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+1) {
+        order: 1;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+2) {
+        order: 2;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+3) {
+        order: 3;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+4) {
+        order: 4;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+5) {
+        order: 5;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+6) {
+        order: 6;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n+7) {
+        order: 7;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(8n) {
+        order: 8;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(4) {
+        margin-bottom: 0;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: -500px;
+    }
+
+}
+@media only screen and (min-width: 2204px) {
+    .journey-map[data-mode="map"] .menu-list {
+        height: 400px;
+    }
+    .journey-map[data-mode="map"] .menu-list > div:nth-child(9) {
+        margin-bottom: -400px;
+    }
+
+    /* .journey-map[data-mode="map"] .menu-list > div {
+        width: 100%;
+    } */
+
+}
+
+
+.journey-map[data-mode="map"] .menu-list > div > a {
+    padding-top: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* .journey-map[data-mode="map"] .menu-list > div {
+    width: 240px;
+} */
+
+/* .journey-map[data-mode="map"] .menu-list > div > a {
+    display: flex;
+    height: 60px;
+} */
+
+.journey-map[data-mode="map"] .menu-list .is-hidden {
+    display: block;
+}
+
+.journey-map[data-mode="map"] .menu-list [role="link"][data-menu-type="chapter"] {
+    text-decoration: none;
+    align-items: flex-end;
+    padding-bottom: 0.5rem;
+}
+
+.journey-map[data-mode="map"] .menu-list [role="link"][data-menu-type="section"] {
+    padding-left: 1.5rem;
+}
+
+.menu-list [role="link"] {
+    display: flex;
+}
+
+
+/* .frame { */
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  /* width: 240px; */
+  /* aspect-ratio: var(--width) / var(--height);
+  min-width: 240px;
+} */
