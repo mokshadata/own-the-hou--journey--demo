@@ -1,4 +1,32 @@
 :root {
+    /* https://coolors.co/1c335f-373f5f-514b5e-6b575d-85625c-9f6e5b-b97a5a-d38659-ed9158-e86e24 */
+
+    /* CSS HEX */
+    --oth2--twilight-indigo: #1c335fff;
+    --oth2--twilight-indigo-2: #373f5fff;
+    --oth2--vintage-grape: #514b5eff;
+    --oth2--taupe-grey: #6b575dff;
+    --oth2--smoky-rose: #85625cff;
+    --oth2--cinnamon-wood: #9f6e5bff;
+    --oth2--cinnamon-wood-2: #b97a5aff;
+    --oth2--toasted-almond: #d38659ff;
+    --oth2--tangerine-dream: #ed9158ff;
+    --oth2--autumn-leaf: #e86e24ff;
+
+    /* CSS HSL */
+    --oth2--twilight-indigo--hsl: hsla(219, 54%, 24%, 1);
+    --oth2--twilight-indigo-2--hsl: hsla(228, 27%, 29%, 1);
+    --oth2--vintage-grape--hsl: hsla(259, 11%, 33%, 1);
+    --oth2--taupe-grey--hsl: hsla(342, 10%, 38%, 1);
+    --oth2--smoky-rose--hsl: hsla(9, 18%, 44%, 1);
+    --oth2--cinnamon-wood--hsl: hsla(17, 27%, 49%, 1);
+    --oth2--cinnamon-wood-2--hsl: hsla(20, 40%, 54%, 1);
+    --oth2--toasted-almond--hsl: hsla(22, 58%, 59%, 1);
+    --oth2--tangerine-dream--hsl: hsla(23, 81%, 64%, 1);
+    --oth2--autumn-leaf--hsl: hsla(23, 81%, 53%, 1);
+
+    /* https://coolors.co/1c335f-524d87-8866af-be80d7-d98deb-f399ff-f18fc9-ee8492-eb795b-e86e24 */
+
     /* CSS HEX */
     --oth--chapter--twilight-indigo: #1c335fff;
     --oth--chapter--dusty-grape: #524d87ff;
@@ -31,16 +59,24 @@ html {
     background-attachment: fixed;
 
     /* https://coolors.co/gradient-maker/adc2eb-d9bbdd-fcd19c?position=0,60,100&opacity=100,100,100&type=linear&rotation=90 */
-    background-color: hsla(220, 61%, 80%, 1);
+    /* background-color: hsla(220, 61%, 80%, 1);
     background-image: linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
     background-image: -moz-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
     background-image: -webkit-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(293, 33%, 80%, 1) 60%, hsla(33, 94%, 80%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ADC2EB", endColorstr="#D9BBDD", GradientType=1 );
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ADC2EB", endColorstr="#D9BBDD", GradientType=1 ); */
+
+    /* https://coolors.co/gradient-maker/adc2eb-fcd19c?position=0,100&opacity=100,100&type=linear&rotation=135 */
+    background-color: hsla(220, 61%, 80%, 1);
+    background-image: linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(33, 94%, 80%, 1) 100%);
+    background-image: -moz-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(33, 94%, 80%, 1) 100%);
+    background-image: -webkit-linear-gradient(-45deg, hsla(220, 61%, 80%, 1) 0%, hsla(33, 94%, 80%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#adc2eb", endColorstr="#fcd19c", GradientType=1 );
 
     font-size: 18px;
 }
 
-main {
+.main--layout,
+.map--layout .row {
     padding: 2rem 0.5rem;
 }
 
@@ -312,8 +348,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
-    --journey--chapter--scheme: var(--oth--chapter--dusty-grape);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--dusty-grape--hsl);
+    --journey--chapter--scheme: var(--oth2--twilight-indigo-2);
+    --journey--chapter--scheme--hsl: var(--oth2--twilight-indigo-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--amber-flame); */
@@ -326,8 +362,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c03-what-s-your-budget"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c03-what-s-your-budget"],
 .journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
-    --journey--chapter--scheme: var(--oth--chapter--lavender-purple);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--lavender-purple--hsl);
+    --journey--chapter--scheme: var(--oth2--vintage-grape);
+    --journey--chapter--scheme--hsl: var(--oth2--vintage-grape--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--emerald); */
@@ -339,8 +375,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c04-choose-your-homebuying-team"],
 .journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"] {
-    --journey--chapter--scheme: var(--oth--chapter--bright-lavender);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--bright-lavender--hsl);
+    --journey--chapter--scheme: var(--oth2--taupe-grey);
+    --journey--chapter--scheme--hsl: var(--oth2--taupe-grey--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
@@ -351,11 +387,11 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c05-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
-    --journey--chapter--scheme: var(--oth--chapter--violet);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--violet--hsl);
+    --journey--chapter--scheme: var(--oth2--smoky-rose);
+    --journey--chapter--scheme--hsl: var(--oth2--smoky-rose--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--forest-green); */
-    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
 [data-chapter="c06-find-a-home-and-make-an-offer"],
@@ -363,11 +399,11 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c06-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
-    --journey--chapter--scheme: var(--oth--chapter--violet-2);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--violet-2--hsl);
+    --journey--chapter--scheme: var(--oth2--cinnamon-wood);
+    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
     
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
-    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 
 [data-chapter="c07-finalize-your-mortgage"],
@@ -375,21 +411,21 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c07-finalize-your-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c07-finalize-your-mortgage"],
 .journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
-    --journey--chapter--scheme: var(--oth--chapter--pink-carnation);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--pink-carnation--hsl);
+    --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
+    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
     
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
-    /* --journey--chapter--scheme--subtitle: #FFF; */
 }
 [data-chapter="c08-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c08-close-on-your-home"],
 .journey-map .menu-list a.is-active[href*="c08-close-on-your-home"] {
-    --journey--chapter--scheme: var(--oth--chapter--cotton-candy);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--cotton-candy--hsl);
+    --journey--chapter--scheme: var(--oth2--toasted-almond);
+    --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
     
-    /* --journey--chapter--scheme--subtitle: #FFF; */
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
 [data-chapter="c09-you-re-a-homeowner-protect-your-home"],
@@ -397,8 +433,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][href*="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c09-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a.is-active[href*="c09-you-re-a-homeowner-protect-your-home"] {
-    --journey--chapter--scheme: var(--oth--chapter--burnt-peach);
-    --journey--chapter--scheme--hsl: var(--oth--chapter--burnt-peach--hsl);
+    --journey--chapter--scheme: var(--oth2--tangerine-dream);
+    --journey--chapter--scheme--hsl: var(--oth2--tangerine-dream--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     
     /* --journey--chapter--scheme: var(--oth--blue-bell); */
@@ -532,7 +568,7 @@ body > header {
     --pico-block-spacing-vertical: 0;
 }
 
-body > main {
+body > .main--layout {
     margin-top: 1rem;
 }
 
@@ -811,7 +847,8 @@ figure.video-placeholder:hover::after {
 
 
 @media only screen and (min-width: 64em) {
-    main {
+    .main--layout,
+    .map--layout .row {
         padding: 2rem 0.5rem;
     }
     .book--content {
@@ -827,7 +864,8 @@ figure.video-placeholder:hover::after {
 }
 
 @media only screen and (min-width: 75em) {
-    main {
+    .main--layout,
+    .map--layout .row {
         padding: 2rem;
     }
 }
@@ -1098,3 +1136,89 @@ figure.video-placeholder:hover::after {
   /* aspect-ratio: var(--width) / var(--height);
   min-width: 240px;
 } */
+
+.map--layout {
+    padding-top: 0;
+}
+
+.map--intro {
+    background-color: #FFF;
+}
+
+.map--intro:first-child {
+    padding-bottom: 0;
+}
+
+.map--intro h1 {
+    /* text-align: center; */
+    margin-bottom: 0;
+}
+
+.map--layout h1 {
+    font-weight: 400;
+}
+
+a.map--decision[role=button] {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border: none;
+    /* background-color: transparent; */
+    background-size: contain;
+    aspect-ratio: 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+}
+
+.home-buyer--cover {
+    background-blend-mode: luminosity;
+    background-color: var(--oth--chapter--twilight-indigo);
+}
+.home-owner--cover {
+    background-blend-mode: screen;
+    background-color: var(--oth--chapter--autumn-leaf);
+}
+
+.map--decision .button {
+    display: inline-block;
+    font-weight: 300;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    z-index: 10;
+}
+
+.home-buyer--cover.map--decision .button {
+    background-color: var(--oth--chapter--autumn-leaf);
+}
+
+.map--decision .map--decision--cover--background {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+.home-buyer--cover.map--decision .map--decision--cover--background {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.home-owner--cover.map--decision .map--decision--cover--background {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.home-owner--cover.map--decision .button {
+    background-color: var(--oth--chapter--twilight-indigo);
+}
+
+a.map--decision[role=button]:hover {
+    font-style: italic;
+}
+
+.map--layout fieldset legend {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+}
