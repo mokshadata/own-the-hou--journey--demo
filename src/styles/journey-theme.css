@@ -402,7 +402,7 @@ color: var(--journey--chapter--scheme--subtitle); */
     --journey--chapter--scheme: var(--oth2--cinnamon-wood);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
-    
+
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
 }
 
@@ -414,7 +414,6 @@ color: var(--journey--chapter--scheme--subtitle); */
     --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
-    
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
 }
 [data-chapter="c08-close-on-your-home"],
@@ -425,7 +424,6 @@ color: var(--journey--chapter--scheme--subtitle); */
     --journey--chapter--scheme: var(--oth2--toasted-almond);
     --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
-    
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
 [data-chapter="c09-you-re-a-homeowner-protect-your-home"],
@@ -442,6 +440,7 @@ color: var(--journey--chapter--scheme--subtitle); */
 
 .book--module-title {
     border-bottom: 4px solid var(--journey--chapter--scheme);
+    --pico-color: var(--journey--chapter--scheme);
     margin-top: 1rem;
 }
 

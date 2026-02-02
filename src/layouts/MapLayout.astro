@@ -5,6 +5,11 @@ import "../styles/journey-colors.css";
 import "../styles/journey-theme.css";
 import { ClientRouter } from "astro:transitions";
 
+import Image from "astro/components/Image.astro";
+
+import familyInHomeImage from '../assets/images/family-in-home.jpg'
+import keyImage from '../assets/images/The-One.jpg'
+
 import JourneyMap from "../components/map/component.tsx";
 
 import Paging from "../components/paging";
@@ -12,6 +17,7 @@ import Paging from "../components/paging";
 import BookDecisions from "../components/decisions/";
 
 import ModelWrapper from "../components/model-wrapper";
+import { key } from "localforage";
 
 const { journeyMap } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
@@ -58,27 +64,53 @@ const base_url = `${import.meta.env.BASE_URL}`;
         </div>
       </nav>
     </header>
-    <main>
+    <main class="map--layout">
+      <div class="row map--intro">
+        <div class="col-xs-12">
+          <h1>Where are you on your home owning journey?</h1>
+        </div>
+      </div>
+      <div class="row map--intro map--decisions">
+        <!-- decision--c00-mapping--journey--phase -->
+        <div class="col-xs-6">
+          <a role="button" class="home-buyer--cover map--decision" style={{backgroundImage: `url(${keyImage.src});`}}>
+            <span class="map--decision--cover--background"></span>
+            <span class="button">I'm looking to buy a house.</span>
+          </a>
+        </div>
+        <div class="col-xs-6">
+          <a role="button" class="home-owner--cover map--decision" style={{backgroundImage: `url(${familyInHomeImage.src});`}}>
+            <span class="map--decision--cover--background"></span>
+            <span class="button">I'm a homeowner.</span>
+          </a>
+        </div>
+      </div>
       <div class="row">
         <div class="col-xs-12">
           <!-- <ModelWrapper storeName={'decision--c00-mapping--journey'}> -->
             <BookDecisions
               client:only="solid-js"
-              legend="Please select the option that best describes you below, so we can take you to the right tools to calculate your budget."
-              name="decision--c00-mapping--journey--type"
+              legend="What best describes you?"
+              name="decision--c00-mapping--journey--phase"
               readOnly={false}
               optionType="radio"
               options={[
                 {
-                  option: 'homebuyer',
-                  label: "I'm a homebuyer.",
-                  detail: "I'm interested, started or starting, or in the middle of homebuying.",
+                  option: 'homebuyer--00',
+                  label: "I don't know where to start.",
+                  detail: "I'm interested, but I don't know where to start.",
                   icon: '🧭',
                 },
                 {
-                  option: 'homeowner',
-                  label: "I already own a home!",
-                  detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
+                  option: 'homebuyer--01',
+                  label: "I have started looking, but have not looked into financing yet.",
+                  detail: "I may be talking to a realtor but I have not yet looked at preapproval.",
+                  icon: '🔭',
+                },
+                {
+                  option: 'homebuyer-02',
+                  label: "I'm in the process but I have challenges.",
+                  detail: "I am experiencing challenges with: Credit, mortgage, finding a realtor, finding options within my budget",
                   icon: '🧮',
                 },
               ]}
