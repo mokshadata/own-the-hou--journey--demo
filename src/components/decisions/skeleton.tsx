@@ -13,20 +13,22 @@ export default function BookDecisionsSkeleton({
     <div class="book--decision" data-model-name={name}>
       <fieldset>
         <legend>{legend}</legend>
-        {(options || []).map(({ option, label, detail, icon }) => (
-            <BookDecisionOption
-                name={name}
-                optionType={optionType}
-                modelValue={modelValue}
-                setValue={setValue}
-                readOnly={readOnly}
+        <div class="book--decision--options">
+          {(options || []).map(({ option, label, detail, icon }) => (
+              <BookDecisionOption
+                  name={name}
+                  optionType={optionType}
+                  modelValue={modelValue}
+                  setValue={setValue}
+                  readOnly={readOnly}
 
-                option={option}
-                label={label}
-                detail={detail}
-                icon={icon}
-            />
-        ))}
+                  option={option}
+                  label={label}
+                  detail={detail}
+                  icon={icon}
+              />
+          ))}
+        </div>
       </fieldset>
     </div>
   );

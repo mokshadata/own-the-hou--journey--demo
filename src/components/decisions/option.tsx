@@ -1,14 +1,19 @@
-export default function BookDecisionOption({
-  name,
-  label,
-  detail,
-  option,
-  modelValue,
-  icon,
-  optionType,
-  setValue,
-  readOnly,
-}) {
+// import { children } from "solid-js"
+
+import Diagrams from '../diagrams/'
+
+export default function BookDecisionOption(props) {
+  const {
+    name,
+    label,
+    detail,
+    option,
+    modelValue,
+    optionType,
+    setValue,
+    readOnly,
+  } = props
+
   const checked = () => (
       (optionType === 'radio' && modelValue() === option) ||
       (optionType === 'checkbox' && modelValue().includes(option)) ||
@@ -34,11 +39,14 @@ export default function BookDecisionOption({
     }
   }
 
+  const Icon = Diagrams[props.icon]
+  // const resolvedChildren = children(() => ([<props.icon/>]))
+  console.log({ props, Icon })
   return (
     <div class="book--decision--option">
       <input type={optionType} id={option} value={option} name={name} checked={checked()} onChange={handleChange} disabled={readOnly}/>
       <label class="book--decision--option--input" for={option}>
-        <div class="book--decision--option--icon">{icon}</div>
+        <div class="book--decision--option--icon"><Icon/></div>
         <div class="book--decision--option--label">
           <p><strong>{label}</strong></p>
           <p>{detail}</p>

@@ -12,6 +12,8 @@
     --oth2--toasted-almond: #d38659ff;
     --oth2--tangerine-dream: #ed9158ff;
     --oth2--autumn-leaf: #e86e24ff;
+    --oth2--porcelain: #FBFAF3;
+    --oth2--amber-flame: #fcb900ff;
 
     /* CSS HSL */
     --oth2--twilight-indigo--hsl: hsla(219, 54%, 24%, 1);
@@ -24,6 +26,7 @@
     --oth2--toasted-almond--hsl: hsla(22, 58%, 59%, 1);
     --oth2--tangerine-dream--hsl: hsla(23, 81%, 64%, 1);
     --oth2--autumn-leaf--hsl: hsla(23, 81%, 53%, 1);
+    --oth2--amber-flame: hsla(44, 100%, 49%, 1);
 
     /* https://coolors.co/1c335f-524d87-8866af-be80d7-d98deb-f399ff-f18fc9-ee8492-eb795b-e86e24 */
 
@@ -1220,4 +1223,54 @@ a.map--decision[role=button]:hover {
     font-weight: 500;
     width: 100%;
     display: flex;
+}
+
+.book--decision--option--icon svg {
+    width: 100%;
+}
+
+.oth--theme--primary {
+    fill: var(--oth2--twilight-indigo);
+}
+
+.oth--theme--secondary {
+    fill: var(--oth2--autumn-leaf);
+}
+
+.oth--theme--secondary-light {
+    fill: var(--oth2--tangerine-dream);
+}
+
+.oth--theme--tertiary {
+    fill: var(--oth2--amber-flame);
+}
+
+.oth--theme--white {
+    fill: var(--oth2--porcelain);
+}
+
+.oth--theme--transparent {
+    fill: transparent;
+}
+
+.map--layout .book--decision--options {
+    display: flex;
+}
+
+.map--layout .book--decision--option {
+    flex: 1;
+}
+
+.map--layout .book--decision fieldset .book--decision--option--input {
+    flex-direction: column;
+}
+
+.map--layout .book--decision--option--label {
+    width: 100%;
+    text-align: center;
+    font-size: 1.25em;
+}
+
+.map--layout .book--decision--option--icon {
+    width: 80%;
 }

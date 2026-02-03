@@ -10,6 +10,8 @@ export default function ({
     options,
     readOnly,
 }) {
+
+    console.log({ options })
     return (
     <Suspense fallback={<BookDecisionsSkeleton
         legend={legend}

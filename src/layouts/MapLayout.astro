@@ -19,8 +19,42 @@ import BookDecisions from "../components/decisions/";
 import ModelWrapper from "../components/model-wrapper";
 import { key } from "localforage";
 
+import {
+  PersonaStep01Diagram,
+  PersonaStep02Diagram,
+  PersonaStep03Diagram,
+} from '../components/diagrams/index.tsx';
+
 const { journeyMap } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
+
+const options = [
+  {
+    option: 'homebuyer--00',
+    label: "I don't know where to start.",
+    detail: "I'm interested, but I don't know where to start.",
+    icon: 'PersonaStep01Diagram',
+    // <PersonaStep01/>,
+  },
+  {
+    option: 'homebuyer--01',
+    label: "I have started looking, but have not looked into financing yet.",
+    detail: "I may be talking to a realtor but I have not yet looked at preapproval.",
+    icon: 'PersonaStep02Diagram',
+    // <PersonaStep02/>,
+  },
+  {
+    option: 'homebuyer-02',
+    label: "I'm in the process but I have challenges.",
+    detail: "I am experiencing challenges with: Credit, mortgage, finding a realtor, finding options within my budget",
+    icon: 'PersonaStep03Diagram',
+    // <PersonaStep03/>,
+  },
+]
+
+
+console.log({topOptions: options})
+
 ---
 
 <!doctype html>
@@ -86,6 +120,17 @@ const base_url = `${import.meta.env.BASE_URL}`;
         </div>
       </div>
       <div class="row">
+        <!-- <div class="col-xs-4">
+          <PersonaStep01Diagram/>
+        </div>
+        <div class="col-xs-4">
+          <PersonaStep02Diagram/>
+        </div>
+        <div class="col-xs-4">
+          <PersonaStep03Diagram/>
+        </div> -->
+      </div>
+      <div class="row">
         <div class="col-xs-12">
           <!-- <ModelWrapper storeName={'decision--c00-mapping--journey'}> -->
             <BookDecisions
@@ -94,27 +139,9 @@ const base_url = `${import.meta.env.BASE_URL}`;
               name="decision--c00-mapping--journey--phase"
               readOnly={false}
               optionType="radio"
-              options={[
-                {
-                  option: 'homebuyer--00',
-                  label: "I don't know where to start.",
-                  detail: "I'm interested, but I don't know where to start.",
-                  icon: '🧭',
-                },
-                {
-                  option: 'homebuyer--01',
-                  label: "I have started looking, but have not looked into financing yet.",
-                  detail: "I may be talking to a realtor but I have not yet looked at preapproval.",
-                  icon: '🔭',
-                },
-                {
-                  option: 'homebuyer-02',
-                  label: "I'm in the process but I have challenges.",
-                  detail: "I am experiencing challenges with: Credit, mortgage, finding a realtor, finding options within my budget",
-                  icon: '🧮',
-                },
-              ]}
-            />
+              options={options}
+            >
+          </BookDecisions>
           <!-- </ModelWrapper> -->
         </div>
       </div>
