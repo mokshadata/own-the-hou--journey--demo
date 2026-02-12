@@ -7,6 +7,7 @@ export default function BookDecisions({
     optionType,
     options,
     readOnly,
+    isColumns = false,
 }) {
     return (<BookDecisionsSkeleton
         legend={legend}
@@ -14,6 +15,7 @@ export default function BookDecisions({
         readOnly={readOnly}
         optionType={optionType}
         options={options}
+        isColumns={isColumns}
         modelValue={valuesByName[name]}
         setValue={(!readOnly && settersByName[name])}
     />)

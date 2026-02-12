@@ -1,5 +1,3 @@
-// import { children } from "solid-js"
-
 import Diagrams from '../diagrams/'
 
 export default function BookDecisionOption(props) {
@@ -40,8 +38,7 @@ export default function BookDecisionOption(props) {
   }
 
   const Icon = Diagrams[props.icon]
-  // const resolvedChildren = children(() => ([<props.icon/>]))
-  console.log({ props, Icon })
+
   return (
     <div class="book--decision--option">
       <input type={optionType} id={option} value={option} name={name} checked={checked()} onChange={handleChange} disabled={readOnly}/>

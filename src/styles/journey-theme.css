@@ -16,17 +16,17 @@
     --oth2--amber-flame: #fcb900ff;
 
     /* CSS HSL */
-    --oth2--twilight-indigo--hsl: hsla(219, 54%, 24%, 1);
-    --oth2--twilight-indigo-2--hsl: hsla(228, 27%, 29%, 1);
-    --oth2--vintage-grape--hsl: hsla(259, 11%, 33%, 1);
-    --oth2--taupe-grey--hsl: hsla(342, 10%, 38%, 1);
-    --oth2--smoky-rose--hsl: hsla(9, 18%, 44%, 1);
-    --oth2--cinnamon-wood--hsl: hsla(17, 27%, 49%, 1);
-    --oth2--cinnamon-wood-2--hsl: hsla(20, 40%, 54%, 1);
-    --oth2--toasted-almond--hsl: hsla(22, 58%, 59%, 1);
-    --oth2--tangerine-dream--hsl: hsla(23, 81%, 64%, 1);
-    --oth2--autumn-leaf--hsl: hsla(23, 81%, 53%, 1);
-    --oth2--amber-flame: hsla(44, 100%, 49%, 1);
+    --oth2--twilight-indigo--hsl: 219, 54%, 24%;
+    --oth2--twilight-indigo-2--hsl: 228, 27%, 29%;
+    --oth2--vintage-grape--hsl: 259, 11%, 33%;
+    --oth2--taupe-grey--hsl: 342, 10%, 38%;
+    --oth2--smoky-rose--hsl: 9, 18%, 44%;
+    --oth2--cinnamon-wood--hsl: 17, 27%, 49%;
+    --oth2--cinnamon-wood-2--hsl: 20, 40%, 54%;
+    --oth2--toasted-almond--hsl: 22, 58%, 59%;
+    --oth2--tangerine-dream--hsl: 23, 81%, 64%;
+    --oth2--autumn-leaf--hsl: 23, 81%, 53%;
+    --oth2--amber-flame--hsl: 44, 100%, 49%;
 
     /* https://coolors.co/1c335f-524d87-8866af-be80d7-d98deb-f399ff-f18fc9-ee8492-eb795b-e86e24 */
 
@@ -53,6 +53,25 @@
     --oth--chapter--cotton-candy--hsl: 352, 76%, 73%;
     --oth--chapter--burnt-peach--hsl: 12, 78%, 64%;
     --oth--chapter--autumn-leaf--hsl: 23, 81%, 53%;
+
+
+/* CSS HEX */
+--twilight-indigo: #1c335fff;
+--autumn-leaf: #e86e24ff;
+--amber-flame: #fcb900ff;
+--emerald: #00d084ff;
+--blue-bell: #0693e3ff;
+--rebecca-purple: #503aa8ff;
+--porcelain: #fbfaf3ff;
+
+/* CSS HSL */
+--twilight-indigo: hsla(219, 54%, 24%, 1);
+--autumn-leaf: hsla(23, 81%, 53%, 1);
+--amber-flame: hsla(44, 100%, 49%, 1);
+--emerald: hsla(158, 100%, 41%, 1);
+--blue-bell: hsla(202, 95%, 46%, 1);
+--rebecca-purple: hsla(252, 49%, 44%, 1);
+--porcelain: hsla(53, 50%, 97%, 1);
 }
 
 
@@ -78,6 +97,35 @@ html {
     font-size: 18px;
 }
 
+.book--content p a,
+.book--content li a {
+  --pico-text-decoration: none;
+  display: inline-block;
+  border-bottom: 2px solid var(--oth2--autumn-leaf);
+  --pico-color: var(--oth2--twilight-indigo);
+  background-color: hsla(var(--oth2--amber-flame--hsl), 0.25);
+  transition: transform 50ms linear;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+.book--content p a.secondary,
+.book--content p a.contrast,
+.book--content li a.secondary,
+.book--content li a.contrast {
+  --pico-text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid var(--oth2--autumn-leaf);
+}
+.book--content p :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+    --pico-text-decoration: none;
+    /* font-style: italic; */
+    color: var(--oth2--autumn-leaf);
+    transform: skew(-10deg, 0);
+}
+
 .main--layout,
 .map--layout .row {
     padding: 2rem 0.5rem;
@@ -100,18 +148,21 @@ main > .row > [class^="col-"] {
 [role="navigation"] .button[aria-label="Previous"]::before {
     content: "←";
     margin-right: 1rem;
+    font-size: 50px;
 }
 [role="navigation"] .button[aria-label="Next"]::after {
     content: "→";
     margin-left: 1rem;
+    font-size: 50px;
 }
 
 .menu-list a, .menu-list button, .menu-list .menu-item {
     background-color: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    font-weight: 300;
+    /* backdrop-filter: blur(10px); */
+    /* font-weight: 300; */
     --pico-color: rgb(64, 70, 84);
     line-height: 1em;
+    /* transition: background-color 50ms linear; */
 }
 
 .menu-list a.is-active,
@@ -121,13 +172,25 @@ main > .row > [class^="col-"] {
 .menu-list .menu-item.is-active,
 .menu-list .menu-item.is-selected,
 .menu-list a[data-menu-type="section"].is-active + ol {
-    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, 1); */
+    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.75);
+    color: #FFF;
+    /* background-color: hsla(var(--oth2--amber-flame--hsl), 0.5); */
+    /* background-color: var(--oth2--amber-flame); */
+    /* color: var(--oth2--amber-flame); */
 }
 
+.menu-list {
+    font-weight: 500;
+}
+.menu-list ol {
+    --pico-font-weight: 500;
+}
+/* 
 .menu-list [data-menu-type="page"].is-active,
 .menu-list [data-menu-type="section"].is-active {
     font-weight: 600;
-}
+} */
 
 nav li :where(a, [role="link"]) {
     margin: 0;
@@ -145,10 +208,14 @@ aside li {
     padding: 0;
 }
 
-.menu-list :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus), [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+.menu-list :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+[role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
     /* --bulma-menu-item-background-a: 1; */
     --pico-text-decoration: none;
-    background-color: rgba(255, 255, 255, 1);
+    /* background-color: rgba(255, 255, 255, 1); */
+    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.75);
+    color: #FFF;
+    font-style: italic;
 }
 
 .menu-list {
@@ -255,7 +322,14 @@ article [data-chapter-order]::before {
     content: var(--reading-chapter) ". ";
 }
 
-.is-hidden {
+/* .menu-list ol {
+    max-height: max-content;
+    transition: max-height 500ms linear;
+    overflow: hidden;
+} */
+
+[data-menu-type="section"] + .is-hidden,
+[data-menu-type="chapter"] + .is-hidden {
     /* max-height: 0; */
     display: none;
 }
@@ -282,7 +356,8 @@ dd {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
 }
-.journey-map .menu-list > li:last-of-type > a {
+.journey-map .menu-list > li:last-of-type > a:not(.is-active),
+.journey-map .menu-list > li:last-of-type > a.is-active + ol li:last-of-type > a[data-menu-type="section"] {
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
 }
@@ -314,7 +389,7 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list > li > ol > li > ol,
 .journey-map .menu-list > div > ol > li > ol {
     font-size: 0.9rem;
-    margin-top: -0.2rem;
+    /* margin-top: -0.2rem; */
 }
 
 .journey-map .menu-list > li > ol > li > ol > li:last-child a {
@@ -325,6 +400,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"] {
     border-right: 2px solid var(--journey--chapter--scheme);
     border-left: 2px solid var(--journey--chapter--scheme);
+
+    border-bottom: 1px dotted var(--journey--chapter--scheme);
 }
 
 .journey-map .menu-list > li > ol > li:last-of-type [data-menu-type="section"],
@@ -543,10 +620,12 @@ main [role="navigation"] [aria-label="Next"] {
 main [role="navigation"] [aria-label="Previous"]::before {
     content: "←";
     margin-right: 1rem;
+    font-size: 50px;
 }
 main [role="navigation"] [aria-label="Next"]::after {
     content: "→";
     margin-left: 1rem;
+    font-size: 50px;
 }
 
 header nav {
@@ -582,19 +661,31 @@ body > .main--layout {
 figure.video-placeholder {
     position: relative;
     margin-bottom: 1rem;
+    margin-top: 50px;
     min-height: 12rem;
     border: 2px solid var(--journey--chapter--scheme);
+    transition: background-color 200ms linear;
+    background-color: var(--journey--chapter--scheme);
 }
 
 figure.video-placeholder figcaption {
     background-color: var(--journey--chapter--scheme);
+    border: 2px solid var(--journey--chapter--scheme);
+    margin-top: -2px;
+    margin-left: -2px;
+    margin-right: -2px;
+    margin-bottom: -2px;
     color: var(--journey--chapter--scheme--subtitle);
     padding: 0.5rem 1rem;
     position: absolute;
-    top: 0;
-    width: 100%;
+    top: -48px;
+    width: calc(100% + 4px);
     z-index: 20;
     font-weight: 600;
+}
+
+figure.video-placeholder:hover {
+    background-color: transparent;
 }
 
 figure.video-placeholder figcaption a {
@@ -610,25 +701,27 @@ figure.video-placeholder::after {
     font-size: 12rem;
     line-height: 1em;
     border: 2px solid transparent;
-    color: hsla(var(--journey--chapter--scheme--hsl), 0.9);
+    /* color: hsla(var(--journey--chapter--scheme--hsl), 0.9); */
+    /* color: var(--journey--chapter--scheme); */
+    color: hsla(var(--oth2--amber-flame--hsl), 0.75);
     content: "▶";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(1px);
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    /* backdrop-filter: blur(1px); */
     cursor: pointer;
 
-    transition: color ease-in-out 50ms, background-color ease-in-out 50ms, backdrop-filter ease-in-out 50ms;
+    transition: color ease-in-out 50ms, background-color ease-in-out 50ms;
 }
 
-figure.video-placeholder:hover::after {
+/* figure.video-placeholder:hover::after { */
     /* color: hsla(var(--journey--chapter--scheme--hsl), 1); */
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(0);
-}
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    /* backdrop-filter: blur(0); */
+/* } */
 /* 
 .workbook--exercise strong {
     color: var(--journey--chapter--scheme);
@@ -655,7 +748,7 @@ figure.video-placeholder:hover::after {
 .book--decision fieldset .book--decision--option--input {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     
     cursor: pointer;
     padding: 0.5rem 1rem;
@@ -697,11 +790,15 @@ figure.video-placeholder:hover::after {
 }
 
 .book--decision fieldset .book--decision--option input:checked + .book--decision--option--input {
-    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.4)
+    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.4);
 }
 
 .book--decision fieldset .book--decision--option--input:hover .book--decision--option--icon {
     transform: scale(1.1);
+}
+
+.book--decision fieldset .book--decision--option--input:hover .book--decision--option--label p {
+    font-style: italic;
 }
 
 .book--decision fieldset .book--decision--option label p {
@@ -1178,10 +1275,14 @@ a.map--decision[role=button] {
 .home-buyer--cover {
     background-blend-mode: luminosity;
     background-color: var(--oth--chapter--twilight-indigo);
+    background-size: cover;
+    aspect-ratio: 3 / 2;
 }
 .home-owner--cover {
     background-blend-mode: screen;
     background-color: var(--oth--chapter--autumn-leaf);
+    background-size: cover;
+    aspect-ratio: 3 / 2;
 }
 
 .map--decision .button {
@@ -1227,6 +1328,7 @@ a.map--decision[role=button]:hover {
 
 .book--decision--option--icon svg {
     width: 100%;
+    /* width: 250px; */
 }
 
 .oth--theme--primary {
@@ -1261,7 +1363,7 @@ a.map--decision[role=button]:hover {
     flex: 1;
 }
 
-.map--layout .book--decision fieldset .book--decision--option--input {
+.book--decision fieldset .book--decision--options--columns .book--decision--option--input {
     flex-direction: column;
 }
 
@@ -1273,4 +1375,40 @@ a.map--decision[role=button]:hover {
 
 .map--layout .book--decision--option--icon {
     width: 80%;
+}
+
+.map--layout .book--decision fieldset legend {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.map--layout {
+    --journey--chapter--scheme: var(--oth2--twilight-indigo);
+}
+
+.book--decision fieldset .book--decision--options--columns .book--decision--option .book--decision--option--input {
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-radius: 0;
+
+    height: 100%;
+}
+
+.book--decision fieldset .book--decision--options--columns .book--decision--option:first-of-type .book--decision--option--input {
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-left-radius: var(--pico-border-radius);
+    border-bottom-left-radius: var(--pico-border-radius);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.book--decision fieldset .book--decision--options--columns .book--decision--option:last-of-type .book--decision--option--input {
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: var(--pico-border-radius);
+    border-top-right-radius: var(--pico-border-radius);
 }

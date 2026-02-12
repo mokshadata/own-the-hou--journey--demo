@@ -34,7 +34,7 @@
   color-scheme: light;
   --pico-background-color: #fff;
   /* --pico-color: #373c44; */
-  --pico-color: var(--oth--twilight-indigo);
+  --pico-color: #111; /*var(--oth--twilight-indigo);*/
   --pico-text-selection-color: rgba(2, 154, 232, 0.25);
   --pico-muted-color: #646b79;
   --pico-muted-border-color: rgb(231, 234, 239.5);
@@ -43,7 +43,8 @@
   /* --pico-primary-background: #0172ad; */
   /* --pico-primary-underline: rgba(1, 114, 173, 0.5); */
 
-  --pico-primary: var(--oth--full-spectrum-blue);
+  /* --pico-primary: var(--oth--full-spectrum-blue); */
+  --pico-primary: var(--oth--autumn-leaf);
   --pico-primary-background: var(--pico-primary);
   --pico-primary-border: var(--pico-primary-background);
   --pico-primary-underline: var(--pico-primary);
@@ -55,11 +56,11 @@
   /* --pico-primary-focus: rgba(2, 154, 232, 0.5); */
   /* --pico-primary-inverse: #fff; */
 
-  --pico-primary-hover: var(--oth--rebecca-purple);
-  --pico-primary-hover-background: var(--oth--rebecca-purple);
+  --pico-primary-hover: var(--pico-primary);
+  --pico-primary-hover-background: var(--pico-primary);
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);
-  --pico-primary-focus: var(--oth--rebecca-purple);
+  --pico-primary-focus: var(--pico-primary);
   --pico-primary-inverse: #fff;
 
 

@@ -9,9 +9,8 @@ export default function ({
     optionType,
     options,
     readOnly,
+    isColumns = false,
 }) {
-
-    console.log({ options })
     return (
     <Suspense fallback={<BookDecisionsSkeleton
         legend={legend}
@@ -26,6 +25,7 @@ export default function ({
             readOnly={readOnly}
             legend={legend}
             name={name}
+            isColumns={isColumns}
             optionType={optionType}
             options={options}
         />
