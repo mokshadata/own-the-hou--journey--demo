@@ -14,7 +14,10 @@ export default defineConfig({
   base: '/own-the-hou--journey--demo/',
   integrations: [solidJs(), mdx()],
   markdown: {
-    remarkPlugins: [remarkReadingTime, remarkTestArgs],
+    remarkPlugins: [
+      remarkReadingTime, 
+      // remarkTestArgs
+    ],
   },
   vite: {
     plugins: [tailwindcss()]
