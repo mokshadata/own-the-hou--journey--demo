@@ -684,42 +684,45 @@ figure.video-placeholder figcaption {
     font-weight: 600;
 }
 
-figure.video-placeholder:hover {
+/* figure.video-placeholder:hover {
     background-color: transparent;
-}
+} */
 
 figure.video-placeholder figcaption a {
     color: var(--journey--chapter--scheme--subtitle);
     text-decoration: none;
 }
 
-figure.video-placeholder::after {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    font-size: 12rem;
-    line-height: 1em;
-    border: 2px solid transparent;
-    /* color: hsla(var(--journey--chapter--scheme--hsl), 0.9); */
-    /* color: var(--journey--chapter--scheme); */
-    color: hsla(var(--oth2--amber-flame--hsl), 0.75);
-    content: "▶";
-    position: absolute;
-    top: 0;
-    left: 0;
+figure.video-placeholder video,
+figure.video-placeholder img {
     width: 100%;
-    height: 100%;
-    /* background-color: rgba(0, 0, 0, 0.2); */
-    /* backdrop-filter: blur(1px); */
     cursor: pointer;
+}
 
-    transition: color ease-in-out 50ms, background-color ease-in-out 50ms;
+.video--loading video {
+    display: none;
+}
+
+/* figure.video-placeholder img {
+    position: absolute;
+    z-index: 20;
+} */
+
+figure.video-placeholder.video--has-not-played video,
+figure.video-placeholder.video--has-not-played img {
+    mix-blend-mode: luminosity;
+    transition: mix-blend-mode 50ms ease-in-out;
+}
+
+figure.video-placeholder.video--has-not-played:hover video,
+figure.video-placeholder.video--has-not-played:hover img {
+    mix-blend-mode: normal;
 }
 
 /* figure.video-placeholder:hover::after { */
-    /* color: hsla(var(--journey--chapter--scheme--hsl), 1); */
+    /* color: hsla(var(--oth2--amber-flame--hsl), 1); */
     /* background-color: rgba(0, 0, 0, 0.1); */
+    /* text-shadow: 0 0 30px rgba(0, 0, 0, 0.4); */
     /* backdrop-filter: blur(0); */
 /* } */
 /* 
