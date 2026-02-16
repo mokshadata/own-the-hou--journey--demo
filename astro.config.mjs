@@ -16,7 +16,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       remarkReadingTime, 
-      // remarkTestArgs
+      remarkTestArgs
     ],
   },
   vite: {

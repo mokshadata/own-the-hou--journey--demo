@@ -1,6 +1,6 @@
 import { createSignal, createMemo, createResource, createEffect, Show} from "solid-js";
 
-export default function VideoPlaceholder({ src, alt, slug }) {
+export default function VideoPlaceholder({ baseSource, alt, slug }) {
     let videoDOMEl;
 
     const [hasPlayed, setHasPlayed] = createSignal(false)
@@ -20,12 +20,12 @@ export default function VideoPlaceholder({ src, alt, slug }) {
         <figcaption><a name={slug} id={slug}>{alt}</a></figcaption>
         <div class="video--area">
             <Show when={status() === 'loading'}>
-                <img src={`${src}thumbnail.png`} alt={alt} title={alt}/>
+                <img src={`${baseSource}thumbnail.png`} alt={alt} title={alt}/>
             </Show>
             <video
                 crossorigin="anonymous"
-                src={`${src}video.mp4`}
-                poster={`${src}thumbnail.png`}
+                src={`${baseSource}video.mp4`}
+                poster={`${baseSource}thumbnail.png`}
                 controls
                 plays-inline
                 ref={(el) => {
@@ -44,7 +44,7 @@ export default function VideoPlaceholder({ src, alt, slug }) {
                     });
                 }}
             >
-                <track default kind="captions" src={`${src}transcript.vtt`} srclang="en" />
+                <track default kind="captions" src={`${baseSource}transcript.vtt`} srclang="en" />
             </video>
         </div>
     </figure>
