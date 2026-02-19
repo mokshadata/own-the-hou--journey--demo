@@ -1,3 +1,5 @@
+import ChapterIntroGraphic from "../diagrams/chapter-intro"
+
 export default function JourneyMap({ journeyMap, base_url }) {
   return (<div class="menu-list">
       {
@@ -5,6 +7,7 @@ export default function JourneyMap({ journeyMap, base_url }) {
           <div
             class="frame"
           >
+            <ChapterIntroGraphic chapterID={topLevel.chapter}/>
             <a
               role="link"
               data-menu-type="chapter"

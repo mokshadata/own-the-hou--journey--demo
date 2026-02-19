@@ -106,6 +106,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
         </nav>
         <div class="col-xs-12 col-md-9 col-lg-7">
           <div class={`book--area ${pageType}`} data-chapter={chapter}>
+            <slot name="book--header"/>
             <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
             <div class={`${pageType}--content book--content`}>
               <slot />

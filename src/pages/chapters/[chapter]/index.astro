@@ -2,8 +2,11 @@
 import ChapterLayout from '../../../layouts/ChapterLayout.astro';
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
 
+import ChapterIntroGraphic from '../../../components/diagrams/chapter-intro'
+
 export async function getStaticPaths() {
   const chapters = await getCollection('chapters');
+  console.log({ chapter: chapters.find(({id}) => (id === 'c07-finalize-your-mortgage'))?.data.contains })
   const structure = await Promise.all(chapters.map(async (chapter) => ({
       chapter: chapter.id,
       ...chapter.data,
@@ -107,9 +110,19 @@ const intro = await getContent()
     chapter: chapterTitle,
   }}
 >
-  <h2 class="is-size-3 book--module-title">Introduction</h2>
-  {intro && <p class="book--read-time">{intro.remarkPluginFrontmatter.minutesRead}</p> || <></>}
-  <div class="chapter--intro--content">
-      {intro && <intro.Content/> || <></>}
-  </div>
+  <!-- <h2 class="is-size-3 book--module-title">Introduction</h2> -->
+    {intro && (
+        <div class="chapter--intro--header" slot="book--header">
+            <ChapterIntroGraphic chapterID={chapter}/>
+            <h1>
+                {chapterTitle}
+            </h1>
+        </div>
+    ) || <></> }
+    {intro && (
+        <div class="chapter--intro--content">
+            {intro && <p class="book--read-time">{intro.remarkPluginFrontmatter.minutesRead}</p> || <></>}
+            <intro.Content/>
+        </div>
+    ) || <div class="chapter--intro--content"></div>}
 </ChapterLayout>

@@ -219,7 +219,7 @@ aside li {
 }
 
 .menu-list {
-    counter-reset: chapter -1;
+    counter-reset: chapter;
 }
 
 [data-menu-type="chapter"] > div,
@@ -304,6 +304,7 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 
 .book--read-time {
     font-style: italic;
+    text-align: right;
 }
 
 article {
@@ -733,6 +734,34 @@ figure.video-placeholder.video--has-not-played:hover img {
 .col {
     display: flex;
     flex-direction: column;
+}
+
+.chapter--intro .book--breadcrumb {
+    display: none;
+}
+
+.chapter--intro--header {
+    display: flex;
+    width: 100%;
+
+    align-items: flex-end;
+
+    border-bottom: 2px solid var(--journey--chapter--scheme);
+    background-color: var(--journey--chapter--scheme);
+    padding: 0.5rem 1.5rem 0.25rem 1.5rem;
+}
+
+.chapter--intro--header h1 {
+    width: 100%;
+    font-weight: 400;
+    /* font-style: italic; */
+    margin-bottom: 0.5rem;
+    color: #FFF;
+}
+
+
+.chapter--intro--header svg {
+    width: 180px;
 }
 
 
