@@ -3,13 +3,13 @@ import { file } from "astro/loaders";
 import { parse as parseCsv } from "csv-parse/sync";
 
 const chapters = defineCollection({
-  loader: file("src/content/chapters/chapters.csv", {
+  loader: file("src/content/chapters/chapters-02.csv", {
     parser: (text) => {
       return parseCsv(text, { columns: true, skipEmptyLines: true }).map((item) => ({
         id: item['slug'],
         title: item['Name'],
         order: item['Order'] * 1,
-        contains: item['Related Sections'].split(', '),
+        contains: item['Related Sections'].split(', ').filter((section) => (!section.includes('s00'))),
       }))
     }
   }),
@@ -21,7 +21,7 @@ const chapters = defineCollection({
 });
 
 const sections = defineCollection({
-  loader: file("src/content/sections/sections.csv", {
+  loader: file("src/content/sections/sections-02.csv", {
     parser: (text) => {
       const result =  parseCsv(text, { columns: true, skipEmptyLines: true }).map((item) => {
         return {
@@ -31,6 +31,7 @@ const sections = defineCollection({
           contains: item['Modules'].split(', ').filter((module) => (module.length > 0)),
         }
       })
+      .filter((items) => (items.order > 0))
       return result
     }
   }),

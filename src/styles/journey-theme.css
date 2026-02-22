@@ -293,18 +293,23 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 .book--breadcrumb {
     margin-bottom: 0;
     padding: 0.5rem 1.5rem 0.25rem 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 200;
 }
 
 .book--module-title {
     line-height: 1em;
     margin-top: 0;
-    margin-bottom: 0.25em;
+    margin-bottom: 0;
     /* padding: 0 1rem; */
 }
 
 .book--read-time {
+    display: block;
     font-style: italic;
-    text-align: right;
+    /* text-align: right; */
+    padding-bottom: 1rem;
 }
 
 article {
@@ -438,11 +443,11 @@ color: var(--journey--chapter--scheme--subtitle); */
     /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
 }
 
-[data-chapter="c03-what-s-your-budget"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c03-what-s-your-budget"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c03-what-s-your-budget"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c03-what-s-your-budget"],
-.journey-map .menu-list a.is-active[href*="c03-what-s-your-budget"] {
+[data-chapter="c02-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c02-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c02-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c02-what-s-your-budget"],
+.journey-map .menu-list a.is-active[href*="c02-what-s-your-budget"] {
     --journey--chapter--scheme: var(--oth2--vintage-grape);
     --journey--chapter--scheme--hsl: var(--oth2--vintage-grape--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -451,11 +456,11 @@ color: var(--journey--chapter--scheme--subtitle); */
     /* --journey--chapter--scheme--subtitle: var(--bulma-body-color); */
 }
 
-[data-chapter="c04-choose-your-homebuying-team"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c04-choose-your-homebuying-team"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c04-choose-your-homebuying-team"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c04-choose-your-homebuying-team"],
-.journey-map .menu-list a.is-active[href*="c04-choose-your-homebuying-team"] {
+[data-chapter="c03-build-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a.is-active[href*="c03-build-your-homebuying-team"] {
     --journey--chapter--scheme: var(--oth2--taupe-grey);
     --journey--chapter--scheme--hsl: var(--oth2--taupe-grey--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -463,11 +468,11 @@ color: var(--journey--chapter--scheme--subtitle); */
     /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
 }
 
-[data-chapter="c05-get-pre-approved-for-a-mortgage"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c05-get-pre-approved-for-a-mortgage"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c05-get-pre-approved-for-a-mortgage"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c05-get-pre-approved-for-a-mortgage"],
-.journey-map .menu-list a.is-active[href*="c05-get-pre-approved-for-a-mortgage"] {
+[data-chapter="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a.is-active[href*="c04-get-pre-approved-for-a-mortgage"] {
     --journey--chapter--scheme: var(--oth2--smoky-rose);
     --journey--chapter--scheme--hsl: var(--oth2--smoky-rose--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -475,11 +480,11 @@ color: var(--journey--chapter--scheme--subtitle); */
     /* --journey--chapter--scheme: var(--oth--forest-green); */
 }
 
-[data-chapter="c06-find-a-home-and-make-an-offer"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c06-find-a-home-and-make-an-offer"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c06-find-a-home-and-make-an-offer"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c06-find-a-home-and-make-an-offer"],
-.journey-map .menu-list a.is-active[href*="c06-find-a-home-and-make-an-offer"] {
+[data-chapter="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a.is-active[href*="c05-find-a-home-and-make-an-offer"] {
     --journey--chapter--scheme: var(--oth2--cinnamon-wood);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -487,31 +492,31 @@ color: var(--journey--chapter--scheme--subtitle); */
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
 }
 
-[data-chapter="c07-finalize-your-mortgage"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c07-finalize-your-mortgage"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c07-finalize-your-mortgage"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c07-finalize-your-mortgage"],
-.journey-map .menu-list a.is-active[href*="c07-finalize-your-mortgage"] {
+[data-chapter="c06-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a.is-active[href*="c06-finalize-your-mortgage"] {
     --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
 }
-[data-chapter="c08-close-on-your-home"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c08-close-on-your-home"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c08-close-on-your-home"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c08-close-on-your-home"],
-.journey-map .menu-list a.is-active[href*="c08-close-on-your-home"] {
+[data-chapter="c07-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c07-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c07-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c07-close-on-your-home"],
+.journey-map .menu-list a.is-active[href*="c07-close-on-your-home"] {
     --journey--chapter--scheme: var(--oth2--toasted-almond);
     --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
-[data-chapter="c09-you-re-a-homeowner-protect-your-home"],
-.journey-map .menu-list a[data-menu-type="chapter"][href*="c09-you-re-a-homeowner-protect-your-home"],
-.journey-map .menu-list a[data-menu-type="section"][href*="c09-you-re-a-homeowner-protect-your-home"],
-.journey-map .menu-list a[data-menu-type="page"][href*="c09-you-re-a-homeowner-protect-your-home"],
-.journey-map .menu-list a.is-active[href*="c09-you-re-a-homeowner-protect-your-home"] {
+[data-chapter="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a.is-active[href*="c08-you-re-a-homeowner-protect-your-home"] {
     --journey--chapter--scheme: var(--oth2--tangerine-dream);
     --journey--chapter--scheme--hsl: var(--oth2--tangerine-dream--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -520,6 +525,7 @@ color: var(--journey--chapter--scheme--subtitle); */
 }
 
 .book--module-title {
+    display: inline-block;
     border-bottom: 4px solid var(--journey--chapter--scheme);
     --pico-color: var(--journey--chapter--scheme);
     margin-top: 1rem;
@@ -574,7 +580,7 @@ main [role="navigation"] > div {
 
 main [role="navigation"] [aria-label] {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
 
     background-color: rgba(255, 255, 255, 0.25);
@@ -666,7 +672,7 @@ figure.video-placeholder {
     min-height: 12rem;
     border: 2px solid var(--journey--chapter--scheme);
     transition: background-color 200ms linear;
-    background-color: var(--journey--chapter--scheme);
+    /* background-color: var(--journey--chapter--scheme); */
 }
 
 figure.video-placeholder figcaption {
@@ -709,11 +715,11 @@ figure.video-placeholder img {
     z-index: 20;
 } */
 
-figure.video-placeholder.video--has-not-played video,
+/* figure.video-placeholder.video--has-not-played video,
 figure.video-placeholder.video--has-not-played img {
     mix-blend-mode: luminosity;
     transition: mix-blend-mode 50ms ease-in-out;
-}
+} */
 
 figure.video-placeholder.video--has-not-played:hover video,
 figure.video-placeholder.video--has-not-played:hover img {
@@ -749,6 +755,10 @@ figure.video-placeholder.video--has-not-played:hover img {
     border-bottom: 2px solid var(--journey--chapter--scheme);
     background-color: var(--journey--chapter--scheme);
     padding: 0.5rem 1.5rem 0.25rem 1.5rem;
+
+    position: sticky;
+    top: 0;
+    z-index: 200;
 }
 
 .chapter--intro--header h1 {

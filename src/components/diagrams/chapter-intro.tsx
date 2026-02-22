@@ -11,13 +11,13 @@ import HomeownershipGraphic from '../../assets/diagrams/c08--youre-a-homeowner--
 
 const diagrams = {
   'c01-welcome': WelcomeGraphic,
-  'c03-what-s-your-budget': WhatsYourBudgetGraphic,
-  'c04-choose-your-homebuying-team': HomebuyingTeamGraphic,
-  'c05-get-pre-approved-for-a-mortgage': PreapprovalGraphic,
-  'c06-find-a-home-and-make-an-offer': OfferGraphic,
-  'c07-finalize-your-mortgage': FinalizeYourMortgageGraphic,
-  'c08-close-on-your-home': ClosingGraphic,
-  'c09-you-re-a-homeowner-protect-your-home': HomeownershipGraphic,
+  'c02-what-s-your-budget': WhatsYourBudgetGraphic,
+  'c03-build-your-homebuying-team': HomebuyingTeamGraphic,
+  'c04-get-pre-approved-for-a-mortgage': PreapprovalGraphic,
+  'c05-find-a-home-and-make-an-offer': OfferGraphic,
+  'c06-finalize-your-mortgage': FinalizeYourMortgageGraphic,
+  'c07-close-on-your-home': ClosingGraphic,
+  'c08-you-re-a-homeowner-protect-your-home': HomeownershipGraphic,
 }
 
 export default function ({ chapterID }) {

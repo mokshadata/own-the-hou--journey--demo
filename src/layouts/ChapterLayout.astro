@@ -75,18 +75,22 @@ const base_url = `${import.meta.env.BASE_URL}`;
                             class={midLevel.section === activeSection && 'is-active' || ''}
                             href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
                           >{midLevel.title}</a>
-                          <ol class={midLevel.section !== activeSection && 'is-hidden' || ''}>
-                            {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
-                              <li>
-                                <a
-                                  role="link"
-                                  data-menu-type="page"
-                                  class={pageLevel.module === Astro.props.activePage && 'is-active' || ''}
-                                  href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
-                                >{pageLevel.item.data.name}</a>
-                              </li>
-                            ))}
-                          </ol>
+                          {
+                            midLevel.modules.length > 1 && (
+                              <ol>
+                                {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
+                                  <li>
+                                    <a
+                                      role="link"
+                                      data-menu-type="page"
+                                      class={pageLevel.module === Astro.props.activePage && 'is-active' || ''}
+                                      href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
+                                    >{pageLevel.item.data.name}</a>
+                                  </li>
+                                ))}
+                              </ol>
+                            )
+                          }
                         </li>
                       ))}
                       <li>

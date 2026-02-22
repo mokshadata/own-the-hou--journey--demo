@@ -24,7 +24,7 @@ export default function Paging({
       data-chapter={chapter}
     >
       <div>
-        {prevPage && <PageButton relativePosition="Previous" baseURL={baseURL} {...prevPage.params} {...prevPage.props} /> || <></>}
+        {prevPage && <PageButton relativePosition="Previous" baseURL={baseURL} {...prevPage.params} {...prevPage.props} currentChapter={chapter} /> || <></>}
       </div>
       <div>
         {nextPage && (
@@ -34,7 +34,7 @@ export default function Paging({
             href={`${baseURL}chapters/${[nextPageGetter().params.chapter, nextPageGetter().params.section, nextPageGetter().params.module].filter((param) => (param)).join('/')}/`}
           >
             <div>
-              <small><strong>{nextPageGetter().props.chapterTitle}</strong> <i>{nextPageGetter().props.sectionTitle}</i></small>
+              <small>{(chapter !== nextPageGetter().params.chapter) && <strong>{nextPageGetter().props.chapterTitle}</strong> || <></>} {false && <i>{nextPageGetter().props.sectionTitle}</i> || <></>}</small>
               <strong>{nextPageGetter().props.moduleTitle}</strong>
             </div>
           </a>
