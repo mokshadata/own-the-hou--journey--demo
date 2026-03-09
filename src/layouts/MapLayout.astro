@@ -15,12 +15,42 @@ import JourneyMap from "../components/map/component.tsx";
 import Paging from "../components/paging";
 
 import BookDecisions from "../components/decisions/";
+import Questionnaire from "../components/questionnaire/";
 
 import ModelWrapper from "../components/model-wrapper";
 import { key } from "localforage";
 
+import { JourneyMapSurvey } from "../store/survey";
+// import { journeyMapperChoices } from "../store/navigation";
+
 const { journeyMap } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
+
+      // order: 1,
+      // key: 'journey--type--homebuying',
+      // conditions: [],
+      // type: 'answer',
+      // text: "I'm looking to buy a house.",
+      // subtext: null,
+      // icon: null,
+
+const start = JourneyMapSurvey[1].options
+  .toSorted((a, b) => (a.order - b.order))
+  .map((opt) => ({
+    option: opt.key,
+    label: opt.text,
+    detail: opt.subtext,
+    icon: 'PersonaStep01Diagram',
+  }))
+
+const next = JourneyMapSurvey[2].options
+  .toSorted((a, b) => (a.order - b.order))
+  .map((opt) => ({
+    option: opt.key,
+    label: opt.text,
+    detail: opt.subtext,
+    icon: 'PersonaStep01Diagram',
+  }))
 
 const options = [
   {
@@ -86,42 +116,7 @@ const options = [
       </nav>
     </header>
     <main class="map--layout">
-      <div class="row map--intro">
-        <div class="col-xs-12">
-          <h1>Where are you on your home owning journey?</h1>
-        </div>
-      </div>
-      <div class="row map--intro map--decisions">
-        <!-- decision--c00-mapping--journey--phase -->
-        <div class="col-xs-6">
-          <a role="button" class="home-buyer--cover map--decision" style={{backgroundImage: `url(${keyImage.src});`}}>
-            <span class="map--decision--cover--background"></span>
-            <span class="button">I'm looking to buy a house.</span>
-          </a>
-        </div>
-        <div class="col-xs-6">
-          <a role="button" class="home-owner--cover map--decision" style={{backgroundImage: `url(${familyInHomeImage.src});`}}>
-            <span class="map--decision--cover--background"></span>
-            <span class="button">I'm a homeowner.</span>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <!-- <ModelWrapper storeName={'decision--c00-mapping--journey'}> -->
-            <BookDecisions
-              client:only="solid-js"
-              legend="What best describes you?"
-              name="decision--c00-mapping--journey--phase"
-              readOnly={false}
-              optionType="radio"
-              options={options}
-              isColumns={true}
-            >
-          </BookDecisions>
-          <!-- </ModelWrapper> -->
-        </div>
-      </div>
+      <Questionnaire client:only="solid-js"/>
       <div class="row">
         <nav class="col-xs-12">
           <aside class="menu journey-map" data-mode="map">

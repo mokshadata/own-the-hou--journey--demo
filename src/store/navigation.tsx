@@ -3,6 +3,8 @@ import { createStore } from "solid-js/store";
 import { makePersisted } from "@solid-primitives/storage";
 import localforage from "localforage";
 
+import { JourneyMapSurvey } from "./survey";
+
 export const [annualIncome, setAnnualIncome, initializeAnnualIncome] = makePersisted(createSignal(0), {
     storage: localforage,
     name: 'c03.annualIncome',
@@ -19,9 +21,9 @@ export const [journeyMap, setJourneyMap, initializeJourneyMap] = makePersisted(c
 })
 
 export const [mapGenStore, setMapGenStore] = createStore({
-    type: 'homebuyer',
-    phase: 'interested-but',
-    challenges: [],
+    type: '',
+    phase: '',
+    challenge: '',
 })
 
 export const [journeyType, setJourneyType] = makePersisted(createSignal(mapGenStore.type), {
@@ -32,9 +34,9 @@ export const [journeyPhase, setJourneyPhase] = makePersisted(createSignal(mapGen
     storage: localforage,
     name: 'book.journeyMap.inputs.phase',
 })
-export const [journeyChallenges, setJourneyChallenges] = makePersisted(createStore(mapGenStore.challenges), {
+export const [journeyChallenge, setJourneyChallenge] = makePersisted(createSignal(mapGenStore.challenge), {
     storage: localforage,
-    name: 'book.journeyMap.inputs.challenges',
+    name: 'book.journeyMap.inputs.challenge',
 })
 
 export const valuesByName = {
@@ -44,7 +46,8 @@ export const valuesByName = {
 
     'decision--c00-mapping--journey--type': journeyType,
     'decision--c00-mapping--journey--phase': journeyPhase,
-    'decision--c00-mapping--journey--challenges': journeyChallenges,
+
+    'decision--c00-mapping--journey--challenge': journeyChallenge,
 }
 
 export const nextPageByDecision = (module) => {
@@ -58,6 +61,31 @@ export const nextPageByDecision = (module) => {
     return null
 }
 
+export const journeyMapperChoices = () => {
+    const choices = [
+        'decision--c00-mapping--journey--type',
+        'decision--c00-mapping--journey--phase',
+        'decision--c00-mapping--journey--challenge',
+    ].map((choiceName) => ({
+        key: choiceName,
+        option: valuesByName[choiceName](),
+    }))
+    .filter((choice) => (choice.option))
+
+    return choices
+}
+
+export const journeyMapList = () => {
+    return JourneyMapSurvey.filter(
+        (step) => (
+            step.conditions.length === 0 ||
+            step.conditions.every((condition) => (
+                journeyMapperChoices().find((choice) => (choice.key === condition.key && choice.option === condition.option || false))
+            )
+        ))
+    )
+}
+
 export const settersByName = {
     'decision--c03-budget--estimation-method': setBudgetEstimationMethod,
     'decision--c03-budget--annual-income--value': setAnnualIncome,
@@ -65,5 +93,6 @@ export const settersByName = {
 
     'decision--c00-mapping--journey--type': setJourneyType,
     'decision--c00-mapping--journey--phase': setJourneyPhase,
-    'decision--c00-mapping--journey--challenges': setJourneyChallenges,
+    'decision--c00-mapping--journey--challenge': setJourneyChallenge,
+
 }
