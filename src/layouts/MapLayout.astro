@@ -118,7 +118,8 @@ const options = [
     <main class="map--layout">
       <Questionnaire client:only="solid-js"/>
       <div class="row">
-        <nav class="col-xs-12">
+        <nav class="col-xs-12 journey-map-results">
+          <h1>Your Own the Hou Journey</h1>
           <aside class="menu journey-map" data-mode="map">
             <JourneyMap client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
           </aside>

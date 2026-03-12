@@ -4,16 +4,16 @@ import { createEffect } from "solid-js"
 
 export default function JourneyMap({ journeyMap, base_url }) {
 
-  const results = () => (journeyMapList().find((item) => (item.type === 'results')))
+  const results = () => (journeyMapList().filter((item) => (item.type === 'results')).reduce((result, curr) => ([...result, ...curr.options]), []))
   
   const yourJourneyMap = () => {
     return journeyMap.map((topLevel) => ({
       ...topLevel,
-      isFullChapterIncluded: results()?.options.includes(topLevel.chapter),
-      isChapterIncluded: (((results()?.options.includes(topLevel.chapter) || topLevel.sections.find((midLevel) => (results()?.options.includes(midLevel.section)))) && true) || false),
+      isFullChapterIncluded: results()?.includes(topLevel.chapter),
+      isChapterIncluded: (((results()?.includes(topLevel.chapter) || topLevel.sections.find((midLevel) => (results()?.includes(midLevel.section)))) && true) || false),
       sections: topLevel.sections.map((midLevel) => ({
         ...midLevel,
-        isSectionIncluded: (((results()?.options.includes(topLevel.chapter) || results()?.options.includes(midLevel.section)) && true) || false),
+        isSectionIncluded: (((results()?.includes(topLevel.chapter) || results()?.includes(midLevel.section)) && true) || false),
       }))
     }))
   }
@@ -30,7 +30,7 @@ export default function JourneyMap({ journeyMap, base_url }) {
             <a
               role="link"
               data-menu-type="chapter"
-              href={`${base_url}chapters/${topLevel.chapter}/`}
+              data-destination={`${base_url}chapters/${topLevel.chapter}/`}
               style={{
                 opacity: topLevel.isChapterIncluded && 1 || 0.5,
               }}
@@ -48,7 +48,6 @@ export default function JourneyMap({ journeyMap, base_url }) {
                   <a
                     role="link"
                     data-menu-type="section"
-                    href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
                     style={{
                       opacity: midLevel.isSectionIncluded && 1 || 0.5,
                     }}
@@ -59,7 +58,6 @@ export default function JourneyMap({ journeyMap, base_url }) {
                         <a
                           role="link"
                           data-menu-type="page"
-                          href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
                         >{pageLevel.item.data.name}</a>
                       </li>
                     ))}

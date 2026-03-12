@@ -24,6 +24,8 @@ export const [mapGenStore, setMapGenStore] = createStore({
     type: '',
     phase: '',
     challenge: '',
+    
+    challenges: [],
 })
 
 export const [journeyType, setJourneyType] = makePersisted(createSignal(mapGenStore.type), {
@@ -39,6 +41,11 @@ export const [journeyChallenge, setJourneyChallenge] = makePersisted(createSigna
     name: 'book.journeyMap.inputs.challenge',
 })
 
+export const [journeyChallenges, setJourneyChallenges] = makePersisted(createSignal(mapGenStore.challenges), {
+    storage: localforage,
+    name: 'book.journeyMap.inputs.challenges',
+})
+
 export const valuesByName = {
     'decision--c03-budget--estimation-method': budgetEstimationMethod,
     'decision--c03-budget--annual-income--value': annualIncome,
@@ -48,6 +55,8 @@ export const valuesByName = {
     'decision--c00-mapping--journey--phase': journeyPhase,
 
     'decision--c00-mapping--journey--challenge': journeyChallenge,
+
+    'decision--c00-mapping--journey--challenges': journeyChallenges,
 }
 
 export const nextPageByDecision = (module) => {
@@ -65,7 +74,7 @@ export const journeyMapperChoices = () => {
     const choices = [
         'decision--c00-mapping--journey--type',
         'decision--c00-mapping--journey--phase',
-        'decision--c00-mapping--journey--challenge',
+        'decision--c00-mapping--journey--challenges',
     ].map((choiceName) => ({
         key: choiceName,
         option: valuesByName[choiceName](),
@@ -80,7 +89,7 @@ export const journeyMapList = () => {
         (step) => (
             step.conditions.length === 0 ||
             step.conditions.every((condition) => (
-                journeyMapperChoices().find((choice) => (choice.key === condition.key && choice.option === condition.option || false))
+                journeyMapperChoices().find((choice) => (choice.key === condition.key && (Array.isArray(choice.option) && choice.option.includes(condition.option) || choice.option === condition.option) || false))
             )
         ))
     )
@@ -95,4 +104,5 @@ export const settersByName = {
     'decision--c00-mapping--journey--phase': setJourneyPhase,
     'decision--c00-mapping--journey--challenge': setJourneyChallenge,
 
+    'decision--c00-mapping--journey--challenges': setJourneyChallenges,
 }

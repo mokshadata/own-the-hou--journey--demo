@@ -7,6 +7,7 @@ export const JourneyMapSurvey = [
     key: 'decision--c00-mapping--journey--type',
     conditions: [],
     type: 'question',
+    optionType: 'single',
     text: 'Where are you on your home owning journey?',
     subtext: null,
     icon: null,
@@ -39,6 +40,7 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     }],
     type: 'question',
+    optionType: 'single',
     text: 'What best describes you as a homebuyer?',
     subtext: null,
     icon: null,
@@ -84,7 +86,7 @@ export const JourneyMapSurvey = [
   },
   {
     order: 2,
-    key: 'decision--c00-mapping--journey--challenge',
+    key: 'decision--c00-mapping--journey--challenges',
     conditions: [{
       key: 'decision--c00-mapping--journey--type',
       option: 'journey--type--homebuyer',
@@ -94,10 +96,11 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     }],
     type: 'question',
+    optionType: 'multiple',
     text: 'Which of these do you need help with?',
     subtext: null,
     icon: null,
-    layout: 'horizontal--icon',
+    layout: 'vertical--icon',
     options: [
       {
         order: 1,
@@ -106,7 +109,7 @@ export const JourneyMapSurvey = [
         type: 'answer',
         text: "credit",
         subtext: null,
-        icon: null,
+        icon: 'ChallengeCredit',
       },
       {
         order: 2,
@@ -115,7 +118,7 @@ export const JourneyMapSurvey = [
         type: 'answer',
         text: "financial readiness as a whole",
         subtext: "(debt, income, savings, credit)",
-        icon: null,
+        icon: 'ChallengeFinancialReadiness',
       },
       {
         order: 3,
@@ -124,7 +127,7 @@ export const JourneyMapSurvey = [
         type: 'answer',
         text: "how much house I can afford",
         subtext: null,
-        icon: null,
+        icon: 'ChallengeHowMuch',
       },
       {
         order: 4,
@@ -133,7 +136,7 @@ export const JourneyMapSurvey = [
         type: 'answer',
         text: "navigating the DPA process",
         subtext: null,
-        icon: null,
+        icon: 'ChallengeDPA',
       },
       {
         order: 5,
@@ -142,16 +145,16 @@ export const JourneyMapSurvey = [
         type: 'answer',
         text: "finding a realtor or lender to work with",
         subtext: null,
-        icon: null,
+        icon: 'ChallengeFindingRealtor',
       },
       {
         order: 6,
         key: 'journey--homebuyer--help--itin',
         conditions : [],
         type: 'answer',
-        text: "being ITIN buyer",
+        text: "being an ITIN buyer",
         subtext: null,
-        icon: null,
+        icon: 'ChallengeITINBuyer',
       },
     ]
   },
@@ -163,6 +166,7 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homeowner',
     }],
     type: 'question',
+    optionType: 'single',
     text: 'What are you looking for?',
     subtext: null,
     icon: null,
@@ -173,8 +177,8 @@ export const JourneyMapSurvey = [
         key: 'journey--homeowner--00',
         conditions : [],
         type: 'answer',
-        text: "I want general resources on protecting my investment",
-        subtext: null,
+        text: "I want general resources",
+        subtext: "on protecting my investment",
         icon: null,
       },
       {
@@ -182,8 +186,8 @@ export const JourneyMapSurvey = [
         key: 'journey--homeowner--01',
         conditions : [],
         type: 'answer',
-        text: "I need critical support for foreclosure prevention, legal issues, etc.",
-        subtext: null,
+        text: "I need critical support",
+        subtext: "for foreclosure prevention, legal issues, etc.",
         icon: null,
       },
     ]
@@ -275,7 +279,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--credit',
     }],
     type: 'results',
@@ -299,7 +303,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--financial',
     }],
     type: 'results',
@@ -325,7 +329,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--budget',
     }],
     type: 'results',
@@ -353,7 +357,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--dpa',
     }],
     type: 'results',
@@ -377,7 +381,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--realtor',
     }],
     type: 'results',
@@ -401,7 +405,7 @@ export const JourneyMapSurvey = [
       option: 'journey--homebuyer--03',
     },
     {
-      key: 'decision--c00-mapping--journey--challenge',
+      key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--itin',
     }],
     type: 'results',

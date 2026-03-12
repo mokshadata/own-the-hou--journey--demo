@@ -1,3 +1,4 @@
+import { createEffect } from 'solid-js'
 import Diagrams from '../diagrams/'
 
 export default function BookDecisionOption(props) {
@@ -36,6 +37,12 @@ export default function BookDecisionOption(props) {
         setValue([...modelValue().filter((val) => (val !== option))])
     }
   }
+
+  createEffect(() => {
+    console.log({
+      [name]: modelValue(),
+    })
+  })
 
   const Icon = Diagrams[props.icon]
 

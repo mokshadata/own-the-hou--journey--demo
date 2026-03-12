@@ -213,6 +213,14 @@ aside li {
     /* --bulma-menu-item-background-a: 1; */
     --pico-text-decoration: none;
     /* background-color: rgba(255, 255, 255, 1); */
+    background-color: inherit;
+    color: inherit;
+}
+
+.menu-list [href]:where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+[role="link"][href]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+    /* --bulma-menu-item-background-a: 1; */
+    /* background-color: rgba(255, 255, 255, 1); */
     background-color: hsla(var(--journey--chapter--scheme--hsl), 0.75);
     color: #FFF;
     font-style: italic;
@@ -419,7 +427,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c01-welcome"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c01-welcome"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c01-welcome"],
-.journey-map .menu-list a.is-active[href*="c01-welcome"] {
+.journey-map .menu-list a.is-active[href*="c01-welcome"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c01-welcome"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c01-welcome"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c01-welcome"],
+.journey-map .menu-list a.is-active[data-destination*="c01-welcome"] {
+
     --journey--chapter--scheme: var(--oth--chapter--twilight-indigo);
     --journey--chapter--scheme--hsl: var(--oth--chapter--twilight-indigo--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -433,7 +447,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c02-get-ready-to-buy-a-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c02-get-ready-to-buy-a-home"],
-.journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"] {
+.journey-map .menu-list a.is-active[href*="c02-get-ready-to-buy-a-home"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c02-get-ready-to-buy-a-home"],
+.journey-map .menu-list a.is-active[data-destination*="c02-get-ready-to-buy-a-home"] {
+
     --journey--chapter--scheme: var(--oth2--twilight-indigo-2);
     --journey--chapter--scheme--hsl: var(--oth2--twilight-indigo-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -447,7 +467,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c02-what-s-your-budget"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c02-what-s-your-budget"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c02-what-s-your-budget"],
-.journey-map .menu-list a.is-active[href*="c02-what-s-your-budget"] {
+.journey-map .menu-list a.is-active[href*="c02-what-s-your-budget"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c02-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c02-what-s-your-budget"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c02-what-s-your-budget"],
+.journey-map .menu-list a.is-active[data-destination*="c02-what-s-your-budget"] {
+
     --journey--chapter--scheme: var(--oth2--vintage-grape);
     --journey--chapter--scheme--hsl: var(--oth2--vintage-grape--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -460,7 +486,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c03-build-your-homebuying-team"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c03-build-your-homebuying-team"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c03-build-your-homebuying-team"],
-.journey-map .menu-list a.is-active[href*="c03-build-your-homebuying-team"] {
+.journey-map .menu-list a.is-active[href*="c03-build-your-homebuying-team"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c03-build-your-homebuying-team"],
+.journey-map .menu-list a.is-active[data-destination*="c03-build-your-homebuying-team"] {
+
     --journey--chapter--scheme: var(--oth2--taupe-grey);
     --journey--chapter--scheme--hsl: var(--oth2--taupe-grey--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -472,7 +504,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c04-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c04-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c04-get-pre-approved-for-a-mortgage"],
-.journey-map .menu-list a.is-active[href*="c04-get-pre-approved-for-a-mortgage"] {
+.journey-map .menu-list a.is-active[href*="c04-get-pre-approved-for-a-mortgage"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c04-get-pre-approved-for-a-mortgage"],
+.journey-map .menu-list a.is-active[data-destination*="c04-get-pre-approved-for-a-mortgage"] {
+
     --journey--chapter--scheme: var(--oth2--smoky-rose);
     --journey--chapter--scheme--hsl: var(--oth2--smoky-rose--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -484,7 +522,13 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c05-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c05-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c05-find-a-home-and-make-an-offer"],
-.journey-map .menu-list a.is-active[href*="c05-find-a-home-and-make-an-offer"] {
+.journey-map .menu-list a.is-active[href*="c05-find-a-home-and-make-an-offer"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c05-find-a-home-and-make-an-offer"],
+.journey-map .menu-list a.is-active[data-destination*="c05-find-a-home-and-make-an-offer"] {
+
     --journey--chapter--scheme: var(--oth2--cinnamon-wood);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -496,27 +540,47 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c06-finalize-your-mortgage"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c06-finalize-your-mortgage"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c06-finalize-your-mortgage"],
-.journey-map .menu-list a.is-active[href*="c06-finalize-your-mortgage"] {
+.journey-map .menu-list a.is-active[href*="c06-finalize-your-mortgage"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c06-finalize-your-mortgage"],
+.journey-map .menu-list a.is-active[data-destination*="c06-finalize-your-mortgage"] {
+
     --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
     --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
 }
+
 [data-chapter="c07-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c07-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c07-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c07-close-on-your-home"],
-.journey-map .menu-list a.is-active[href*="c07-close-on-your-home"] {
+.journey-map .menu-list a.is-active[href*="c07-close-on-your-home"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c07-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c07-close-on-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c07-close-on-your-home"],
+.journey-map .menu-list a.is-active[data-destination*="c07-close-on-your-home"] {
+
     --journey--chapter--scheme: var(--oth2--toasted-almond);
     --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
+
 [data-chapter="c08-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="chapter"][href*="c08-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="section"][href*="c08-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][href*="c08-you-re-a-homeowner-protect-your-home"],
-.journey-map .menu-list a.is-active[href*="c08-you-re-a-homeowner-protect-your-home"] {
+.journey-map .menu-list a.is-active[href*="c08-you-re-a-homeowner-protect-your-home"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c08-you-re-a-homeowner-protect-your-home"],
+.journey-map .menu-list a.is-active[data-destination*="c08-you-re-a-homeowner-protect-your-home"] {
+
     --journey--chapter--scheme: var(--oth2--tangerine-dream);
     --journey--chapter--scheme--hsl: var(--oth2--tangerine-dream--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
@@ -799,6 +863,10 @@ figure.video-placeholder.video--has-not-played:hover img {
     border: 1px solid var(--journey--chapter--scheme);
     border-left-width: 2px;
     border-right-width: 2px;
+}
+
+.book--decision fieldset .book--decision--options--rows .book--decision--option--input {
+    padding: 0.5rem 2rem;
 }
 
 .book--decision fieldset .book--decision--option:first-of-type .book--decision--option--input {
@@ -1207,6 +1275,11 @@ a.map--decision[role=button]:hover {
 
 .map--layout .book--decision--options {
     display: flex;
+    flex-direction: column;
+}
+
+.book--decision fieldset .book--decision--options--columns {
+    flex-direction: row;
 }
 
 .map--layout .book--decision--option {
@@ -1217,13 +1290,22 @@ a.map--decision[role=button]:hover {
     flex-direction: column;
 }
 
-.map--layout .book--decision--option--label {
+.map--layout .book--decision--options--columns .book--decision--option--label {
     width: 100%;
     text-align: center;
     font-size: 1.25em;
 }
 
-.map--layout .book--decision--option--icon {
+/* .map--layout .book--decision--options--rows .book--decision--option--icon {
+    height: 40px;
+} */
+
+.map--layout .book--decision--options--rows .book--decision--option--icon svg {
+    height: 120px;
+}
+
+
+.map--layout .book--decision--options--columns .book--decision--option--icon {
     width: 80%;
 }
 
@@ -1267,4 +1349,24 @@ a.map--decision[role=button]:hover {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: var(--pico-border-radius);
     border-top-right-radius: var(--pico-border-radius);
+}
+
+
+
+.question-enter-active,
+.question-exit-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.question-enter,
+.question-exit-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+.question-enter {
+  transform: translateX(-10px);
+}
+
+.journey-map-results h1 {
+    padding-right: 2rem;
+    text-align: right;
 }

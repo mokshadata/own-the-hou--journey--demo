@@ -14,7 +14,7 @@ export default function BookDecisionsSkeleton({
     <div class={`book--decision`} data-model-name={name}>
       <fieldset>
         <legend>{legend}</legend>
-        <div class={`book--decision--options ${isColumns && 'book--decision--options--columns'}`}>
+        <div class={`book--decision--options ${isColumns && 'book--decision--options--columns' || 'book--decision--options--rows'}`}>
           {(options || []).map(({ option, label, detail, icon }) => (
               <BookDecisionOption
                   name={name}
