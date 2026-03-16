@@ -12,6 +12,8 @@ import keyImage from '../assets/images/The-One.jpg'
 
 import JourneyMap from "../components/map/component.tsx";
 
+import StepLauncher from "../components/launch";
+
 import Paging from "../components/paging";
 
 import BookDecisions from "../components/decisions/";
@@ -117,14 +119,7 @@ const options = [
     </header>
     <main class="map--layout">
       <Questionnaire client:only="solid-js"/>
-      <div class="row">
-        <nav class="col-xs-12 journey-map-results">
-          <h1>Your Own the Hou Journey</h1>
-          <aside class="menu journey-map" data-mode="map">
-            <JourneyMap client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
-          </aside>
-        </nav>
-      </div>
+      <StepLauncher client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
     </main>
   </body>
 </html>

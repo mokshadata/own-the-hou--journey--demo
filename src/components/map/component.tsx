@@ -1,21 +1,11 @@
 import ChapterIntroGraphic from "../diagrams/chapter-intro"
-import { journeyMapList } from "../../store/navigation"
+import { personalJourneySections, checkChapterWithJourney } from "../../store/navigation"
 import { createEffect } from "solid-js"
 
 export default function JourneyMap({ journeyMap, base_url }) {
-
-  const results = () => (journeyMapList().filter((item) => (item.type === 'results')).reduce((result, curr) => ([...result, ...curr.options]), []))
   
   const yourJourneyMap = () => {
-    return journeyMap.map((topLevel) => ({
-      ...topLevel,
-      isFullChapterIncluded: results()?.includes(topLevel.chapter),
-      isChapterIncluded: (((results()?.includes(topLevel.chapter) || topLevel.sections.find((midLevel) => (results()?.includes(midLevel.section)))) && true) || false),
-      sections: topLevel.sections.map((midLevel) => ({
-        ...midLevel,
-        isSectionIncluded: (((results()?.includes(topLevel.chapter) || results()?.includes(midLevel.section)) && true) || false),
-      }))
-    }))
+    return journeyMap.map(checkChapterWithJourney)
   }
 
   const anyPartialChapters = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded && !topLevel.isFullChapterIncluded)))

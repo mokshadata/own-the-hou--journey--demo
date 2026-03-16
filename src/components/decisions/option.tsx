@@ -38,12 +38,6 @@ export default function BookDecisionOption(props) {
     }
   }
 
-  createEffect(() => {
-    console.log({
-      [name]: modelValue(),
-    })
-  })
-
   const Icon = Diagrams[props.icon]
 
   return (

@@ -1366,7 +1366,22 @@ a.map--decision[role=button]:hover {
   transform: translateX(-10px);
 }
 
-.journey-map-results h1 {
-    padding-right: 2rem;
+.journey-map-results--intro {
+    display: flex;
+    flex-direction: column;
+    /* padding-right: 2rem; */
+    /* text-align: right; */
+}
+/* 
+.journey-map-results--intro button {
     text-align: right;
+} */
+/* .journey-map-results--intro button {
+    padding-right: 1rem;
+} */
+
+.journey-results {
+    background-color: #fff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }

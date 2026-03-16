@@ -22,6 +22,7 @@ export const [journeyMap, setJourneyMap, initializeJourneyMap] = makePersisted(c
 
 export const [mapGenStore, setMapGenStore] = createStore({
     type: '',
+    path: '',
     phase: '',
     challenge: '',
     
@@ -31,6 +32,10 @@ export const [mapGenStore, setMapGenStore] = createStore({
 export const [journeyType, setJourneyType] = makePersisted(createSignal(mapGenStore.type), {
     storage: localforage,
     name: 'book.journeyMap.inputs.type',
+})
+export const [journeyPath, setJourneyPath] = makePersisted(createSignal(mapGenStore.path), {
+    storage: localforage,
+    name: 'book.journeyMap.inputs.path',
 })
 export const [journeyPhase, setJourneyPhase] = makePersisted(createSignal(mapGenStore.phase), {
     storage: localforage,
@@ -52,6 +57,8 @@ export const valuesByName = {
     'decision--c00-mapping--journey': mapGenStore,
 
     'decision--c00-mapping--journey--type': journeyType,
+    'decision--c00-mapping--journey--path': journeyPath,
+
     'decision--c00-mapping--journey--phase': journeyPhase,
 
     'decision--c00-mapping--journey--challenge': journeyChallenge,
@@ -73,6 +80,7 @@ export const nextPageByDecision = (module) => {
 export const journeyMapperChoices = () => {
     const choices = [
         'decision--c00-mapping--journey--type',
+        'decision--c00-mapping--journey--path',
         'decision--c00-mapping--journey--phase',
         'decision--c00-mapping--journey--challenges',
     ].map((choiceName) => ({
@@ -95,12 +103,28 @@ export const journeyMapList = () => {
     )
 }
 
+export const personalJourneySections = () => ([...new Set(journeyMapList().filter((item) => (item.type === 'results-toolkit')).reduce((result, curr) => ([...result, ...curr.options]), []))])
+
+export const personalJourneyPath = () => (journeyMapList().find((item) => (item.type.includes('results'))))
+
+export const checkChapterWithJourney = (topLevel) => ({
+    ...topLevel,
+    isFullChapterIncluded: personalJourneySections()?.includes(topLevel.chapter),
+    isChapterIncluded: (((personalJourneySections()?.includes(topLevel.chapter) || topLevel.sections.find((midLevel) => (personalJourneySections()?.includes(midLevel.section)))) && true) || false),
+    sections: topLevel.sections.map((midLevel) => ({
+    ...midLevel,
+    isSectionIncluded: (((personalJourneySections()?.includes(topLevel.chapter) || personalJourneySections()?.includes(midLevel.section)) && true) || false),
+    }))
+})
+
+
 export const settersByName = {
     'decision--c03-budget--estimation-method': setBudgetEstimationMethod,
     'decision--c03-budget--annual-income--value': setAnnualIncome,
     'decision--c00-mapping--journey': setMapGenStore,
 
     'decision--c00-mapping--journey--type': setJourneyType,
+    'decision--c00-mapping--journey--path': setJourneyPath,
     'decision--c00-mapping--journey--phase': setJourneyPhase,
     'decision--c00-mapping--journey--challenge': setJourneyChallenge,
 

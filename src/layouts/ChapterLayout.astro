@@ -7,6 +7,8 @@ import { ClientRouter } from "astro:transitions";
 
 import Paging from "../components/paging";
 
+import JourneBookMap from "../components/map/book-map";
+
 const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter, activePage } = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---
@@ -55,58 +57,15 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <main class="main--layout">
       <div class="row">
         <nav class="col-xs-12 col-md-3">
-          <aside class="menu journey-map" data-mode="side">
-            <ol class="menu-list">
-              {
-                chaptersWithSections.map((topLevel) => (
-                  <li>
-                    <a
-                      role="link"
-                      data-menu-type="chapter"
-                      class={topLevel.chapter === activeChapter && 'is-active' || ''}
-                      href={`${base_url}chapters/${topLevel.chapter}/`}
-                    ><div>{topLevel.title}</div></a>
-                    <ol class={topLevel.chapter !== activeChapter && 'is-hidden' || ''}>
-                      {topLevel.sections.map((midLevel) => (
-                        <li>
-                          <a
-                            role="link"
-                            data-menu-type="section"
-                            class={midLevel.section === activeSection && 'is-active' || ''}
-                            href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${ midLevel.modules.length && `${midLevel.modules[0].module}/` || ''}`}
-                          >{midLevel.title}</a>
-                          {
-                            midLevel.modules.length > 1 && (
-                              <ol>
-                                {midLevel.modules.filter((pageLevel) => (pageLevel.item)).map((pageLevel) => (
-                                  <li>
-                                    <a
-                                      role="link"
-                                      data-menu-type="page"
-                                      class={pageLevel.module === Astro.props.activePage && 'is-active' || ''}
-                                      href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
-                                    >{pageLevel.item.data.name}</a>
-                                  </li>
-                                ))}
-                              </ol>
-                            )
-                          }
-                        </li>
-                      ))}
-                      <li>
-                        <a
-                          role="link"
-                          data-menu-type="section"
-                          class={'Review' === Astro.props.activeSection && 'is-active' || ''}
-                          href={`${base_url}chapters/${topLevel.chapter}/review/`}
-                        >Check-In</a>
-                      </li>
-                    </ol>
-                  </li>
-                ))
-              }
-            </ol>
-          </aside>
+          <JourneBookMap
+            activeChapter={activeChapter}
+            activePage={activePage}
+            activeSection={activeSection}
+            journeyMap={chaptersWithSections}
+            base_url={base_url}
+            client:only="solid-js"
+          />
+
         </nav>
         <div class="col-xs-12 col-md-9 col-lg-7">
           <div class={`book--area ${pageType}`} data-chapter={chapter}>

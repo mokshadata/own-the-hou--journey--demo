@@ -34,10 +34,56 @@ export const JourneyMapSurvey = [
   },
   {
     order: 1,
+    key: 'decision--c00-mapping--journey--path',
+    conditions: [{
+      key: 'decision--c00-mapping--journey--type',
+      option: 'journey--type--homebuyer',
+    }],
+    type: 'question',
+    optionType: 'single',
+    text: 'How would you like to learn more about homebuying?',
+    subtext: null,
+    icon: null,
+    layout: 'horizontal--icon',
+    options: [{
+      order: 1,
+      key: 'journey--homebuyer--self-guided',
+      conditions: [],
+      type: 'answer',
+      text: "I want to explore the homebuying toolkit.",
+      subtext: 'The homebuying toolkit covers 8 steps to becoming a homeowner. It contains how-tos, videos, and checklists.',
+      icon: null,
+      background: keyImage,
+    }, {
+      order: 2,
+      key: 'journey--homebuyer--custom-journey',
+      conditions: [],
+      type: 'answer',
+      text: "I want to answer 2 questions to customize my toolkit.",
+      subtext: 'Get the specific information you need from the toolkit for the step of homebuying you are in.',
+      icon: null,
+      background: familyInHomeImage,
+    }, {
+      order: 3,
+      key: 'journey--homebuyer--class',
+      conditions: [],
+      type: 'answer',
+      text: "I want to take a comprehensive homebuyers' course.",
+      subtext: 'Take an in-depth homebuying class taught by a HUD-certified Homeownership Counselor!',
+      icon: null,
+      background: familyInHomeImage,
+    },
+    ],
+  },
+  {
+    order: 2,
     key: 'decision--c00-mapping--journey--phase',
     conditions: [{
       key: 'decision--c00-mapping--journey--type',
       option: 'journey--type--homebuyer',
+    }, {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
     }],
     type: 'question',
     optionType: 'single',
@@ -85,11 +131,15 @@ export const JourneyMapSurvey = [
     ]
   },
   {
-    order: 2,
+    order: 3,
     key: 'decision--c00-mapping--journey--challenges',
     conditions: [{
       key: 'decision--c00-mapping--journey--type',
       option: 'journey--type--homebuyer',
+    },
+    {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
     },
     {
       key: 'decision--c00-mapping--journey--phase',
@@ -200,10 +250,41 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--self-guided',
+    }],
+    type: 'results-toolkit',
+    text: null,
+    subtext: null,
+    icon: null,
+    layout: 'horizontal--icon',
+    options: [
+      'c01-welcome',
+      'c02-what-s-your-budget',
+      'c03-build-your-homebuying-team',
+      'c04-get-pre-approved-for-a-mortgage',
+      'c05-find-a-home-and-make-an-offer',
+      'c06-finalize-your-mortgage',
+      'c07-close-on-your-home',
+      'c08-you-re-a-homeowner-protect-your-home',
+    ],
+  },
+  {
+    order: 3,
+    key: 'journey--homebuyer--result--00',
+    conditions: [{
+      key: 'decision--c00-mapping--journey--type',
+      option: 'journey--type--homebuyer',
+    },
+    {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--00',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -227,10 +308,14 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--01',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -252,10 +337,14 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--02',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -275,6 +364,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -282,7 +375,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--credit',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -299,6 +392,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -306,7 +403,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--financial',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -325,6 +422,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -332,7 +433,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--budget',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -353,6 +454,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -360,7 +465,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--dpa',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -377,6 +482,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -384,7 +493,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--realtor',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -401,6 +510,10 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homebuyer',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homebuyer--03',
     },
@@ -408,7 +521,7 @@ export const JourneyMapSurvey = [
       key: 'decision--c00-mapping--journey--challenges',
       option: 'journey--homebuyer--help--itin',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -426,10 +539,14 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homeowner',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homeowner--00',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -446,10 +563,14 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homeowner',
     },
     {
+      key: 'decision--c00-mapping--journey--path',
+      option: 'journey--homebuyer--custom-journey',
+    },
+    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homeowner--01',
     }],
-    type: 'results',
+    type: 'results-toolkit',
     text: null,
     subtext: null,
     icon: null,
@@ -457,5 +578,21 @@ export const JourneyMapSurvey = [
     options: [
       's07-help-to-keep-your-home',
     ],
+  },
+  {
+    order: 3,
+    key: 'journey--homebuyer--path--class',
+    conditions: [{
+        key: 'decision--c00-mapping--journey--type',
+        option: 'journey--type--homebuyer',
+      },
+      {
+        key: 'decision--c00-mapping--journey--path',
+        option: 'journey--homebuyer--class',
+      },
+    ],
+    type: 'results-about-class',
+    text: null,
+    subtext: null,
   },
 ]
