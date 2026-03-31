@@ -1236,11 +1236,13 @@ a.map--decision[role=button]:hover {
     display: flex;
 }
 
-[data-selected="journey--type--homebuyer"] [data-option-name="journey--type--homeowner"] {
-    opacity: 0.5;
+[data-option-name~="journey--type"] {
+    transition: opacity 100ms linear;
 }
+
+[data-selected="journey--type--homebuyer"] [data-option-name="journey--type--homeowner"],
 [data-selected="journey--type--homeowner"] [data-option-name="journey--type--homebuyer"] {
-    opacity: 0.5;
+    opacity: 0.3;
 }
 
 
@@ -1384,4 +1386,13 @@ a.map--decision[role=button]:hover {
     background-color: #fff;
     padding-top: 4rem;
     padding-bottom: 4rem;
+}
+
+
+iframe[src*="youtube"] {
+  aspect-ratio: 112/63;
+  width: 100%;
+  height: auto;
+  border: none;
+  margin-bottom: 2rem;
 }

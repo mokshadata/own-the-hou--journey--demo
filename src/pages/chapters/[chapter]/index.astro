@@ -96,6 +96,8 @@ async function getContent() {
 }
 
 const intro = await getContent()
+const search = Astro.url.searchParams.get('search') || '';
+console.log({ search })
 ---
 <ChapterLayout
   chaptersWithSections={structure}

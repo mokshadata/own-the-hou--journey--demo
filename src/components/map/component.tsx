@@ -3,7 +3,8 @@ import { personalJourneySections, checkChapterWithJourney } from "../../store/na
 import { createEffect } from "solid-js"
 
 export default function JourneyMap({ journeyMap, base_url }) {
-  
+  console.log({ journeyMap})
+
   const yourJourneyMap = () => {
     return journeyMap.map(checkChapterWithJourney)
   }
@@ -32,6 +33,7 @@ export default function JourneyMap({ journeyMap, base_url }) {
             {
               topLevel.isChapterIncluded &&
               anyPartialChapters() &&
+              false &&
               <ol>
               {topLevel.sections.map((midLevel) => (
                 <li>

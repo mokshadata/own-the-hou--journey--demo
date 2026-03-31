@@ -27,6 +27,19 @@ export const [mapGenStore, setMapGenStore] = createStore({
     challenge: '',
     
     challenges: [],
+
+    isSetFromLink: false,
+    showAllMap: false,
+})
+
+export const [isSetFromLink, setIsSetFromLink] = makePersisted(createSignal(mapGenStore.isSetFromLink), {
+    storage: localforage,
+    name: 'book.journeyMap.inputs.isSetFromLink',
+})
+
+export const [showAllMap, setShowAllMap] = makePersisted(createSignal(mapGenStore.showAllMap), {
+    storage: localforage,
+    name: 'book.journeyMap.inputs.showAllMap',
 })
 
 export const [journeyType, setJourneyType] = makePersisted(createSignal(mapGenStore.type), {
@@ -90,6 +103,126 @@ export const journeyMapperChoices = () => {
     .filter((choice) => (choice.option))
 
     return choices
+}
+
+export const searchParamsToChoices = () => {
+    const searchParams = new URLSearchParams(window.location.search)
+
+    const phase = searchParams.get('custom') || 'explore'
+    const challenges = searchParams.get('challenges')?.split('|').map((challenge) => (`journey--homebuyer--help--${challenge}`))
+
+    const choiceOptions = {
+        'explore': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homebuyer',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--path',
+                option: 'journey--homebuyer--self-guided',
+
+            },
+        ],
+        'journey--homeowner--00': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homeowner',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homeowner--00',
+
+            },
+        ],
+        'journey--homeowner--01': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homeowner',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homeowner--01',
+
+            },
+        ],
+        'journey--homebuyer--00': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homebuyer',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--path',
+                option: 'journey--homebuyer--custom-journey',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homebuyer--00',
+
+            },
+        ],
+        'journey--homebuyer--01': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homebuyer',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--path',
+                option: 'journey--homebuyer--custom-journey',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homebuyer--01',
+
+            },
+        ],
+        'journey--homebuyer--02': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homebuyer',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--path',
+                option: 'journey--homebuyer--custom-journey',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homebuyer--02',
+
+            },
+        ],
+        'journey--homebuyer--03': [
+            {
+                key: 'decision--c00-mapping--journey--type',
+                option: 'journey--type--homebuyer',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--path',
+                option: 'journey--homebuyer--custom-journey',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--phase',
+                option: 'journey--homebuyer--03',
+
+            },
+            {
+                key: 'decision--c00-mapping--journey--challenges',
+                option: challenges,
+            },
+        ],
+    }
+
+    return choiceOptions[phase]
 }
 
 export const journeyMapList = () => {

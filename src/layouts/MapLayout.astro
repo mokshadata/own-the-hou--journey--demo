@@ -120,6 +120,18 @@ const options = [
     <main class="map--layout">
       <Questionnaire client:only="solid-js"/>
       <StepLauncher client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
+      <div class="row">
+        <nav class="col-xs-12 journey-map-results">
+          <div class="journey-map-results--intro">
+            <h1>Your Own the Hou Journey</h1>
+            <p>The toolkit walks through the entire homebuying process step by step. You can find the steps that are right for you, and your current stage of the homebuying process, by exploring our map and seeing what elements look interesting right now. Then:</p>
+            <button>Take me to the Toolkit!</button>
+          </div>
+          <aside class="menu journey-map" data-mode="map">
+            <JourneyMap client:only="solid-js" journeyMap={journeyMap} base_url={base_url}/>
+          </aside>
+        </nav>
+      </div>
     </main>
   </body>
 </html>

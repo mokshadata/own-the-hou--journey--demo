@@ -1,4 +1,5 @@
-import { personalJourneySections, checkChapterWithJourney } from "../../store/navigation"
+import { personalJourneySections, checkChapterWithJourney, searchParamsToChoices, settersByName, setIsSetFromLink ,isSetFromLink, showAllMap, setShowAllMap } from "../../store/navigation"
+import { createEffect, createSignal } from "solid-js"
 
 export default function JourneyBookMap({
   journeyMap,
@@ -7,6 +8,22 @@ export default function JourneyBookMap({
   activePage,
   base_url,
 }) {
+
+  createEffect(() => {
+    if (!isSetFromLink()) {
+      searchParamsToChoices().forEach((choice) => {
+        settersByName[choice.key](choice.option)
+      });
+
+      setIsSetFromLink(true)
+    }
+    return searchParamsToChoices()
+  })
+
+  const updateShowHide = (changeEvent) => {
+    setShowAllMap(changeEvent.target.checked)
+  }
+
   const yourJourneyMap = () => {
     return journeyMap.map(checkChapterWithJourney)
   }
@@ -14,6 +31,14 @@ export default function JourneyBookMap({
   const anyPartialChapters = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded && !topLevel.isFullChapterIncluded)))
 
   return (
+    <div>
+    <fieldset>
+      <label>
+        <input name="map-show" type="checkbox" role="switch" checked={showAllMap()} onChange={updateShowHide}/>
+        {/* {showAllMap() && 'All content. Click to return to personal map' || 'Click to explore all'} */}
+        Explore all
+      </label>
+    </fieldset>
     <aside class="menu journey-map" data-mode="side">
       <ol class="menu-list">
         {yourJourneyMap().map((topLevel) => (
@@ -22,9 +47,10 @@ export default function JourneyBookMap({
               role="link"
               data-menu-type="chapter"
               class={(topLevel.chapter === activeChapter && "is-active") || ""}
-              href={`${base_url}chapters/${topLevel.chapter}/`}
+              href={`${base_url}chapters/${topLevel.chapter}/${window.location.search}`}
               style={{
-                opacity: topLevel.isChapterIncluded && 1 || 0.5,
+                opacity: topLevel.isChapterIncluded && 1 || (showAllMap() && 1) || 0,
+                display: topLevel.isChapterIncluded && 'block' || (showAllMap() && 'block') || 'none',
               }}
             >
               <div>{topLevel.title}</div>
@@ -46,9 +72,10 @@ export default function JourneyBookMap({
                       (midLevel.modules.length &&
                         `${midLevel.modules[0].module}/`) ||
                       ""
-                    }`}
+                    }${window.location.search}`}
                     style={{
-                      opacity: midLevel.isSectionIncluded && 1 || 0.5,
+                      opacity: midLevel.isSectionIncluded && 1 || (showAllMap() && 1) || 0,
+                      display: topLevel.isChapterIncluded && 'block' || (showAllMap() && 'block') || 'none',
                     }}
                   >
                     {midLevel.title}
@@ -67,7 +94,7 @@ export default function JourneyBookMap({
                                   "is-active") ||
                                 ""
                               }
-                              href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/`}
+                              href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/${window.location.search}`}
                             >
                               {pageLevel.item.data.name}
                             </a>
@@ -82,7 +109,7 @@ export default function JourneyBookMap({
                   role="link"
                   data-menu-type="section"
                   class={("Review" === activeSection && "is-active") || ""}
-                  href={`${base_url}chapters/${topLevel.chapter}/review/`}
+                  href={`${base_url}chapters/${topLevel.chapter}/review/${window.location.search}`}
                 >
                   Check-In
                 </a>
@@ -92,5 +119,6 @@ export default function JourneyBookMap({
         ))}
       </ol>
     </aside>
+    </div>
   );
 }
