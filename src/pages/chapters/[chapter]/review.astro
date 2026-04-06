@@ -1,109 +1,24 @@
 ---
 import ChapterLayout from '../../../layouts/ChapterLayout.astro';
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
+import { getChapterReviews } from '../../../helpers/chapters'
 
 import AnnualEstimator from '../../../components/calculators/annual-estimator/component';
-
 import BookDecisions from '../../../components/decisions/component';
+
+import YoutubePlayer from '../../../components/video/youtube';
 
 import Map from "../../../assets/images/journey-map.png"
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-  const chapters = await getCollection('chapters');
-  const structure = await Promise.all(chapters.map(async (chapter) => ({
-      chapter: chapter.id,
-      ...chapter.data,
-      terms: (await getCollection('terms', ({data}) => (data.chapter.id === chapter.id))),
-      sections: (await getEntries(chapter.data.contains)).map((section) => ({
-        section: section.id,
-        ...section.data,
-        modules: (section.data.contains).map((module) => ({
-            module: module.id,
-        }))
-      })),
-  })));
-
-  const pageLookup = await Promise.all(structure.map(({
-      chapter, title: chapterTitle, order: chapterOrder,
-      terms,
-      sections
-    }) => (
-        {
-        params: { chapter, },
-        props: {
-            chapterTitle,
-            structure,
-            terms,
-        }
-        }
-    ))
-    .map(async (page, index, pages) => {
-        let lastChapterModule
-
-        const modules = await getEntries(structure[index].sections.map(({ contains }) => (contains)).reduce((acc, curr) => ([...acc, ...curr]), []))
-        const renderedModules = await Promise.all(modules.map(render))
-        const chapterVideoPlaylist = renderedModules
-            .map((mod) => (mod.remarkPluginFrontmatter))
-            .map((data) => (data.videos.map((video) => ({ video,
-                module: {
-                    name: data.name,
-                    order: data.order,
-                    slug: data.slug,
-                },
-                section: structure[index].sections.find((section) => (section.modules.map(({module}) => (module)).includes(data.slug)))
-            }))))
-            .reduce((acc, curr) => ([...acc, ...curr]), [])
-
-        if (structure[index].sections[structure[index].sections.length - 1].modules.length) {
-            lastChapterModule = modules[modules.length -1]
-        }
-        let base = {
-            params: page.params,
-            props: {
-                ...page.props,
-                chapterVideoPlaylist,
-                prevPage: {
-                    params: {
-                        ...page.params,
-                        section: structure[index].sections[structure[index].sections.length - 1].section,
-                        module: structure[index].sections[structure[index].sections.length - 1].modules.length && structure[index].sections[structure[index].sections.length - 1].modules[structure[index].sections[structure[index].sections.length - 1].modules.length-1].module || null,
-                    },
-                    props: {
-                        chapterTitle: structure[index].title,
-                        chapterOrder: structure[index].order,
-                        sectionTitle: structure[index].sections[structure[index].sections.length - 1].title,
-                        moduleTitle: lastChapterModule?.data.name,
-
-                    }
-                }
-            }
-        }
-
-        if (index < pages.length - 2) {
-            base.props.nextPage = {
-                params: {
-                    chapter: structure[index+1].chapter,
-                },
-                props: {
-                    chapterTitle: structure[index+1].title,
-                    chapterOrder: structure[index+1].order,
-                    moduleTitle: 'Intro',
-                },
-            }
-        }
-
-        return base
-    }))
-    
-  return pageLookup
+    return(await getChapterReviews())
 }
 
 const { 
     chapterTitle,
     structure,
-    terms,
-    chapterVideoPlaylist,
+    reviewItems,
 } = Astro.props;
 
 const { chapter, } = Astro.params;
@@ -119,6 +34,8 @@ async function getContent() {
 
 const review = await getContent()
 const base_url = `${import.meta.env.BASE_URL}`;
+
+console.log(reviewItems)
 ---
 <ChapterLayout
   chaptersWithSections={structure}
@@ -141,113 +58,57 @@ const base_url = `${import.meta.env.BASE_URL}`;
       {review && <review.Content/> || <></>}
       <p>Below, you'll see the decisons you made, terms we learned, resources, and videos from throughout the chapter.</p>
   </div>
-  <div class="chapter--review--exercises">
+  {reviewItems.decisions.length && (<div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
-
-    <BookDecisions
-        client:only="solid-js"
-        name="decision--c03-budget--estimation-method"
-        optionType="radio"
-        readOnly={true}
-        options={[
-            {
-            option: 'm02-option-1-the-quickest-budget-estimator',
-            label: "I'm just starting out on this journey!",
-            detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
-            icon: '🧭',
-            },
-            {
-            option: 'm03-option-2-affordable-home-price-calculator-tool',
-            label: "I'm getting serious about buying a home!",
-            detail: "I'd like a quick way to understand my rough budget, so I can see what kind of homes I may be able to afford with that budget.",
-            icon: '🧮',
-            },
-            {
-            option: 'm04-option-3-get-a-pre-approval',
-            label: "I'm ready to go get a pre-approval for a mortage",
-            detail: "I know my financial situation well, but a pre-approval will give me confidence that a lender will see my situation the same way.",
-            icon: '💸',
-            },
-        ]}
-    />
-
-    <AnnualEstimator client:only="solid-js"/>
-  </div>
-  <div class="chapter--review--terms">
+    {
+        reviewItems.decisions.map(({ nodeName, ...props }) => (
+            nodeName === 'BookDecisions' &&  <BookDecisions
+                client:only="solid-js"
+                legend={props.legend}
+                name={props.name}
+                readOnly={true}
+                optionType={props.optionType}
+                options={eval(props.options.value)}
+            /> || <></>))
+    }
+    {
+        reviewItems.calculators.map(({ nodeName }) => (nodeName === 'AnnualEstimator' &&  <AnnualEstimator client:only="solid-js"/> || <></>))
+    }
+  </div>) || <></>}
+  {reviewItems.terms.length && (<div class="chapter--review--terms">
     <h2>Terms</h2>
     <dl>
-        {terms.map((term) => (
-            <dt class="term--term">{term.data.term}</dt>
-            <dd>{term.data.definition}</dd>
+        {reviewItems.terms.map((term) => (
+            <dt class="term--term">{term.lookup.data.term}</dt>
+            <dd>{term.lookup.data.definition}</dd>
         ))}
     </dl>
-  </div>
-  <div class="chapter--review--resources">
-    <h2>Resources</h2>
-    <h6>Calculating Monthly Home Costs</h6>
-    <ul>
-        <li>
-            <a href="https://harris.trueprodigy-taxtransparency.com/taxTransparency/propertySearch" target="_blank">Harris Taxes Truth in Taxation database</a>
-        </li>
-        <li>
-            <a href="https://ownthehou.org/latest-updates/" target="_blank">Own the HOU’s blog post on taxes for new construction homes</a>
-        </li>
-        <li>Flood risks in Houston and Harris County</li>
-    </ul>
-    <h6>Browsing Homes and Neighborhoods in Houston</h6>
-    <ul>
-        <li>
-            <a href="https://www.har.com/" target="_blank">Houston Association of Realtors</a>
-            <p>Great website for searching for homes in Houston. Standout features are.....</p>
-        </li>
-        <li>
-            <a href="https://homes.com" target="_blank">Homes.com</a>, <a href="https://realtor.com" target="_blank">Realtor.com</a>, <a href="https://zillow.com" target="_blank">Zillow</a>, or <a href="https://redfin.com" target="_blank">Redfin</a> are great options as well.
-        </li>
-    </ul>
-    <h6>
-        Maximizing Your Home Budget
-    </h6>
-    <ul>
-        <li>
-            See whether you may qualify for <a href="https://forms.connectivetx.org/340" target="_blank">Down Payment Assistance</a>
-        </li>
-        <li>
-            Learn more about credit scores and how they are calculated in <a href="https://www.nfcc.org/understanding-your-credit-score-course/" target="_blank">this lesson</a> from the National Foundation for Credit Counseling
-        </li>
-        <li>
-            Free credit score reports from Experian, TransUnion and Equifax at <a href="https://annualcreditreport.com" target="_blank">annualcreditreport.com</a>
-        </li>
-        <li>
-            Improve your credit score by
-            <ul>
-                <li>
-                    taking classes and getting counseling in Houston at <a href="https://financialministries.org/" target="_blank">Alliance Financial Ministries</a>, or
-                </li>
-                <li>
-                    looking up a local certified credit counselor at the <a href="https://www.nfcc.org/" target="_blank">National Foundation for Credit Counseling</a> website.
-                </li>
-            </ul>
-        </li>
-    </ul>
-
-  </div>
-  <div class="chapter--review--checklists">
+  </div>) || <></>}
+  {reviewItems.checklists.length && (<div class="chapter--review--checklists">
     <h2>Checklists</h2>
-  </div>
-  <div class="chapter--review--videolist">
+    <ul>
+        {
+            reviewItems.checklists
+                .map((item) => (
+                    <li>
+                        <h5>{item.title}</h5>
+                        <iframe id={item.id} src={item.src} width="100%" height="500px"></iframe>
+                    </li>
+                ))
+        }
+    </ul>
+  </div>) || <></>}
+  {reviewItems.videos.length && (<div class="chapter--review--videolist">
     <h2>Video Playlist</h2>
     <ul class="chapter--review--videolist--playlist">
-        {chapterVideoPlaylist.map((item) => (<li>
-            <a href={`${base_url}chapters/${chapter}/${item.section.section}/${item.module.slug}#${item.video.slug}`} role="button">
-                <div>
-                    <div><small><strong>{'abcdefg'[item.section.order - 1]}. {item.section.title}</strong> <i>{item.module.name}</i></small></div>
-                    <div>
-                        <strong>{item.video.alt}</strong>
-                    </div>
-                </div>
-            </a>
+        {reviewItems.videos.map((item) => (<li>
+            <YoutubePlayer
+                baseSource={item.baseSource}
+                alt={item.alt}
+                slug={item.slug}
+            />
         </li>))}
     </ul>
-  </div>
+  </div>) || <></>}
   
 </ChapterLayout>

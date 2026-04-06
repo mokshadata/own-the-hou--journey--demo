@@ -1,4 +1,8 @@
-import { personalJourneySections, checkChapterWithJourney, searchParamsToChoices, settersByName, setIsSetFromLink ,isSetFromLink, showAllMap, setShowAllMap } from "../../store/navigation"
+import {
+  personalJourneySections, checkChapterWithJourney,
+  searchParamsToChoices, settersByName, setIsSetFromLink,
+  isSetFromLink, showAllMap, setShowAllMap, isSearchForFullMap,
+} from "../../store/navigation"
 import { createEffect, createSignal } from "solid-js"
 
 export default function JourneyBookMap({
@@ -31,14 +35,14 @@ export default function JourneyBookMap({
   const anyPartialChapters = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded && !topLevel.isFullChapterIncluded)))
 
   return (
-    <div>
-    <fieldset>
+    <div class="menu-wrapper">
+    {!isSearchForFullMap() && (<fieldset>
       <label>
         <input name="map-show" type="checkbox" role="switch" checked={showAllMap()} onChange={updateShowHide}/>
         {/* {showAllMap() && 'All content. Click to return to personal map' || 'Click to explore all'} */}
         Explore all
       </label>
-    </fieldset>
+    </fieldset>) || <></>}
     <aside class="menu journey-map" data-mode="side">
       <ol class="menu-list">
         {yourJourneyMap().map((topLevel) => (

@@ -1,66 +1,13 @@
 ---
 import ChapterLayout from '../../../../layouts/ChapterLayout.astro';
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
+import { getAllSections } from '../../../../helpers/chapters'
 
 export async function getStaticPaths() {
-  const chapters = await getCollection('chapters');
-  const structure = await Promise.all(chapters.map(async (chapter) => ({
-      chapter: chapter.id,
-      ...chapter.data,
-      sections: (await getEntries(chapter.data.contains)).map((section) => ({
-        section: section.id,
-        ...section.data,
-        modules: (section.data.contains).map((module) => ({
-            module: module.id,
-        }))
-      })),
-  })));
-
-  const pageLookup = structure.map(({
-      chapter, title: chapterTitle, order: chapterOrder,
-      sections
-    }) => ([
-        {
-            params: { chapter, },
-            props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Intro',
-            },
-        },
-        ...sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (
-    // modules.map(({ module, }) => (
-            {
-                params: { chapter, section, },
-                props: {
-                    chapterTitle, chapterOrder,
-                    sectionTitle, sectionOrder,
-                    structure,
-                    modules,
-                }
-            }
-        // ))
-        )),
-        {
-            params: { chapter, section: 'review', },
-            props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Check-In',
-            },
-        },
-    ]))
-    .reduce((result, current) => ([...result, ...current]), [])
-    .map((page, index, pages) => ({
-      params: page.params,
-      props: {
-        ...page.props,
-        nextPage: pages[index + 1],
-        prevPage: pages[index - 1],
-      }
-    }))
-    .filter((page) => (page.props.sectionTitle))
-    
-  return pageLookup
+  return (await getAllSections())
 }
 
-const { 
+const {
     chapterTitle, chapterOrder,
     sectionTitle, sectionOrder,
     structure,

@@ -105,6 +105,12 @@ export const journeyMapperChoices = () => {
     return choices
 }
 
+export const isSearchForFullMap = () => {
+    const searchParams = new URLSearchParams(window.location.search)
+    const phase = searchParams.get('custom') || 'explore'
+    return ['journey--homebuyer--00', 'explore'].includes(phase)
+}
+
 export const searchParamsToChoices = () => {
     const searchParams = new URLSearchParams(window.location.search)
 

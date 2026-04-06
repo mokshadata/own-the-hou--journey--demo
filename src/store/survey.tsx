@@ -321,6 +321,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c03-build-your-homebuying-team',
       'c04-get-pre-approved-for-a-mortgage',
       'c05-find-a-home-and-make-an-offer',
@@ -350,6 +351,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c05-find-a-home-and-make-an-offer',
       'c06-finalize-your-mortgage',
       'c07-close-on-your-home',
@@ -381,6 +383,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       's04-understanding-your-credit', 's05-how-to-increase-your-budget', 's00-intro-meet-the-team', 's01-start-with-a-housing-counselor',
     ],
   },
@@ -409,6 +412,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c02-what-s-your-budget',
       's02-finding-a-realtor', 's03-choosing-a-lender',
       'c04-get-pre-approved-for-a-mortgage',
@@ -439,6 +443,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c02-what-s-your-budget',
       'c03-build-your-homebuying-team',
       'c04-get-pre-approved-for-a-mortgage',
@@ -471,6 +476,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       's03-choosing-a-lender',
     ],
   },
@@ -499,6 +505,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c03-build-your-homebuying-team',
     ],
   },
@@ -527,6 +534,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       's00-intro-meet-the-team', 's01-start-with-a-housing-counselor',
     ],
   },
@@ -539,10 +547,6 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homeowner',
     },
     {
-      key: 'decision--c00-mapping--journey--path',
-      option: 'journey--homebuyer--custom-journey',
-    },
-    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homeowner--00',
     }],
@@ -552,6 +556,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       'c08-you-re-a-homeowner-protect-your-home',
     ],
   },
@@ -563,10 +568,6 @@ export const JourneyMapSurvey = [
       option: 'journey--type--homeowner',
     },
     {
-      key: 'decision--c00-mapping--journey--path',
-      option: 'journey--homebuyer--custom-journey',
-    },
-    {
       key: 'decision--c00-mapping--journey--phase',
       option: 'journey--homeowner--01',
     }],
@@ -576,6 +577,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
+      'c01-welcome',
       's07-help-to-keep-your-home',
     ],
   },

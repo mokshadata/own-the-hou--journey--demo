@@ -617,11 +617,20 @@ color: var(--journey--chapter--scheme--subtitle); */
 
 .journey-map[data-mode="side"] {
     max-height: calc(100vh - 100px);
-    top: 1rem;
-    position: sticky;
+    /* top: 1rem;
+    position: sticky; */
     overflow: auto;
     scrollbar-color: #868686 transparent;
     width: 100%;
+}
+.menu-wrapper {
+    top: 0;
+    position: sticky;
+    height: calc(100vh - 1rem);
+}
+
+.menu-wrapper fieldset {
+    margin-bottom: 0;
 }
 /* 
 :where(a:not([role="button"])), [role="link"] {
