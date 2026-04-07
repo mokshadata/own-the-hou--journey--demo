@@ -6,17 +6,14 @@ import localforage from "localforage";
 import { JourneyMapSurvey } from "./survey";
 
 export const [annualIncome, setAnnualIncome, initializeAnnualIncome] = makePersisted(createSignal(0), {
-    storage: localforage,
     name: 'c03.annualIncome',
 })
 
 export const [budgetEstimationMethod, setBudgetEstimationMethod, initializeBudgetEstimationMethod] = makePersisted(createSignal(''), {
-    storage: localforage,
     name: 'c03.budgetEstimationMethod',
 })
 
 export const [journeyMap, setJourneyMap, initializeJourneyMap] = makePersisted(createSignal([]), {
-    storage: localforage,
     name: 'book.journeyMap',
 })
 
@@ -33,34 +30,27 @@ export const [mapGenStore, setMapGenStore] = createStore({
 })
 
 export const [isSetFromLink, setIsSetFromLink] = makePersisted(createSignal(mapGenStore.isSetFromLink), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.isSetFromLink',
 })
 
 export const [showAllMap, setShowAllMap] = makePersisted(createSignal(mapGenStore.showAllMap), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.showAllMap',
 })
 
 export const [journeyType, setJourneyType] = makePersisted(createSignal(mapGenStore.type), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.type',
 })
 export const [journeyPath, setJourneyPath] = makePersisted(createSignal(mapGenStore.path), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.path',
 })
 export const [journeyPhase, setJourneyPhase] = makePersisted(createSignal(mapGenStore.phase), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.phase',
 })
 export const [journeyChallenge, setJourneyChallenge] = makePersisted(createSignal(mapGenStore.challenge), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.challenge',
 })
 
 export const [journeyChallenges, setJourneyChallenges] = makePersisted(createSignal(mapGenStore.challenges), {
-    storage: localforage,
     name: 'book.journeyMap.inputs.challenges',
 })
 

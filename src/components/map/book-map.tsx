@@ -2,6 +2,7 @@ import {
   personalJourneySections, checkChapterWithJourney,
   searchParamsToChoices, settersByName, setIsSetFromLink,
   isSetFromLink, showAllMap, setShowAllMap, isSearchForFullMap,
+  
 } from "../../store/navigation"
 import { createEffect, createSignal } from "solid-js"
 
@@ -12,6 +13,8 @@ export default function JourneyBookMap({
   activePage,
   base_url,
 }) {
+
+  const [isFullyLoaded, setIsFullyLoaded] = createSignal(false)
 
   createEffect(() => {
     if (!isSetFromLink()) {
@@ -32,6 +35,37 @@ export default function JourneyBookMap({
     return journeyMap.map(checkChapterWithJourney)
   }
 
+  const isCurrentMatching = () => {
+    const matchingChapter = yourJourneyMap().find((topLevel) => (
+      topLevel.chapter === activeChapter
+    ))
+    const matchingSection = (matchingChapter && matchingChapter.sections || []).find((midLevel) => (
+      midLevel.section === activeSection
+    ))
+    return (matchingSection && matchingSection.isSectionIncluded) || (matchingChapter && matchingChapter.isChapterIncluded)
+  }
+
+  const earliestMatchingChapter = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded)))
+  const earliestMatchingSection = () => (earliestMatchingChapter() && earliestMatchingChapter().sections || []).find((midLevel) => (midLevel.isSectionIncluded))
+  const destination = () => (
+    `${base_url}chapters/${earliestMatchingChapter().chapter}/${earliestMatchingSection().section}/${(
+      earliestMatchingSection().modules.length &&
+        `${earliestMatchingSection().modules[0].module}/`) ||
+      ""}${window.location.search}`
+  )
+
+  const needsToRedirect = () => (
+    // isFullyLoaded() &&
+    !showAllMap() &&
+    !isCurrentMatching()
+  )
+  
+  createEffect(() => {
+    if (needsToRedirect()) {
+      window.location.href = `${window.location.origin}${destination()}`
+    }
+  })
+
   const anyPartialChapters = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded && !topLevel.isFullChapterIncluded)))
 
   return (
@@ -45,17 +79,15 @@ export default function JourneyBookMap({
     </fieldset>) || <></>}
     <aside class="menu journey-map" data-mode="side">
       <ol class="menu-list">
-        {yourJourneyMap().map((topLevel) => (
+        {yourJourneyMap()
+          .filter((topLevel) => (topLevel.isChapterIncluded || showAllMap()))
+          .map((topLevel) => (
           <li>
             <a
               role="link"
               data-menu-type="chapter"
               class={(topLevel.chapter === activeChapter && "is-active") || ""}
               href={`${base_url}chapters/${topLevel.chapter}/${window.location.search}`}
-              style={{
-                opacity: topLevel.isChapterIncluded && 1 || (showAllMap() && 1) || 0,
-                display: topLevel.isChapterIncluded && 'block' || (showAllMap() && 'block') || 'none',
-              }}
             >
               <div>{topLevel.title}</div>
             </a>
@@ -77,10 +109,6 @@ export default function JourneyBookMap({
                         `${midLevel.modules[0].module}/`) ||
                       ""
                     }${window.location.search}`}
-                    style={{
-                      opacity: midLevel.isSectionIncluded && 1 || (showAllMap() && 1) || 0,
-                      display: topLevel.isChapterIncluded && 'block' || (showAllMap() && 'block') || 'none',
-                    }}
                   >
                     {midLevel.title}
                   </a>

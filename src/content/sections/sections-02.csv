@@ -1,9 +1,6 @@
 ﻿,Name,Order,slug,Chapters,slug (from Chapters),Order (from Chapters),Modules (Names),Modules,Chapter Section Slug
-,Welcome!,1,s01-welcome,Welcome,c01-welcome,1,"Introduction to the kit,Welcome Video","m01-introduction-to-the-kit, m02-welcome-video",c01-welcome--s01-welcome
-,What is the Toolkit?,2,s02-what-is-the-toolkit,Welcome,c01-welcome,1,What is the Toolkit?,m01-what-is-the-toolkit,c01-welcome--s02-what-is-the-toolkit
-,Choose Your Own Adventure,3,s03-choose-your-own-adventure,Welcome,c01-welcome,1,,,c01-welcome--s03-choose-your-own-adventure
-,Take the Homeownership Class,4,s04-take-the-homeownership-class,Welcome,c01-welcome,1,,,c01-welcome--s04-take-the-homeownership-class
-,Homebuying Timeline,5,s05-homebuying-timeline,Welcome,c01-welcome,1,,,c01-welcome--s05-homebuying-timeline
+,Introduction to the Toolkit,1,s01-introduction-to-the-toolkit,Welcome,c01-welcome,1,"Introduction to the Toolkit","m01-introduction-to-the-toolkit",c01-welcome--s01-introduction-to-the-toolkit
+,Steps of Homebuying,2,s02-homebuying-timeline,Welcome,c01-welcome,1,"Steps of Homebuying","m02-homebuying-timeline",c01-welcome--s02-homebuying-timeline
 ,Intro: An Overview of Homebuying Costs,0,s00-intro-an-overview-of-homebuying-costs,What's Your Budget?,c02-what-s-your-budget,2,,,c02-what-s-your-budget--s00-intro-an-overview-of-homebuying-costs
 ,What it Costs to Own a Home,1,s01-what-it-costs-to-own-a-home,What's Your Budget?,c02-what-s-your-budget,2,"Mortgages and How They Work,Upfront Costs of Buying a Home,Ongoing Costs of Homeownership","m01-mortgages-and-how-they-work, m02-upfront-costs-of-buying-a-home, m03-ongoing-costs-of-homeownership",c02-what-s-your-budget--s01-what-it-costs-to-own-a-home
 ,What Homes Can You Afford?,2,s02-what-homes-can-you-afford,What's Your Budget?,c02-what-s-your-budget,2,"Choose How to Estimate Your Budget,Option 1: The Quickest Budget Estimator,Option 2: Affordable Home Price Calculator Tool,Option 3: Get a Pre-Approval","m01-choose-how-to-estimate-your-budget, m02-option-1-the-quickest-budget-estimator, m03-option-2-affordable-home-price-calculator-tool, m04-option-3-get-a-pre-approval",c02-what-s-your-budget--s02-what-homes-can-you-afford

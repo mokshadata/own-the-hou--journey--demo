@@ -5,7 +5,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                 <div class="col-xs-12 col-md-6 col between-md">
                     <div class="workbook--exercise--explanation">
                         <p>
-                            <strong>Annual income</strong>: Include the income of everyone who will be involved in making the mortgage payments. This may be just you, or you and a spouse, or you and another family member who will co-sign for your loan.
+                            <strong>Annua gross income</strong>: Include the pre-tax income of everyone who will be on the mortgage loan with you. This may be just you, or you and a spouse, or you and another family member who will co-sign for your loan.
                         </p>
                     </div>
                     <div class="workbook--exercise--calc">
@@ -15,7 +15,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                 <div class="col-xs-12 col-md-6 col between-md">
                     <div class="workbook--exercise--explanation">
                         <p>
-                            A general rule is that the total price of a home you can afford will be about 2.5 times your annual income.
+                            A general rule is that the total price of a home you can afford will not be more than 2.5 times your annual income.
                         </p>
                     </div>
                     <div class="workbook--exercise--calc" data-prefix="×">
@@ -29,7 +29,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                 </div>
                 <div class="workbook--exercise--explanation">
                     <p>
-                        This is a quick, <strong>rough estimate</strong> of the price of the home you can afford. When you are ready, you should also get into the details with our full calculator tool, but this will give you an estimate to use for the beginning of your search.
+                        This is a quick, <strong>rough estimate</strong> of the home price you may be able to afford. When you are ready, you should also get into the details with our full calculator tool, but this will give you an estimate to use for the beginning of your search.
                     </p>
                 </div>
             </div>
