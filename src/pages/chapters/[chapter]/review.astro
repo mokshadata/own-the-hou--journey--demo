@@ -88,19 +88,19 @@ console.log(reviewItems)
         ))}
     </dl>
   </div>) || <></>}
-  {reviewItems.checklists.length && (<div class="chapter--review--checklists">
+  {reviewItems.checklists.length && (<div class="chapter--review--checklists" style="margin-bottom: 2rem;">
     <h2>Checklists</h2>
-    <ul>
+    <div class="book--decision">
         {
             reviewItems.checklists
                 .map((item) => (
-                    <li>
-                        <h5>{item.title}</h5>
+                    <details>
+                        <summary>{item.title}</summary>
                         <iframe id={item.id} src={item.src} width="100%" height="500px"></iframe>
-                    </li>
+                    </details>
                 ))
         }
-    </ul>
+    </div>
   </div>) || <></>}
   {reviewItems.videos.length && (<div class="chapter--review--videolist">
     <h2>Video Playlist</h2>
