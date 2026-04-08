@@ -89,7 +89,7 @@ export default function JourneyBookMap({
               class={(topLevel.chapter === activeChapter && "is-active") || ""}
               href={`${base_url}chapters/${topLevel.chapter}/${window.location.search}`}
             >
-              <div>{topLevel.title}</div>
+              <div data-order={topLevel.order}>{topLevel.title}</div>
             </a>
             <ol
               class={(topLevel.chapter !== activeChapter && "is-hidden") || ""}
@@ -143,7 +143,7 @@ export default function JourneyBookMap({
                   class={("Review" === activeSection && "is-active") || ""}
                   href={`${base_url}chapters/${topLevel.chapter}/review/${window.location.search}`}
                 >
-                  Check-In
+                  Review
                 </a>
               </li>
             </ol>

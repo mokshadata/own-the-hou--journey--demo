@@ -10,6 +10,8 @@ export default function ({
   nextPageOptions,
   prevPage,
   baseURL,
+  journeyMap,
+  section,
 }) {
     return (
     <Suspense fallback={<PagingSkeleton
@@ -21,10 +23,12 @@ export default function ({
         <Paging
           module={module}
           chapter={chapter}
+          section={section}
           nextPage={nextPage}
           nextPageOptions={nextPageOptions}
           prevPage={prevPage}
           baseURL={baseURL}
+          journeyMap={journeyMap}
         />
     </Suspense>
     )

@@ -1,7 +1,6 @@
 import { createSignal, createMemo, createResource, createEffect} from "solid-js";
 import { createStore } from "solid-js/store";
 import { makePersisted } from "@solid-primitives/storage";
-import localforage from "localforage";
 
 import { JourneyMapSurvey } from "./survey";
 
@@ -29,9 +28,10 @@ export const [mapGenStore, setMapGenStore] = createStore({
     showAllMap: false,
 })
 
-export const [isSetFromLink, setIsSetFromLink] = makePersisted(createSignal(mapGenStore.isSetFromLink), {
-    name: 'book.journeyMap.inputs.isSetFromLink',
-})
+export const [isSetFromLink, setIsSetFromLink] = createSignal(mapGenStore.isSetFromLink)
+// , {
+//     name: 'book.journeyMap.inputs.isSetFromLink',
+// })
 
 export const [showAllMap, setShowAllMap] = makePersisted(createSignal(mapGenStore.showAllMap), {
     name: 'book.journeyMap.inputs.showAllMap',
@@ -258,4 +258,104 @@ export const settersByName = {
     'decision--c00-mapping--journey--challenge': setJourneyChallenge,
 
     'decision--c00-mapping--journey--challenges': setJourneyChallenges,
+}
+
+export function mapStructureToPages(structure) {
+    const pagesIndex = structure.map(({
+      chapter, title: chapterTitle, order: chapterOrder,
+      sections
+    }) => ([
+      [{
+        params: { chapter, },
+        props: {
+          chapterTitle, chapterOrder,
+          sectionTitle: null, sectionOrder: 0,
+          moduleTitle: 'Introduction', 
+          grouping: null,
+        },
+      }],
+      ...sections.toSorted((a, b) => (a.order - b.order))
+        .map(({ title: sectionTitle, order: sectionOrder, section, modules }) => {
+          if (modules.length) {
+            return modules.toSorted((a, b) => (a.item.data.order - b.item.data.order))
+              .map(({ module, lookup, item, }) => ({
+                params: { chapter, section, module },
+                props: {
+                  chapterTitle, chapterOrder,
+                  sectionTitle, sectionOrder,
+                  moduleTitle: item.data.name, moduleOrder: item.data.order,
+                  grouping: item.data['option-group'] || null,
+                }
+              }))
+          } else {
+            return [{
+              params: { chapter, section },
+              props: {
+                chapterTitle, chapterOrder,
+                sectionTitle, sectionOrder,
+                grouping: null,
+              }
+            }]
+          }
+        }),
+      [{
+        params: { chapter, section: 'review', },
+        props: {
+          chapterTitle, chapterOrder,
+          sectionTitle: null, sectionOrder: sections.length + 1,
+          moduleTitle: 'Review',
+          grouping: null,
+        },
+      }],
+    ]))
+    .reduce((result, current) => ([...result, ...current]), [])
+    .reduce((result, current) => ([...result, ...current]), [])
+
+  const optionGroups = Object.groupBy(pagesIndex, (index) => (index.props.grouping))
+
+  const pageLookup = structure.map(({
+      chapter, title: chapterTitle, order: chapterOrder,
+      sections
+    }) => ([
+      [{
+        params: { chapter, },
+        props: {
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction',
+          structure,
+        },
+      }],
+      ...sections.toSorted((a, b) => (a.order - b.order))
+        .map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (
+          modules.toSorted((a, b) => (a.item.data.order - b.item.data.order))
+            .map(({ module, lookup, item, }) => ({
+              params: { chapter, section, module },
+              props: {
+                chapterTitle, chapterOrder,
+                sectionTitle, sectionOrder,
+                moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
+                structure,
+                grouping: item.data['option-group'],
+              }
+            })))),
+      [{
+        params: { chapter, section: 'review', },
+        props: {
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
+          structure,
+        },
+      }],
+    ]))
+    .reduce((result, current) => ([...result, ...current]), [])
+    .reduce((result, current) => ([...result, ...current]), [])
+    .map((page, index, pages) => ({
+      params: page.params,
+      props: {
+        ...page.props,
+        prevPage: index > 0 && pages[index - 1] || null,
+        nextPage: index < pages.length - 1 && pages[index + 1] || null,
+        nextPageOptions: (page.params.module && optionGroups[page.params.module]) || [],
+      }
+    }))
+
+  return pageLookup
 }

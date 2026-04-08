@@ -3,8 +3,13 @@ import { getCollection, getEntry, getEntries, render } from 'astro:content';
 
 const termsList = [
   {
+    term: 'term',
+    definition: 'Example of a term definition that you can show by hovering on the term.',
+    chapter: 'c01-welcome',
+  },
+  {
       term: 'mortgage',
-      definition: 'A loan from a bank or lender that you pay back over time, usually 15 to 30 years.',
+      definition: 'A loan from a bank or lender that you pay back over time, usually 15 or 30 years.',
       chapter: 'c03-what-s-your-budget',
   },
   {
@@ -54,9 +59,20 @@ export default function Term(props) {
   return (
     <span class="term">
         <dfn class="term--term"
-        // title={item?.definition}
+        data-tooltip={item?.definition}
             >{props.children}</dfn>
-        {props.mode !== 'definer' && <span class="term--definition">{item?.definition}</span> || <></>}
     </span>
   );
 }
+
+// export default function Term(props) {
+//   const item = termsList.find((term) => (props.term.toLowerCase() === term.term ))
+//   return (
+//     <span class="term">
+//         <dfn class="term--term"
+//         // title={item?.definition}
+//             >{props.children}</dfn>
+//         {props.mode !== 'definer' && <span class="term--definition">{item?.definition}</span> || <></>}
+//     </span>
+//   );
+// }

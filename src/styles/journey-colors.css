@@ -326,11 +326,13 @@
   --pico-text-selection-color: rgba(1, 170, 255, 0.1875);
   --pico-muted-color: #7b8495;
   --pico-muted-border-color: #202632;
-  --pico-primary: #01aaff;
+  --pico-primary: #FFF;
+  --pico-primary-hover: var(--oth--autumn-leaf);
+  /* --pico-primary: #01aaff; */
   --pico-primary-background: #0172ad;
   --pico-primary-border: var(--pico-primary-background);
   --pico-primary-underline: rgba(1, 170, 255, 0.5);
-  --pico-primary-hover: #79c0ff;
+  /* --pico-primary-hover: #79c0ff; */
   --pico-primary-hover-background: #017fc0;
   --pico-primary-hover-border: var(--pico-primary-hover-background);
   --pico-primary-hover-underline: var(--pico-primary-hover);

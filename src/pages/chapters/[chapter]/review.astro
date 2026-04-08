@@ -43,6 +43,7 @@ console.log(reviewItems)
   activeSection='Review'
   title={`${chapterTitle}: Review`}
   chapter={chapter}
+  section="review"
   prevPage={Astro.props.prevPage}
   nextPage={Astro.props.nextPage}
   nextPageOptions={[]}
@@ -53,11 +54,14 @@ console.log(reviewItems)
 >
   <h2 class="is-size-3 book--module-title">Review</h2>
   {review && <p class="book--read-time">{review.remarkPluginFrontmatter.minutesRead}</p> || <></>}
+  <div class="chapter--review--overview">
+    <p>Below, you can review any decisions, terms, checklists, resources, and videos from throughout the chapter.</p>
+  </div>
+  {review && 
   <div class="chapter--review--summary">
     <h2>Summary</h2>
-      {review && <review.Content/> || <></>}
-      <p>Below, you'll see the decisons you made, terms we learned, resources, and videos from throughout the chapter.</p>
-  </div>
+    <review.Content/>
+  </div> || <></>}
   {reviewItems.decisions.length && (<div class="chapter--review--exercises">
     <h2>Decisions Made</h2>
     {
@@ -100,15 +104,20 @@ console.log(reviewItems)
   </div>) || <></>}
   {reviewItems.videos.length && (<div class="chapter--review--videolist">
     <h2>Video Playlist</h2>
-    <ul class="chapter--review--videolist--playlist">
-        {reviewItems.videos.map((item) => (<li>
+    <div class="chapter--review--videolist--playlist book--decision">
+        {reviewItems.videos.map((item) => (
+          <details>
+            <summary>
+              {item.alt}
+            </summary>
             <YoutubePlayer
                 baseSource={item.baseSource}
                 alt={item.alt}
                 slug={item.slug}
             />
-        </li>))}
-    </ul>
+          </details>
+        ))}
+    </div>
   </div>) || <></>}
   
 </ChapterLayout>

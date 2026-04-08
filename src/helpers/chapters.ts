@@ -26,10 +26,8 @@ export async function getBookStructure() {
   return structure
 }
 
-export async function getAllPages() {
-  const structure = await getBookStructure()
-
-  const pagesIndex = structure.map(({
+export function mapStructureToPages(structure) {
+    const pagesIndex = structure.map(({
       chapter, title: chapterTitle, order: chapterOrder,
       sections
     }) => ([
@@ -38,7 +36,7 @@ export async function getAllPages() {
         props: {
           chapterTitle, chapterOrder,
           sectionTitle: null, sectionOrder: 0,
-          moduleTitle: 'Intro', 
+          moduleTitle: 'Introduction', 
           grouping: null,
         },
       }],
@@ -71,7 +69,7 @@ export async function getAllPages() {
         props: {
           chapterTitle, chapterOrder,
           sectionTitle: null, sectionOrder: sections.length + 1,
-          moduleTitle: 'Check-In',
+          moduleTitle: 'Review',
           grouping: null,
         },
       }],
@@ -88,7 +86,7 @@ export async function getAllPages() {
       [{
         params: { chapter, },
         props: {
-          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Intro',
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction',
           structure,
         },
       }],
@@ -108,7 +106,7 @@ export async function getAllPages() {
       [{
         params: { chapter, section: 'review', },
         props: {
-          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Check-In',
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
           structure,
         },
       }],
@@ -124,8 +122,13 @@ export async function getAllPages() {
         nextPageOptions: (page.params.module && optionGroups[page.params.module]) || [],
       }
     }))
-    
+
   return pageLookup
+}
+
+export async function getAllPages() {
+  const structure = await getBookStructure()
+  return mapStructureToPages(structure)
 }
 
 export async function getAllSections() {
@@ -138,7 +141,7 @@ export async function getAllSections() {
         {
             params: { chapter, },
             props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Intro',
+                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction',
             },
         },
         ...sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (
@@ -155,7 +158,7 @@ export async function getAllSections() {
         {
             params: { chapter, section: 'review', },
             props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Check-In',
+                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
             },
         },
     ]))
@@ -225,7 +228,7 @@ export async function getChapterIntros() {
                     chapterTitle: structure[index-1].title,
                     chapterOrder: structure[index-1].order,
                     sectionTitle: null,
-                    moduleTitle: 'Check-In',
+                    moduleTitle: 'Review',
                 },
             }
         }
@@ -296,7 +299,7 @@ export async function getChapterReviews() {
       // chapterVideoPlaylist,
     }) => (
       {
-        params: { chapter, },
+        params: { chapter, section: 'review'},
         props: {
             chapterTitle,
             structure,
@@ -352,13 +355,14 @@ export async function getChapterReviews() {
                 props: {
                     chapterTitle: structure[index+1].title,
                     chapterOrder: structure[index+1].order,
-                    moduleTitle: 'Intro',
+                    moduleTitle: 'Introduction',
                 },
             }
         }
 
         return base
     })
+  console.log(pageLookup)
     
   return pageLookup
 }
