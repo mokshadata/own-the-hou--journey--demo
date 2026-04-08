@@ -1,4 +1,7 @@
 import { getCollection, getEntry, getEntries, render } from 'astro:content';
+const uniqueBy = (arr, key) => {
+  return [...new Map(arr.map(item => [item[key], item])).values()];
+}
 
 export async function getBookStructure() {
   const chapters = await getCollection('chapters');
@@ -266,7 +269,7 @@ export async function getChapterReviews() {
                 review: {
                     videos: mod.remarkPluginFrontmatter.videos,
                     checklists: mod.remarkPluginFrontmatter.checklists,
-                    terms: await Promise.all(mod.remarkPluginFrontmatter.terms.map(async (term) => ({...term, lookup: await getEntry('terms', `t--${term.term}`)}))),
+                    terms: await Promise.all(mod.remarkPluginFrontmatter.terms.map(async (term) => ({...term, lookup: await getEntry('terms', `t--${term.slug}`)}))),
                     calculators: mod.remarkPluginFrontmatter.calculators,
                     decisions: mod.remarkPluginFrontmatter.decisions,
                     resources: mod.remarkPluginFrontmatter.resources,
@@ -306,7 +309,10 @@ export async function getChapterReviews() {
             reviewItems: {
               videos: reviewItems.map((item) => (item.review.videos)).reduce((acc, curr) => ([...acc, ...curr]), []),
               checklists: reviewItems.map((item) => (item.review.checklists)).reduce((acc, curr) => ([...acc, ...curr]), []),
-              terms: reviewItems.map((item) => (item.review.terms)).reduce((acc, curr) => ([...acc, ...curr]), []).filter((item) => (item.lookup)), 
+              terms: uniqueBy(
+                reviewItems.map((item) => (item.review.terms)).reduce((acc, curr) => ([...acc, ...curr]), []).filter((item) => (item.lookup)),
+                'slug',
+              ), 
               calculators: reviewItems.map((item) => (item.review.calculators)).reduce((acc, curr) => ([...acc, ...curr]), []),
               decisions: reviewItems.map((item) => (item.review.decisions)).reduce((acc, curr) => ([...acc, ...curr]), []),
               resources: reviewItems.map((item) => (item.review.resources)).reduce((acc, curr) => ([...acc, ...curr]), []),

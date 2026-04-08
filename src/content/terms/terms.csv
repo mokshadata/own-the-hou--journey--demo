@@ -10,3 +10,5 @@
 ,pre-approval amount,The total loan value you can be approved for.,t--pre-approval-amount,c02-what-s-your-budget
 ,credit score,A tool that banks use to understand how likely a particular person is to pay back their loans or debts successfully.,t--credit-score,c02-what-s-your-budget
 ,term,Example of a term definition that you can show by hovering on the term.,t--term,c01-welcome
+,housing counselor,"Homeownership experts who can help you understand the process from start to finish.",t--housing-counselor,c03-build-your-homebuying-team
+,private mortgage insurance,"A part of your monthly payment if you put down less than 20% as a down payment, to protect the lender until you build at least 20% equity.",t--private-mortgage-insurance,c02-what-s-your-budget
