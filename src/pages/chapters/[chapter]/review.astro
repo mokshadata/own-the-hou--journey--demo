@@ -62,9 +62,9 @@ console.log(reviewItems)
     <h2>Summary</h2>
     <review.Content/>
   </div> || <></>}
-  {reviewItems.decisions.length && (<div class="chapter--review--exercises">
-    <h2>Decisions Made</h2>
-    {
+  {reviewItems.calculators.length && (<div class="chapter--review--exercises">
+    <h2>Calculators</h2>
+    {/* {
         reviewItems.decisions.map(({ nodeName, ...props }) => (
             nodeName === 'BookDecisions' &&  <BookDecisions
                 client:only="solid-js"
@@ -74,7 +74,7 @@ console.log(reviewItems)
                 optionType={props.optionType}
                 options={eval(props.options.value)}
             /> || <></>))
-    }
+    } */}
     {
         reviewItems.calculators.map(({ nodeName }) => (nodeName === 'AnnualEstimator' &&  <AnnualEstimator client:only="solid-js"/> || <></>))
     }

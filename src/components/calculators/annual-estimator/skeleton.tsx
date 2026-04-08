@@ -5,7 +5,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                 <div class="col-xs-12 col-md-6 col between-md">
                     <div class="workbook--exercise--explanation">
                         <p>
-                            <strong>Annua gross income</strong>: Include the pre-tax income of everyone who will be on the mortgage loan with you. This may be just you, or you and a spouse, or you and another family member who will co-sign for your loan.
+                            <strong>Annual gross income</strong>: Include the pre-tax income of everyone who will be on the mortgage loan with you. This may be just you, or you and a spouse, or you and another family member who will co-sign for your loan.
                         </p>
                     </div>
                     <div class="workbook--exercise--calc">
