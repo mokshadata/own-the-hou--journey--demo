@@ -18,9 +18,13 @@
     "localforage": "^1.10.0",
     "mdast-util-to-string": "^4.0.0",
     "reading-time": "^1.5.0",
+    "rehype-external-links": "^3.0.0",
     "solid-js": "^1.9.9",
     "solid-plyr": "^1.0.10",
+    "solid-transition-group": "^0.3.0",
     "tailwindcss": "^4.1.13",
+    "unist-util-filter": "^5.0.1",
+    "unist-util-is": "^6.0.1",
     "unist-util-visit": "^5.0.0"
   },
   "volta": {
