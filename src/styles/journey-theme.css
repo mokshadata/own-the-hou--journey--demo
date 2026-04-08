@@ -1429,3 +1429,8 @@ nav li span {
 .chapter--review--overview {
     margin-top: 1rem;
 }
+
+section[class^="chapter--review--"]:not(:first-of-type) {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
