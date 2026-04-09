@@ -12,7 +12,7 @@ import Map from "../../../assets/images/journey-map.png"
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
-    return(await getChapterReviews())
+    return (await getChapterReviews())
 }
 
 const { 
@@ -35,7 +35,6 @@ async function getContent() {
 const review = await getContent()
 const base_url = `${import.meta.env.BASE_URL}`;
 
-console.log(reviewItems)
 ---
 <ChapterLayout
   chaptersWithSections={structure}

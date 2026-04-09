@@ -312,7 +312,7 @@ export async function getChapterReviews() {
               videos: reviewItems.map((item) => (item.review.videos)).reduce((acc, curr) => ([...acc, ...curr]), []),
               checklists: reviewItems.map((item) => (item.review.checklists)).reduce((acc, curr) => ([...acc, ...curr]), []),
               terms: uniqueBy(
-                reviewItems.map((item) => (item.review.terms)).reduce((acc, curr) => ([...acc, ...curr]), []).filter((item) => (item.lookup)),
+                reviewItems.map((item) => (item.review.terms)).reduce((acc, curr) => ([...acc, ...curr]), []).filter((item) => (item.mode === 'definer' && item.lookup)),
                 'slug',
               ), 
               calculators: reviewItems.map((item) => (item.review.calculators)).reduce((acc, curr) => ([...acc, ...curr]), []),

@@ -17,6 +17,12 @@ const termsList = [
 {"field1":"","Term":"term","Definition":"Example of a term definition that you can show by hovering on the term.","slug":"t--term","Chapter":"c01-welcome"},
 {"field1":"","Term":"housing counselor","Definition":"Homeownership experts who can help you understand the process from start to finish.","slug":"t--housing-counselor","Chapter":"c03-build-your-homebuying-team"},
 {"field1":"","Term":"private mortgage insurance","Definition":"A part of your monthly payment if you put down less than 20% as a down payment, to protect the lender until you build at least 20% equity.","slug":"t--private-mortgage-insurance","Chapter":"c02-what-s-your-budget"},
+{"field1":"","Term":"realtor","Definition":"Your guide and advocate during the home search and offer process.","slug":"t--realtor","Chapter":"c03-build-your-homebuying-team"},
+{"field1":"","Term":"commission","Definition":"A percentage of the sale price of the home paid to the realtor.","slug":"t--commission","Chapter":"c03-build-your-homebuying-team"},
+{"field1":"","Term":"buyer representation agreement","Definition":"An agreement with your realtor that outlines the services they'll provide, the timeframe for working together, and how the realtor will be paid.","slug":"t--buyer-representation-agreement","Chapter":"c03-build-your-homebuying-team"},
+{"field1":"","Term":"lenders","Definition":"Lenders provide the mortgage loan that makes it possible to buy a home.","slug":"t--lenders","Chapter":"c03-build-your-homebuying-team"},
+{"field1":"","Term":"down payment assistance","Definition":"Can help cover part of your down payment, your closing costs, or both. Support may come in different forms, such as grants, forgivable loans, or deferred-payment loans.","slug":"t--down-payment-assistance","Chapter":"c03-build-your-homebuying-team"},
+{"field1":"","Term":"first-time homebuyer","Definition":"Any person or family who has not owned, or had an ownership interest in, a home within the past three (3) years. A common eligibility qualification for assistance programs.","slug":"t--first-time-homebuyer","Chapter":"c03-build-your-homebuying-team"},
 ]
 
 export default function Term(props) {
