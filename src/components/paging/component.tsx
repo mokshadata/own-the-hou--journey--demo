@@ -37,7 +37,7 @@ export default function Paging({
   )
 
   const pagesDynamic = () => {
-    const isDynamicNextPageInPages = nextPageGetter() && pageLookup().find(({ params }) => (params.chapter === nextPageGetter().chapter && params.section === nextPageGetter().section && params.module === nextPageGetter().module)) || false
+    const isDynamicNextPageInPages = nextPageGetter() && pageLookup().find(({ params }) => (params.chapter === nextPageGetter().params.chapter && params.section === nextPageGetter().params.section && params.module === nextPageGetter().params.module)) || false
     const setup = !showAllMap() && pageLookup().find(({ params }) => (params.chapter === chapter && params.section === section && params.module === module)) ||
     {
       props: {
