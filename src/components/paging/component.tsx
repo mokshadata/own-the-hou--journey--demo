@@ -12,7 +12,7 @@ export default function Paging({
   baseURL,
   journeyMap,
 }) {
-  const nextPageGetter= () => (
+  const nextPageGetter = () => (
     module &&
     nextPageOptions.length &&
     nextPageByDecision(module) &&
@@ -37,7 +37,7 @@ export default function Paging({
   )
 
   const pagesDynamic = () => {
-    const isDynamicNextPageInPages = pageLookup().find(({ params }) => (params.chapter === nextPageGetter().chapter && params.section === nextPageGetter().section && params.module === nextPageGetter().module))
+    const isDynamicNextPageInPages = nextPageGetter() && pageLookup().find(({ params }) => (params.chapter === nextPageGetter().chapter && params.section === nextPageGetter().section && params.module === nextPageGetter().module)) || false
     const setup = !showAllMap() && pageLookup().find(({ params }) => (params.chapter === chapter && params.section === section && params.module === module)) ||
     {
       props: {
@@ -53,13 +53,33 @@ export default function Paging({
     return setup
   }
 
-  const prevPageGetter = () => (
-    pagesDynamic().props.prevPage
-  )
+  const prevPageGetter = () => {
+    if (!pagesDynamic().props.prevPage) {
+      return pagesDynamic().props.prevPage
+    }
+    return {
+      moduleOrder: ((pagesDynamic().props.prevPage.params.module || '').split('-')[0] || '').replace('m', '') * 1,
+      ...pagesDynamic().props.prevPage,
+    }
+  }
 
-  const nextPageGetterDyn = () => (
-    pagesDynamic().props.nextPage
-  )
+  const nextPageGetterDyn = () => {
+    if (!pagesDynamic().props.nextPage) {
+      return pagesDynamic().props.nextPage
+    }
+    return {
+      moduleOrder: ((pagesDynamic().props.nextPage.params.module || '').split('-')[0] || '').replace('m', '') * 1,
+      ...pagesDynamic().props.nextPage,
+    }
+  }
+  
+  createEffect(() => {
+    console.log({
+      dynamic: pagesDynamic(),
+      nextPageGetterDyn: nextPageGetterDyn(),
+      nextPage: nextPageGetter(),
+    })
+  })
 
 
   return (
@@ -69,10 +89,21 @@ export default function Paging({
       data-chapter={chapter}
     >
       <div>
-        {prevPageGetter() && <PageButton relativePosition="Previous" baseURL={baseURL} {...prevPageGetter().params} {...prevPageGetter().props} currentChapter={chapter} /> || <></>}
+        {prevPage && (
+          <a
+            role="button"
+            aria-label="Previous"
+            href={`${baseURL}chapters/${[prevPageGetter().params.chapter, prevPageGetter().params.section, prevPageGetter().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
+          >
+            <div>
+              <small>{(chapter !== prevPageGetter().params.chapter) && <strong>{prevPageGetter().props.chapterTitle}</strong> || <></>} {false && <i>{prevPageGetter().props.sectionTitle}</i> || <></>}</small>
+              <strong>{prevPageGetter().props.siblings === 1 && prevPageGetter().props.sectionTitle || prevPageGetter().props.moduleTitle}</strong>
+            </div>
+          </a>
+        ) || <></>}
       </div>
       <div>
-        {nextPage && (
+        {nextPageGetterDyn && (
           <a
             role="button"
             aria-label="Next"
@@ -80,7 +111,7 @@ export default function Paging({
           >
             <div>
               <small>{(chapter !== nextPageGetterDyn().params.chapter) && <strong>{nextPageGetterDyn().props.chapterTitle}</strong> || <></>} {false && <i>{nextPageGetter().props.sectionTitle}</i> || <></>}</small>
-              <strong>{nextPageGetter().props.moduleTitle}</strong>
+              <strong>{nextPageGetterDyn().props.moduleOrder === 1 && nextPageGetterDyn().props.sectionTitle || nextPageGetterDyn().props.moduleTitle}</strong>
             </div>
           </a>
         ) || <></>}

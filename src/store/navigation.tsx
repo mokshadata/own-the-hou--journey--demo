@@ -283,7 +283,7 @@ export function mapStructureToPages(structure) {
                 props: {
                   chapterTitle, chapterOrder,
                   sectionTitle, sectionOrder,
-                  moduleTitle: item.data.name, moduleOrder: item.data.order,
+                  moduleTitle: item.data.name, moduleOrder: item.data.order, siblings: modules.length,
                   grouping: item.data['option-group'] || null,
                 }
               }))

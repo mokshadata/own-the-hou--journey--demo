@@ -90,7 +90,7 @@ export function mapStructureToPages(structure) {
         params: { chapter, },
         props: {
           chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction',
-          structure,
+          structure, moduleOrder: 0,
         },
       }],
       ...sections.toSorted((a, b) => (a.order - b.order))
@@ -102,6 +102,7 @@ export function mapStructureToPages(structure) {
                 chapterTitle, chapterOrder,
                 sectionTitle, sectionOrder,
                 moduleTitle: item.data.name, moduleOrder: item.data.order, moduleEntry: item, moduleLookup: lookup,
+                siblings: modules.length,
                 structure,
                 grouping: item.data['option-group'],
               }
@@ -110,7 +111,7 @@ export function mapStructureToPages(structure) {
         params: { chapter, section: 'review', },
         props: {
           chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
-          structure,
+          structure, moduleOrder: null,
         },
       }],
     ]))
@@ -144,7 +145,7 @@ export async function getAllSections() {
         {
             params: { chapter, },
             props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction',
+                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Introduction', moduleOrder: 0,
             },
         },
         ...sections.map(({ title: sectionTitle, order: sectionOrder, section, modules }) => (
@@ -161,7 +162,7 @@ export async function getAllSections() {
         {
             params: { chapter, section: 'review', },
             props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
+                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review', moduleOrder: null,
             },
         },
     ]))
@@ -215,7 +216,7 @@ export async function getChapterIntros() {
                         chapterOrder: structure[index].order,
                         sectionTitle: structure[index].sections[0].title,
                         moduleTitle: firstChapterModule?.data.name,
-
+                        moduleOrder: 1,
                     }
                 }
             }
@@ -232,6 +233,7 @@ export async function getChapterIntros() {
                     chapterOrder: structure[index-1].order,
                     sectionTitle: null,
                     moduleTitle: 'Review',
+                    moduleOrder: null,
                 },
             }
         }
