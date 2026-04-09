@@ -77,7 +77,8 @@ export default function Paging({
     console.log({
       dynamic: pagesDynamic(),
       nextPageGetterDyn: nextPageGetterDyn(),
-      nextPage: nextPageGetter(),
+      nextPageGetter: nextPageGetter(),
+      nextPage: nextPage,
     })
   })
 
@@ -89,7 +90,7 @@ export default function Paging({
       data-chapter={chapter}
     >
       <div>
-        {prevPage && (
+        {prevPageGetter() && (
           <a
             role="button"
             aria-label="Previous"
@@ -103,7 +104,7 @@ export default function Paging({
         ) || <></>}
       </div>
       <div>
-        {nextPageGetterDyn && (
+        {nextPageGetterDyn() && (
           <a
             role="button"
             aria-label="Next"
