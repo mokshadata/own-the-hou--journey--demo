@@ -94,7 +94,9 @@ export default function JourneyBookMap({
             <ol
               class={(topLevel.chapter !== activeChapter && "is-hidden") || ""}
             >
-              {topLevel.sections.filter((section)=> (section.isSectionIncluded)).map((midLevel) => (
+              {topLevel.sections
+                .filter((section)=> (section.isSectionIncluded || showAllMap()))
+                .map((midLevel) => (
                 <li>
                   <a
                     role="link"
