@@ -65,6 +65,13 @@ const termsList = [
 {"field1":"","Term":"homestead exemption","Definition":"A tax reduction just for homeowners (stating that this is your primary residence), and it can save you thousands of dollars in property taxes every year.","slug":"t--homestead-exemption","Chapter":""},
 {"field1":"","Term":"transfer on death deed","Definition":"A document to be filed with the county of your property to transfer it legally in the event of your death and allow your family to avoid probate costs and headaches.","slug":"t--transfer-on-dead-deed","Chapter":""},
 
+{"field1":"","Term":"insurance agent","Definition":"An expert in home insurance who can help you compare quotes form multiple providers","slug":"t--insurance-agent","Chapter":""},
+{"field1":"","Term":"deductible","Definition":"How much you will have to pay out of pocket for renovations and repairs before insurance coverage kicks in.","slug":"t--deductible","Chapter":""},
+{"field1":"","Term":"contractor fraud","Definition":"When a contractor takes money for repairs and fails to complete the job.","slug":"t--contractor-fraud","Chapter":""},
+{"field1":"","Term":"mortgage servicer","Definition":"The company that manages the administration of a home loan after closing.","slug":"t--mortgage-servicer","Chapter":""},
+{"field1":"","Term":"forbearance","Definition":"A temporary postponement or reduction of loan payment that you can talk to your servicer about when you have trouble making payments.","slug":"t--forbearance","Chapter":""},
+{"field1":"","Term":"assessed value","Definition":"The value your property tax bill is based on. A notice of the value as determined by the Harris County Appraisal District will be sent to you yearly for your review.","slug":"t--assessed-value","Chapter":""},
+
 ]
 
 export default function Term(props) {

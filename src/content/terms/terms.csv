@@ -56,3 +56,10 @@
 ,cash to close,"The amount the title company will tell you to bring for closing day. This amount includes your remaining down payment and any closing costs.",t--cash-to-close,
 ,homestead exemption,"A tax reduction just for homeowners (stating that this is your primary residence), and it can save you thousands of dollars in property taxes every year.",t--homestead-exemption,
 ,transfer on death deed,"A document to be filed with the county of your property to transfer it legally in the event of your death and allow your family to avoid probate costs and headaches.",t--transfer-on-death-deed,
+,insurance agent,"An expert in home insurance who can help you compare quotes form multiple providers",t--insurance-agent,
+,deductible,"How much you will have to pay out of pocket for renovations and repairs before insurance coverage kicks in.",t--deductible,
+,contractor fraud,"When a contractor takes money for repairs and fails to complete the job.",t--contractor-fraud,
+,mortgage servicer,"The company that manages the administration of a home loan after closing.",t--mortgage-servicer,
+,forbearance,"A temporary postponement or reduction of loan payment that you can talk to your servicer about when you have trouble making payments.",t--forbearance,
+,assessed value,"The value your property tax bill is based on. A notice of the value as determined by the Harris County Appraisal District will be sent to you yearly for your review.",t--assessed-value,
+
