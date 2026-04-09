@@ -35,6 +35,19 @@ const termsList = [
 {"field1":"","Term":"pre-qualification","Definition":"Informal estimate of potential loan amount based on information you provide yourself. It can be helpful early on, but it doesn’t carry much weight with sellers.","slug":"t--pre-qualification","Chapter":""},
 {"field1":"","Term":"origination charges","Definition":"Lenders charge this fee to issue your loan. This fee will be a part of your closing costs.","slug":"t--origination-charges","Chapter":""},
 {"field1":"","Term":"loan estimate form","Definition":"Lender provides this documentation to you after determining your loan terms. This document confirms interest rate, down payment, origination charges, and other terms of the loan.","slug":"t--loan-estimate-form","Chapter":""},
+{"field1":"","Term":"offer","Definition":"A written proposal to the home seller that explains how much you’re willing to pay for the home — and under what conditions.","slug":"t--offer","Chapter":""}
+,
+{"field1":"","Term":"standard contract","Definition":"A document prepared by your realtor that covers the purchase price, details about closing costs, how long it will take to close, and what happens if certain conditions aren’t met.","slug":"t--standard-contract","Chapter":""}
+,
+{"field1":"","Term":"contingencies","Definition":"A part of the offer, conditions that must be met for the sale to move forward. Common contingencies relate to inspection timelines, appraisals, and mortgage approval.","slug":"t--contingencies","Chapter":""},
+{"field1":"","Term":"option fee","Definition":"A small, non-refundable payment paid directly to the seller that gives you the right to cancel your offer during the option period. The fee is typically around $200, but may be $100-$500.","slug":"t--option-fee","Chapter":""},
+{"field1":"","Term":"option period","Definition":"Usually about 7 - 10 days from when you make the offer, when you would schedule inspections and take a closer look at the property.","slug":"t--option-period","Chapter":""},
+{"field1":"","Term":"earnest money","Definition":"A larger deposit that shows the seller you're serious about buying the home that goes towards down payment and closing costs if the sale goes through.","slug":"t--earnest-money","Chapter":""},
+{"field1":"","Term":"title company","Definition":"A neutral third party that usually holds the earnest money.","slug":"t--title-company","Chapter":""},
+{"field1":"","Term":"home inspector","Definition":"Conducts an inspection to examine major systems and components of the house, such as the roof, foundation, plumbing, electrical systems, heating and cooling, and appliances.","slug":"t--home-inspector","Chapter":""},
+{"field1":"","Term":"inspection report","Definition":"The written report you receive from the home inspector after inspection.","slug":"t--inspection-report","Chapter":""},
+{"field1":"","Term":"credits","Definition":"Money the seller agrees to contribute toward your closing costs or repairs. Instead of fixing an issue before closing, the seller may offer a credit so you can handle the repair yourself after you move in.","slug":"t--credits","Chapter":""},
+{"field1":"","Term":"appraisal","Definition":"An independent estimate of the home’s value, conducted by a licensed appraiser and ordered by the lender to confirm the home is worth the amount being borrowed.","slug":"t--appraisal","Chapter":""},
 ]
 
 export default function Term(props) {
