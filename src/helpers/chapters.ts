@@ -355,7 +355,7 @@ export async function getChapterReviews() {
             }
         }
 
-        if (index < pages.length - 2) {
+        if (index < pages.length - 1) {
             base.props.nextPage = {
                 params: {
                     chapter: structure[index+1].chapter,
@@ -369,8 +369,6 @@ export async function getChapterReviews() {
         }
 
         return base
-    })
-  console.log(pageLookup)
-    
+    })    
   return pageLookup
 }
