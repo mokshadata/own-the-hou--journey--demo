@@ -18,3 +18,15 @@
 ,lenders,"Lenders provide the mortgage loan that makes it possible to buy a home.",t--lenders,c03-build-your-homebuying-team
 ,down payment assistance,"Can help cover part of your down payment, your closing costs, or both. Support may come in different forms, such as grants, forgivable loans, or deferred-payment loans.",t--down-payment-assistance,c03-build-your-homebuying-team
 ,first-time homebuyer,"Any person or family who has not owned, or had an ownership interest in, a home within the past three (3) years. A common eligibility qualification for assistance programs.",t--first-time-homebuyer,c03-build-your-homebuying-team
+,interest rate,"A percentage that determines how much it will cost you specifically to borrow this principal amount.",t--interest-rate,
+,mortgage payment,"Repayment of the mortgage to be paid monthly, includes principal, interest, property taxes and insurance, and any private mortgage insurance",t--mortgage-payment,
+,debt-to-income ratio,"How much money you owe in your personal debts each month compared to how much money you earn (pre-tax).",t--debt-to-income-ratio,
+,pre-approval,"A lender’s written estimate of how much they may be willing to lend you, based on your financial information. Sellers often expect to see a pre-approval letter with your offer.",t--pre-approval,
+,mortgage broker,"A expert that can connect you with different lenders and loan products so you can compare multiple options, without having to do all the work of reaching out to lenders yourself.",t--mortgage-broker,
+,portfolio loans,"Loans that lenders keep in-house instead of selling to the secondary market. They can be useful for buyers with unique situations, but terms vary widely.",t--portfolio-loans,
+,conventional loans,"Common and often offer good rates for buyers with strong credit. They typically require a down payment, and private mortgage insurance (PMI) if you put down less than 20%.",t--conventional-loans,
+,fha loans,"More flexible for first-time buyers and buyers with lower credit scores. They usually have lower down payment requirements and can be easier to qualify for but require mortgage insurance.",t--fha-loans,
+,va loans,"Available to eligible veterans, service members, and surviving spouses. They often offer very favorable terms, including no down payment.",t--va-loans,
+,pre-qualification,"Informal estimate of potential loan amount based on information you provide yourself. It can be helpful early on, but it doesn’t carry much weight with sellers.",t--pre-qualification,
+,origination charges,"Lenders charge this fee to issue your loan. This fee will be a part of your closing costs.",t--origination-charges,
+,loan estimate form,"Lender provides this documentation to you after determining your loan terms. This document confirms interest rate, down payment, origination charges, and other terms of the loan.",t--loan-estimate-form,
