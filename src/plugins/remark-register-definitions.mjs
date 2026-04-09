@@ -74,7 +74,7 @@ export function remarkTestArgs() {
       if (node.name === 'Term') {
         data.astro.frontmatter.terms.push({
           ...nodeAttrsToObj(node),
-          slug: `${nodeAttrsToObj(node).term.split(' ').join('-')}`,
+          slug: `${nodeAttrsToObj(node).term.toLowerCase().split(' ').join('-')}`,
           text: getNestedText(node).trim(),
           node,
         })

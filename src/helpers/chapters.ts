@@ -248,14 +248,24 @@ export async function getChapterIntros() {
 export async function getChapterReviews() {
   const structure = await getBookStructure()
 
+  const chapterIntros = await Promise.all(structure.map(async (chapter) => {
+    return {
+      chapter: chapter.chapter,
+      intro: await getEntry('intros', `${chapter.chapter}--intro`),
+    }
+  }))
+
   const structureWithReviewContent = await Promise.all(structure.map(async (chapter) => {
-    const renderedModules = await Promise.all(
-      chapter.sections
-        .map((section) => (
-          section.modules
-            .map((module) => (module.item))
-        ))
-        .reduce((result, current) => ([...result, ...current]), [])
+    const renderedModules = await Promise.all([
+      chapterIntros.find((intro) => (intro.chapter === chapter.chapter))?.intro,
+      ...chapter.sections
+        .map((section) => {
+          return [
+            ...section.modules
+              .map((module) => (module.item))
+          ]
+        })
+        .reduce((result, current) => ([...result, ...current]), [])]
         // .reduce((result, current) => ([...result, ...current]), [])
         .map(render)
       )
