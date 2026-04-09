@@ -48,6 +48,14 @@ const termsList = [
 {"field1":"","Term":"inspection report","Definition":"The written report you receive from the home inspector after inspection.","slug":"t--inspection-report","Chapter":""},
 {"field1":"","Term":"credits","Definition":"Money the seller agrees to contribute toward your closing costs or repairs. Instead of fixing an issue before closing, the seller may offer a credit so you can handle the repair yourself after you move in.","slug":"t--credits","Chapter":""},
 {"field1":"","Term":"appraisal","Definition":"An independent estimate of the home’s value, conducted by a licensed appraiser and ordered by the lender to confirm the home is worth the amount being borrowed.","slug":"t--appraisal","Chapter":""},
+{"field1":"","Term":"sales price","Definition":"The amount you and the seller agreed on for the home. This is the number written into your offer to purchase the home.","slug":"t--sales-price","Chapter":""},
+{"field1":"","Term":"loan amount","Definition":"How much money you are borrowing from your lender.","slug":"t--loan-amount","Chapter":""},
+{"field1":"","Term":"appraised value","Definition":"The value of the home estimate by a licensed appraiser ordered by the lender.","slug":"t--appraised-value","Chapter":""},
+{"field1":"","Term":"processing","Definition":"First of two main phases to finalizing your mortage, when your lender gathers and reviews all the documents needed to support your loan application.","slug":"t--processing","Chapter":""},
+{"field1":"","Term":"underwriting","Definition":"Second of two main phases to finalizing your mortage, when your loan application goes to an underwriter who will decide whether the loan meets all program requirements and lender guidelines.","slug":"t--underwriting","Chapter":""},
+{"field1":"","Term":"conditional approval","Definition":"A request during underwriting for a few final items such as updated bank statements, explanations for recent transactions, or proof of meeting certain conditions.","slug":"t--conditional-approval","Chapter":""},
+{"field1":"","Term":"closing disclosure","Definition":"A document before closing that you'll receive. It shows the final terms for the loan. You must receive this from your lender at least three business days before closing.","slug":"t--closing-disclosure","Chapter":""},
+{"field1":"","Term":"contract for deed","Definition":"An uncommon deal where seller keeps the title in their name until you’ve paid the full price. Offered instead of a traditional mortgage. There are safer paths to homeownership.","slug":"t--contract-for-deed","Chapter":""},
 ]
 
 export default function Term(props) {
