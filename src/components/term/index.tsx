@@ -54,8 +54,17 @@ const termsList = [
 {"field1":"","Term":"processing","Definition":"First of two main phases to finalizing your mortage, when your lender gathers and reviews all the documents needed to support your loan application.","slug":"t--processing","Chapter":""},
 {"field1":"","Term":"underwriting","Definition":"Second of two main phases to finalizing your mortage, when your loan application goes to an underwriter who will decide whether the loan meets all program requirements and lender guidelines.","slug":"t--underwriting","Chapter":""},
 {"field1":"","Term":"conditional approval","Definition":"A request during underwriting for a few final items such as updated bank statements, explanations for recent transactions, or proof of meeting certain conditions.","slug":"t--conditional-approval","Chapter":""},
-{"field1":"","Term":"closing disclosure","Definition":"A document before closing that you'll receive. It shows the final terms for the loan. You must receive this from your lender at least three business days before closing.","slug":"t--closing-disclosure","Chapter":""},
+{"field1":"","Term":"closing disclosure","Definition":"A document before closing that you'll receive. It shows the final terms for the loan. You must receive this at least three business days before closing.","slug":"t--closing-disclosure","Chapter":""},
 {"field1":"","Term":"contract for deed","Definition":"An uncommon deal where seller keeps the title in their name until you’ve paid the full price. Offered instead of a traditional mortgage. There are safer paths to homeownership.","slug":"t--contract-for-deed","Chapter":""},
+
+{"field1":"","Term":"closing","Definition":"The process of completing your mortgage loan and transferring ownership of a home to you, the buyer.","slug":"t--closing","Chapter":""},
+{"field1":"","Term":"escrow","Definition":"Money being held by a neutral third party, using a title company, until the sale is finished and the home officially changes ownership.","slug":"t--escrow","Chapter":""},
+{"field1":"","Term":"promissory note","Definition":"This document is your promise to the lender to repay your mortgage loan.","slug":"t--promissory-note","Chapter":""},
+{"field1":"","Term":"deed","Definition":"This is the document that will certify your ownership of the home once you have closed.","slug":"t--deed","Chapter":""},
+{"field1":"","Term":"cash to close","Definition":"The amount the title company will tell you to bring for closing day. This amount includes your remaining down payment and any closing costs.","slug":"t--cash-to-close","Chapter":""},
+{"field1":"","Term":"homestead exemption","Definition":"A tax reduction just for homeowners (stating that this is your primary residence), and it can save you thousands of dollars in property taxes every year.","slug":"t--homestead-exemption","Chapter":""},
+{"field1":"","Term":"transfer on death deed","Definition":"A document to be filed with the county of your property to transfer it legally in the event of your death and allow your family to avoid probate costs and headaches.","slug":"t--transfer-on-dead-deed","Chapter":""},
+
 ]
 
 export default function Term(props) {
