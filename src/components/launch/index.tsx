@@ -43,7 +43,7 @@ export default function StepLauncher({ journeyMap, base_url }) {
           <div class="col-xs-6 journey-map-results--intro">
             <h1>Homebuying Course</h1>
             <p>If you’re someone who wants in-person guidance, Own the HOU recommends starting with an in-depth homebuying class taught by a HUD-certified Homeownership Counselor. These 8-hour classes walk through every step of the process. Once you complete the class, counselors are available to provide one-on-one guidance at no cost.</p>
-            <a role="button" href="https://ownthehou.org/homebuyer-education-courses/">Look for a local course!</a>
+            <a role="button" href="https://ownthehoustg.wpenginepowered.com/homebuyer-education-courses/">Look for a local course!</a>
           </div>
           <div class="col-xs-6">
             Photo here
