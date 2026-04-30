@@ -1,3 +1,5 @@
+import MoneyInput, { moneyMask } from "../shared/money-input"
+
 export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annualIncomeValue, estimateValue }) {
     return (
         <div class="workbook--exercise">
@@ -9,7 +11,16 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                         </p>
                     </div>
                     <div class="workbook--exercise--calc">
-                        <input type="text" value={annualIncomeValue()} onChange={handleAnnualIncomeChange} name="decision--c03-budget--annual-income--value"/>
+                        <MoneyInput
+                            prefix="decision--c03-budget--annual-income"
+                            item={{
+                                setting: {
+                                    key: 'value',
+                                },
+                                rate: annualIncomeValue,
+                                setter: handleAnnualIncomeChange,
+                            }}
+                        />
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6 col between-md">
@@ -25,7 +36,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
             </div>
             <div>
                 <div class="workbook--exercise--calc workbook--exercise--calc--result">
-                    <input type="text" value={`$${estimateValue()}`}  name="decision--c03-budget--annual-income--budget" readonly />
+                    <input type="text" value={`${moneyMask(estimateValue())[0]}`}  name="decision--c03-budget--annual-income--budget" readonly />
                 </div>
                 <div class="workbook--exercise--explanation">
                     <p>

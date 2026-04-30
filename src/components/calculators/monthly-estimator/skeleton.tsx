@@ -1,8 +1,5 @@
 import { createEffect, For, Show } from "solid-js"
-
-import { interestRateAPIs } from '../store'
-
-import { createInputMask, createMaskPattern } from "@solid-primitives/input-mask";
+import MoneyInput from "../shared/money-input";
 
 const formatter = (key) => {
   if (key.includes('Rate') || key.includes('Percent')) {
@@ -14,39 +11,6 @@ const formatter = (key) => {
   }
 
   return (value) => (![null, undefined].includes(value) && (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(value * 1)).replace(/\.00$/, ''))
-}
-
-function valAsNum(value) {
-  return value.replace(/\D/g,'') * 1
-}
-
-const moneyMask = (value: string, sel: Selection): [string, Selection] => {
-  const valAsCurrency = (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(valAsNum(value))).replace(/\.00$/, '')
-
-  return [`${valAsCurrency}`, [value.length + 1, value.length + 1]]
-};
-
-const moneyInputHandler = createInputMask(moneyMask);
-
-export function MoneyInput({ item, prefix }) {
-  const handleChange = (setter) => {
-    return (changeEvent) => {
-      return setter(valAsNum(changeEvent.target.value))
-    }
-  }
-
-  return (<div>
-    <label for={`${prefix}--${item.setting.key}`} id={`${prefix}--${item.setting.key}--pattern-view`}></label>
-    <input
-      id={`${prefix}--${item.setting.key}`}
-      name={`${prefix}--${item.setting.key}`}
-      type="text"
-      placeholder="$"
-      value={moneyMask(`${item.rate()}`)[0]}
-      onChange={handleChange(item.setter)}
-      onInput={createMaskPattern(moneyInputHandler, () => "$")}
-    />
-  </div>)
 }
 
 export function Input({ item }) {
@@ -111,10 +75,9 @@ export function MonthlyRow({ item }) {
 export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) {
 
   createEffect(() => {
-    if (inputs.targetBudget[0]() === null || inputs.targetBudget[0]() > calculator.affordableHomePrice()) {
+    if (inputs.targetBudget[0]() === null || inputs.targetBudget[0]() === 0 || inputs.targetBudget[0]() > calculator.affordableHomePrice()) {
       inputs.targetBudget[1](calculator.affordableHomePrice())
     }
-
     return calculator.affordableHomePrice()
   })
 
@@ -149,6 +112,9 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
       label: `Loan Term`,
       notes: () => (<>The number of years until the home is paid off and yours.</>),
     },
+  ]
+
+  const rateSettings = [
     {
       type: 'calc',
       key: 'interestRate',
@@ -191,7 +157,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
         key: 'annualPMIAmount',
         type: 'calc',
       },
-    }
+    },
   ]
 
   const outputSettings = [
@@ -213,18 +179,23 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     },
     {
       type: 'calc',
-      key: 'monthlyBudget',
-      label: 'Estimated monthly payment today',
+      key: 'monthlyPI',
+      label: 'Fixed monthly costs (principal and interest)',
     },
     {
       type: 'calc',
-      key: 'monthlyPI',
-      label: 'P+I Fixed monthly costs',
+      key: 'monthlyVariable',
+      label: 'Variable monthly costs (PMI, property tax, and insurance)',
     },
     {
       type: 'calc',
       key: 'monthlyMortgage',
-      label: 'P + M + I Estimated monthly mortgage',
+      label: 'Total monthly house payments - fixed + variable costs',
+    },
+    {
+      type: 'calc',
+      key: 'monthlyBudget',
+      label: 'Estimated monthly payments - house payments + other debts',
     },
   ]
 
@@ -232,6 +203,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     rate: (key) => (() => (rates[key] && rates[key][0]() || 0)),
     input: (key) => (() => (inputs[key] && inputs[key][0]() || 0)),
     calc: (key) => (() => {
+      console.log(key)
       return calculator[key]() || 0
     }),
   }
@@ -251,6 +223,15 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     setting,
   }))
 
+  const rateItems = rateSettings.map((setting) => ({
+    label: setting.label,
+    rate: typeToPropsGetter[setting.type](setting.key),
+    setter: typeToPropsSetter[setting.type](setting.key),
+    notes: setting.notes,
+    result: setting.result && typeToPropsGetter[setting.result.type](setting.result.key) || (() => (null)),
+    setting,
+  }))
+
   const outputItems = outputSettings.map((setting) => ({
     label: setting.label,
     rate: setting.display || typeToPropsGetter[setting.type](setting.key),
@@ -258,12 +239,17 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
   }))
 
   return (<div class="monthly-estimator">
-    <For each={outputItems}>
+    <For each={inputItems}>
       {(item, index) => (
         <MonthlyRow item={item}/>
       )}
     </For>
-    <For each={inputItems}>
+    <For each={rateItems}>
+      {(item, index) => (
+        <MonthlyRow item={item}/>
+      )}
+    </For>
+    <For each={outputItems}>
       {(item, index) => (
         <MonthlyRow item={item}/>
       )}

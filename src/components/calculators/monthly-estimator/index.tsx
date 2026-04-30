@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "solid-js";
 import MonthlyEstimatorSkeleton from "./skeleton";
-import { loanAmount, targetHomePrice } from "../store";
+import { loanAmount, monthlyVariable, targetHomePrice } from "../store";
 
 const MonthlyEstimator = lazy(() => import('./component'))
 
@@ -36,6 +36,7 @@ export default function () {
               monthlyBudget: () => null,
               monthlyMortgage: () => null,
               monthlyPI: () => null,
+              monthlyVariable: () => null,
             }}
         />}>
             <MonthlyEstimator/>
