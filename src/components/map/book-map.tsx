@@ -24,6 +24,9 @@ export default function JourneyBookMap({
 
       setIsSetFromLink(true)
     }
+    document.querySelectorAll('.book--content a:not([href^="http"])').forEach((el) => {
+      el.setAttribute('href', `${el.href}${window.location.search}`)
+    })
     return searchParamsToChoices()
   })
 

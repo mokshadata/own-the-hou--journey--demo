@@ -93,6 +93,8 @@ export const monthlyBudget = () => (monthlyMortgage() + monthlyCalcInputs.monthl
 export const annualRepairBudget = () => (targetHomePrice() * monthlyCalcRates.annualRepairRate[0]())
 
 export const calcEstimations = {
+  annualPMIRate,
+
   affordableHomePrice,
   targetHomePrice,
   monthlyBudget,

@@ -57,9 +57,9 @@ export function MonthlyRow({ item }) {
   const colWidth = 12 / colCount
   
   return (
-    <div class="row">
-      <div class={`col-xs-${colWidth} monthly-estimator--label monthly-estimator--${item.setting.type}`} data-name={item.setting.key}>{item.label}</div>
-      <div class={`col-xs-${colWidth} monthly-estimator--entry`} data-type={item.setting.type}>
+    <div class={`row estimator-row--${item.setting.type}`}>
+      <div class={`col-xs-3 monthly-estimator--label monthly-estimator--${item.setting.type}`} data-name={item.setting.key}>{item.label}</div>
+      <div class={`col-xs-3 monthly-estimator--entry`} data-type={item.setting.type}>
         {
           (item.setting.display && item.rate()) ||
           (item.setting.type !== 'input' && formatter(item.setting.key)(item.rate())) ||
@@ -67,7 +67,7 @@ export function MonthlyRow({ item }) {
           <></>
         }
       </div>
-      {colCount === 3 && <div class={`col-xs-${colWidth} monthly-estimator--notes`}>{item.notes && item.notes() || formatter(item.setting.result.key)(item.result())}</div> || <></>}
+      {colCount === 3 && <div class={`col-xs-6 monthly-estimator--notes`}>{item.notes && item.notes() || formatter(item.setting.result.key)(item.result())}</div> || <></>}
     </div>
   )
 }
@@ -85,26 +85,26 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     {
       type: 'input',
       key: 'annualIncome',
-      label: 'Annual Income',
-      notes: () => (<><strong>Annual gross income</strong>: Include the pre-tax income of everyone who will be on the mortgage loan with you. This may be just you, or you and a spouse, or you and another family member who will co-sign for your loan.</>),
+      label: 'Gross Annual Income',
+      notes: () => (<><strong>Gross Annual Income</strong>: This is your annual (pre-tax) income, and the income of your co-signer (if applicable).</>),
     },
     {
       type: 'input',
       key: 'targetBudget',
-      label: 'Your Target Budget',
-      notes: () => (<>Based on your <strong>annual gross income</strong> of {formatter('annualIncome')(inputs.annualIncome[0]())}, your target home price should be {formatter('affordableHomePrice')(calculator.affordableHomePrice())} or less.</>),
+      label: 'Your Target Home Price',
+      notes: () => (<>Based on your <strong>gross annual income</strong> of {formatter('annualIncome')(inputs.annualIncome[0]())}, your target home price should be {formatter('affordableHomePrice')(calculator.affordableHomePrice())} or less.</>),
     },
     {
       type: 'input',
       key: 'downPayment',
       label: 'Savings for Down Payment',
-      notes: () => (<>Estimate how much you have saved or plan to save for a down payment. You can put your best guess in right now, and then edit your down payment goal later.</>),
+      notes: () => (<>Estimate how much you plan to have for a down payment.</>),
     },
     {
       type: 'input',
       key: 'monthlyDebts',
-      label: 'Debts',
-      notes: () => (<>Include any regular payments you are required to make on debts obligations. (Ex: car payment, credit card payments, student loan payments, or mandated payments like child support.</>),
+      label: 'Monthly Debt Obligations',
+      notes: () => (<>Minimum monthly payments you are required to make (ex: car/credit card/student loan, child support)</>),
     },
     {
       type: 'input',
@@ -140,17 +140,17 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
         type: 'calc',
       },
     },
+    // {
+    //   type: 'rate',
+    //   key: 'annualRepairRate',
+    //   label: 'Annual Repairs Budget',
+    //   result: {
+    //     key: 'annualRepairBudget',
+    //     type: 'calc',
+    //   },
+    // },
     {
-      type: 'rate',
-      key: 'annualRepairRate',
-      label: 'Annual Repairs Budget',
-      result: {
-        key: 'annualRepairBudget',
-        type: 'calc',
-      },
-    },
-    {
-      type: 'rate',
+      type: 'calc',
       key: 'annualPMIRate',
       label: 'Private Mortgage Insurance',
       result: {
@@ -165,37 +165,33 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
       type: 'calc',
       key: 'targetHomePriceDisplay',
       label: 'Your target home price',
-      display: () => (`${formatter('targetHomePrice')(calculator.targetHomePrice())} out of ${formatter('affordableHomePrice')(calculator.affordableHomePrice())}`)
+      display: () => (`${formatter('targetHomePrice')(calculator.targetHomePrice())}`),
+      notes: () => (<>out of {formatter('affordableHomePrice')(calculator.affordableHomePrice())} (affordable home price)</>),
     },
     {
       type: 'calc',
       key: 'loanAmount',
       label: 'Your loan amount',
-    },
-    {
-      type: 'calc',
-      key: 'downPaymentPercent',
-      label: 'Down payment percentage',
+      notes: () => (<>Your target home price minus your target down payment ({formatter('downPayment')(inputs.downPayment[0]())})</>),
     },
     {
       type: 'calc',
       key: 'monthlyPI',
-      label: 'Fixed monthly costs (principal and interest)',
+      label: 'Fixed monthly costs',
+      notes: () => (<>Your principal plus an estimated interest rate of {formatter('interestRate')(calculator.interestRate())}</>),
     },
     {
       type: 'calc',
       key: 'monthlyVariable',
-      label: 'Variable monthly costs (PMI, property tax, and insurance)',
+      label: 'Variable monthly costs',
+      notes: () => (<>{calculator.annualPMIRate() && 'Private Mortgage Insurance (PMI), p' || 'P'}roperty tax, and insurance</>),
     },
-    {
-      type: 'calc',
-      key: 'monthlyMortgage',
-      label: 'Total monthly house payments - fixed + variable costs',
-    },
+
     {
       type: 'calc',
       key: 'monthlyBudget',
-      label: 'Estimated monthly payments - house payments + other debts',
+      label: 'Estimated monthly payments',
+      notes: () => (<>Total monthly house payments ({formatter('monthlyMortgage')(calculator.monthlyMortgage())}) + your other monthly debt obligations</>),
     },
   ]
 
@@ -203,7 +199,6 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     rate: (key) => (() => (rates[key] && rates[key][0]() || 0)),
     input: (key) => (() => (inputs[key] && inputs[key][0]() || 0)),
     calc: (key) => (() => {
-      console.log(key)
       return calculator[key]() || 0
     }),
   }
@@ -235,6 +230,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
   const outputItems = outputSettings.map((setting) => ({
     label: setting.label,
     rate: setting.display || typeToPropsGetter[setting.type](setting.key),
+    notes: setting.notes,
     setting,
   }))
 
@@ -244,15 +240,21 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
         <MonthlyRow item={item}/>
       )}
     </For>
-    <For each={rateItems}>
-      {(item, index) => (
-        <MonthlyRow item={item}/>
-      )}
-    </For>
-    <For each={outputItems}>
-      {(item, index) => (
-        <MonthlyRow item={item}/>
-      )}
-    </For>
+    {/* <div class="monthly-estimator--adjustable-rates">
+      <h2>Adjustable Rates</h2>
+      <For each={rateItems}>
+        {(item, index) => (
+          <MonthlyRow item={item}/>
+        )}
+      </For>
+    </div> */}
+    <div class="monthly-estimator--results">
+      <h4>Summary of Monthly Payments</h4>
+      <For each={outputItems}>
+        {(item, index) => (
+          <MonthlyRow item={item}/>
+        )}
+      </For>
+    </div>
   </div>)
 }

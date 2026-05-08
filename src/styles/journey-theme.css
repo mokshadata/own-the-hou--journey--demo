@@ -1468,5 +1468,9 @@ label[data-mask-pattern]::after {
 }
 
 .monthly-estimator--input:not([data-name="loanTerm"]) {
-    padding-top: 1rem;
+    padding-top: 0.25rem;
+}
+
+.monthly-estimator--results {
+    margin-top: 2rem;
 }

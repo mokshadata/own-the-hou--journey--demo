@@ -53,7 +53,7 @@ const search = Astro.url.searchParams.get('search') || '';
     {intro && (
         <div class="chapter--intro--content">
             {intro && <p class="book--read-time">{intro.remarkPluginFrontmatter.minutesRead}</p> || <></>}
-            <intro.Content/>
+            <div class="book--content--body"><intro.Content/></div>
         </div>
     ) || <div class="chapter--intro--content"></div>}
 </ChapterLayout>

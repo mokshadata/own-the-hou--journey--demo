@@ -38,5 +38,7 @@ const orderToAlpha = (sectionOrder) => ('abcdefghijklmnopqrstuvwxyz'[sectionOrde
 >
   <h2 class="is-size-3 book--module-title">{moduleTitle}</h2>
   <p class="book--read-time">{renderedSection.remarkPluginFrontmatter.minutesRead}</p>
-  <renderedSection.Content/>
+  <div class="book--content--body">
+    <renderedSection.Content/>
+  </div>
 </ChapterLayout>

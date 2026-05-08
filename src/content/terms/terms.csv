@@ -5,7 +5,7 @@
 ,interest,The lender’s fee for letting you borrow money.,t--interest,c02-what-s-your-budget
 ,escrow account,A holding account.,t--escrow-account,c02-what-s-your-budget
 ,down payment,Down payment is the cash you contribute toward the home’s purchase price.,t--down-payment,c02-what-s-your-budget
-,earnest money,This is a portion of your down payment that you put into an escrow account during the purchase process.,t--earnest-money,c02-what-s-your-budget
+,earnest money,This is a portion of your down payment that you put into an escrow account during the purchase process. A larger deposit that shows the seller you're serious about buying the home that goes towards down payment and closing costs if the sale goes through.,t--earnest-money,c02-what-s-your-budget
 ,closing costs,"Fees for the lender, title company, appraisal, inspections, and other costs. It is typically 2% - 5% of the purchase price.",t--closing-costs,c02-what-s-your-budget
 ,pre-approval amount,The total loan value you can be approved for.,t--pre-approval-amount,c02-what-s-your-budget
 ,credit score,A score or number from 300 to 850 that banks use to understand how likely a particular person is to pay back their loans or debts successfully.,t--credit-score,c02-what-s-your-budget
@@ -35,7 +35,6 @@
 ,contingencies,"A part of the offer, conditions that must be met for the sale to move forward. Common contingencies relate to inspection timelines, appraisals, and mortgage approval.",t--contingencies,
 ,option fee,"A small, non-refundable payment paid directly to the seller that gives you the right to cancel your offer during the option period. The fee is typically around $200, but may be $100-$500.",t--option-fee,
 ,option period,"Usually about 7 - 10 days from when you make the offer, when you would schedule inspections and take a closer look at the property.",t--option-period,
-,earnest money,"A larger deposit that shows the seller you're serious about buying the home that goes towards down payment and closing costs if the sale goes through.",t--earnest-money,
 ,title company,"A neutral third party that usually holds the earnest money.",t--title-company,
 ,home inspector,"Conducts an inspection to examine major systems and components of the house, such as the roof, foundation, plumbing, electrical systems, heating and cooling, and appliances.",t--home-inspector,
 ,inspection report,"The written report you receive from the home inspector after inspection.",t--inspection-report,

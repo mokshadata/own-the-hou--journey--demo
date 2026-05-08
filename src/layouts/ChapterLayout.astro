@@ -1,5 +1,5 @@
 ---
-// import "../styles/global.css";
+import "../styles/global.css";
 import "../styles/journey-vars.css";
 import "../styles/journey-colors.css";
 import "../styles/journey-theme.css";
@@ -7,9 +7,21 @@ import { ClientRouter } from "astro:transitions";
 
 import Paging from "../components/paging";
 
+// import Search from "../components/search";
+// import SearchResults from "../components/search-results";
 import JourneyBookMap from "../components/map/book-map";
 
-const { chaptersWithSections, activeChapter, activeSection, title, activeTitles, pageType, chapter, activePage, section } = Astro.props;
+const {
+  chaptersWithSections,
+  activeChapter,
+  activeSection,
+  title,
+  activeTitles,
+  pageType,
+  chapter,
+  activePage,
+  section,
+} = Astro.props;
 const base_url = `${import.meta.env.BASE_URL}`;
 ---
 
@@ -19,7 +31,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Own the HOU Journey: {title}</title>
-    <meta name="robots" content="noindex">
+    <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href={`${base_url}favicon.svg`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,17 +46,18 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css"
+      type="text/css"
+    />
     <!-- <link rel="stylesheet" href={`${base_url}assets/styles.css`} /> -->
     <ClientRouter />
   </head>
   <body>
     <header data-theme="dark">
-      <nav
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav role="navigation" aria-label="main navigation">
         <ul>
           <li class="brand">
             <a href={base_url}>
@@ -56,10 +69,11 @@ const base_url = `${import.meta.env.BASE_URL}`;
           </li>
         </ul>
         <ul>
+          <!-- <li>
+            <Search client:only="solid-js"/>
+          </li> -->
           <li>
-            <a href="https://ownthehoustg.wpenginepowered.com/">
-              Home
-            </a>
+            <a href="https://ownthehoustg.wpenginepowered.com/"> Home </a>
           </li>
           <li>
             <a href="https://ownthehoustg.wpenginepowered.com/contact-us/">
@@ -70,6 +84,9 @@ const base_url = `${import.meta.env.BASE_URL}`;
       </nav>
     </header>
     <main class="main--layout">
+      <!-- <div class="row">
+        <SearchResults client:only="solid-js"/>
+      </div> -->
       <div class="row">
         <nav class="col-xs-12 col-md-3">
           <JourneyBookMap
@@ -80,12 +97,15 @@ const base_url = `${import.meta.env.BASE_URL}`;
             base_url={base_url}
             client:only="solid-js"
           />
-
         </nav>
         <div class="col-xs-12 col-md-9 col-lg-7">
           <div class={`book--area ${pageType}`} data-chapter={chapter}>
-            <slot name="book--header"/>
-            <p class="book--breadcrumb"><strong>{activeTitles.chapter}</strong> <i>{activeTitles.section}</i></p>
+            <slot name="book--header" />
+            <p class="book--breadcrumb">
+              <strong>{activeTitles.chapter}</strong>
+              <i>{activeTitles.section}</i>
+            </p>
+            <input type="hidden" name="active-titles" value={JSON.stringify(activeTitles)} data-has={Object.keys(activeTitles).join(' ')}>
             <div class={`${pageType}--content book--content`}>
               <slot />
             </div>

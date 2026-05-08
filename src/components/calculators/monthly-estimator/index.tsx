@@ -28,7 +28,7 @@ export default function () {
               annualTaxAmount: () => null,
               annualRepairBudget: () => null,
               annualPMIAmount: () => null,
-
+              annualPMIRate: () => null,
               affordableHomePrice: () => null,
               targetHomePrice: () => null,
               loanAmount: () => null,
