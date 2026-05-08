@@ -556,7 +556,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
-      'c01-welcome',
+      // 'c01-welcome',
       'c08-you-re-a-homeowner-protect-your-home',
     ],
   },
@@ -577,7 +577,7 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
-      'c01-welcome',
+      // 'c01-welcome',
       's07-help-to-keep-your-home',
     ],
   },
