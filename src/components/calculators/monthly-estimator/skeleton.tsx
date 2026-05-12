@@ -1,4 +1,12 @@
 import { createEffect, For, Show } from "solid-js"
+import {
+  Slider,
+  SliderFill,
+  SliderLabel,
+  SliderThumb,
+  SliderTrack,
+  SliderValueLabel,
+} from "~/components/ui/slider"
 import MoneyInput from "../shared/money-input";
 
 const formatter = (key) => {
@@ -13,7 +21,7 @@ const formatter = (key) => {
   return (value) => (![null, undefined].includes(value) && (new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD'}).format(value * 1)).replace(/\.00$/, ''))
 }
 
-export function Input({ item }) {
+export function Input({ item, calculator, inputs }) {
 
   const handleChange = (changeEvent) => {
     changeEvent.preventDefault()
@@ -48,10 +56,54 @@ export function Input({ item }) {
     )
   }
 
+   if (['downPayment'].includes(item.setting.key)) {
+    return (
+      <Slider
+        minValue={0}
+        maxValue={Math.floor(inputs.targetBudget[0]()/2000) * 1000}
+        defaultValue={[item.rate()]}
+        getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} (${formatter('downPaymentPercent')(params.values[0]/inputs.targetBudget[0]())})`}
+        step={1000}
+        class="w-full space-y-3"
+        onChangeEnd={item.setter}
+      >
+        <div class="flex w-full justify-between">
+          <SliderValueLabel />
+        </div>
+        <SliderTrack class="bg-slate-100 border-slate-950 border-2">
+          <SliderFill />
+          <SliderThumb class="border-slate-950 border-2"/>
+        </SliderTrack>
+      </Slider>
+    )
+   }
+
+   if (['targetBudget'].includes(item.setting.key)) {
+    return (
+      <Slider
+        minValue={100000}
+        maxValue={calculator.affordableHomePrice()}
+        defaultValue={[item.rate()]}
+        getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} out of ${formatter(item.setting.key)(calculator.affordableHomePrice())}`}
+        step={10000}
+        class="w-full space-y-3"
+        onChangeEnd={item.setter}
+      >
+        <div class="flex w-full justify-between">
+          <SliderValueLabel />
+        </div>
+        <SliderTrack class="bg-slate-100 border-slate-950 border-2">
+          <SliderFill />
+          <SliderThumb class="border-slate-950 border-2"/>
+        </SliderTrack>
+      </Slider>
+    )
+   }
+
   return <MoneyInput item={item} prefix={`decision--c03-budget--monthly-estimator`}/>
 }
 
-export function MonthlyRow({ item }) {
+export function MonthlyRow({ item, calculator, inputs }) {
 
   const colCount = ((item.notes || item.result) !== undefined && 3) || 2
   const colWidth = 12 / colCount
@@ -63,7 +115,7 @@ export function MonthlyRow({ item }) {
         {
           (item.setting.display && item.rate()) ||
           (item.setting.type !== 'input' && formatter(item.setting.key)(item.rate())) ||
-          (item.setting.type === 'input' && <Input item={item}/>) ||
+          (item.setting.type === 'input' && <Input item={item} calculator={calculator} inputs={inputs}/>) ||
           <></>
         }
       </div>
@@ -237,7 +289,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
   return (<div class="monthly-estimator">
     <For each={inputItems}>
       {(item, index) => (
-        <MonthlyRow item={item}/>
+        <MonthlyRow item={item} calculator={calculator} inputs={inputs}/>
       )}
     </For>
     {/* <div class="monthly-estimator--adjustable-rates">
@@ -252,7 +304,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
       <h4>Summary of Monthly Payments</h4>
       <For each={outputItems}>
         {(item, index) => (
-          <MonthlyRow item={item}/>
+          <MonthlyRow item={item} calculator={calculator} inputs={inputs}/>
         )}
       </For>
     </div>

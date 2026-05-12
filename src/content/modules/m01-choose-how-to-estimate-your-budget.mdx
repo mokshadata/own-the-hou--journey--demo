@@ -7,10 +7,10 @@ import Term from '../../components/term/index.tsx';
 import BookDecisions from '../../components/decisions/index.tsx'
 
 Understanding how much you can afford to spend on a home is an important first step in your homeownership journey.
-{/* <Term term="mortgage" mode="use">mortgage</Term> */}
+{/* <Term client:load term="mortgage" mode="use">mortgage</Term> */}
 
 <BookDecisions
-  client:only="solid-js"
+  client:load
   legend="Please select the option that best describes you below, so we can take you to the right tools to calculate your budget."
   name="decision--c03-budget--estimation-method"
   readOnly={false}

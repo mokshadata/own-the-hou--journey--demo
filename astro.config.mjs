@@ -4,7 +4,8 @@ import rehypeExternalLinks from 'rehype-external-links';
 import solidJs from '@astrojs/solid-js';
 // import fuse from 'astro-fuse'
 
-// import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite';
+// import tailwind from '@astrojs/tailwind'
 
 import mdx from '@astrojs/mdx';
 import { remarkReadingTime } from './src/plugins/remark-reading-time.mjs';
@@ -14,12 +15,10 @@ import { remarkTestArgs } from './src/plugins/remark-register-definitions.mjs';
 export default defineConfig({
   site: 'https://toolkit.ownthehou.org',
   base: '/own-the-hou--journey--demo/',
-  // "paths": {
-  //     "~/*": [
-  //       "./src/*"
-  //     ]
-  //   },
   integrations: [
+    // tailwind({
+    //   applyBaseStyles: false
+    // }),
     solidJs(),
     // fuse(['content',
     //   // 'frontmatter.chapter',
@@ -56,7 +55,7 @@ export default defineConfig({
       remarkTestArgs
     ],
   },
-  // vite: {
-  //   plugins: [tailwindcss()]
-  // }
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });

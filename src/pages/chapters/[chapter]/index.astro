@@ -43,7 +43,7 @@ const search = Astro.url.searchParams.get('search') || '';
 >
   <!-- <h2 class="is-size-3 book--module-title">Introduction</h2> -->
     {intro && (
-        <div class="chapter--intro--header" slot="book--header">
+        <div class="chapter--intro--header">
             <ChapterIntroGraphic chapterID={chapter}/>
             <h1>
                 {chapterTitle}

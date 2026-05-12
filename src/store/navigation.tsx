@@ -4,6 +4,8 @@ import { makePersisted } from "@solid-primitives/storage";
 
 import { JourneyMapSurvey } from "./survey";
 
+export const [searchString, setSearchString] = createSignal('')
+
 export const [annualIncome, setAnnualIncome, initializeAnnualIncome] = makePersisted(createSignal(0), {
     name: 'c03.annualIncome',
 })
@@ -95,14 +97,16 @@ export const journeyMapperChoices = () => {
     return choices
 }
 
+export const getSearchParams = () => (URLSearchParams && (new URLSearchParams(searchString())) || new Map())
+
 export const isSearchForFullMap = () => {
-    const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = getSearchParams()
     const phase = searchParams.get('custom') || 'explore'
     return ['journey--homebuyer--00', 'explore'].includes(phase)
 }
 
 export const searchParamsToChoices = () => {
-    const searchParams = new URLSearchParams(window.location.search)
+    const searchParams = getSearchParams()
 
     const phase = searchParams.get('custom') || 'explore'
     const challenges = searchParams.get('challenges')?.split('|').map((challenge) => (`journey--homebuyer--help--${challenge}`))

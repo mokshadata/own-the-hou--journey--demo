@@ -1,15 +1,21 @@
 ---
-// import "../styles/global.css";
-import "../styles/journey-vars.css";
-import "../styles/journey-colors.css";
-import "../styles/journey-theme.css";
+import "../styles/global.css";
+// import "../styles/journey-vars.css";
+// import "../styles/journey-colors.css";
+// import "../styles/journey-theme.css";
 import { ClientRouter } from "astro:transitions";
 
 import Paging from "../components/paging";
 
+import {
+  SidebarProvider, SidebarTrigger, Sidebar, SidebarContent,
+  SidebarHeader, SidebarFooter, SidebarGroup,
+} from "~/components/ui/sidebar";
+
 // import Search from "../components/search";
 // import SearchResults from "../components/search-results";
 import JourneyBookMap from "../components/map/book-map";
+import BookMapToggle from "~/components/map/book-map-toggle";
 
 const {
   chaptersWithSections,
@@ -56,6 +62,9 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <ClientRouter />
   </head>
   <body>
+    <SidebarProvider client:load>
+      <Sidebar client:load>
+        <SidebarHeader class="p-0">
     <header data-theme="dark">
       <nav role="navigation" aria-label="main navigation">
         <ul>
@@ -68,12 +77,30 @@ const base_url = `${import.meta.env.BASE_URL}`;
             <span>Toolkit</span>
           </li>
         </ul>
+        <BookMapToggle client:only="solid-js"/>
+      </nav>
+    </header>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <nav class="w-full">
+              <JourneyBookMap
+                activeChapter={activeChapter}
+                activePage={activePage}
+                activeSection={activeSection}
+                journeyMap={chaptersWithSections}
+                base_url={base_url}
+                client:only="solid-js"
+              />
+            </nav>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter class="p-0">
+    <header data-theme="dark">
+      <nav role="navigation" aria-label="main navigation">
         <ul>
-          <!-- <li>
-            <Search client:only="solid-js"/>
-          </li> -->
           <li>
-            <a href="https://ownthehoustg.wpenginepowered.com/"> Home </a>
+            <a href="https://ownthehoustg.wpenginepowered.com/">Home</a>
           </li>
           <li>
             <a href="https://ownthehoustg.wpenginepowered.com/contact-us/">
@@ -83,46 +110,37 @@ const base_url = `${import.meta.env.BASE_URL}`;
         </ul>
       </nav>
     </header>
-    <main class="main--layout">
-      <!-- <div class="row">
-        <SearchResults client:only="solid-js"/>
-      </div> -->
-      <div class="row">
-        <nav class="col-xs-12 col-md-3">
-          <JourneyBookMap
-            activeChapter={activeChapter}
-            activePage={activePage}
-            activeSection={activeSection}
-            journeyMap={chaptersWithSections}
-            base_url={base_url}
-            client:only="solid-js"
-          />
-        </nav>
-        <div class="col-xs-12 col-md-9 col-lg-7">
-          <div class={`book--area ${pageType}`} data-chapter={chapter}>
-            <slot name="book--header" />
-            <p class="book--breadcrumb">
-              <strong>{activeTitles.chapter}</strong>
-              <i>{activeTitles.section}</i>
-            </p>
-            <input type="hidden" name="active-titles" value={JSON.stringify(activeTitles)} data-has={Object.keys(activeTitles).join(' ')}>
-            <div class={`${pageType}--content book--content`}>
-              <slot />
+        </SidebarFooter>
+      </Sidebar>
+      <main class="main--layout">
+        <!-- <div class="row">
+          <SearchResults client:only="solid-js"/>
+          </div> -->
+          <div class="w-full lg:max-w-4xl">
+            <div class={`book--area ${pageType}`} data-chapter={chapter}>
+              <slot name="book--header" />
+              <p class="book--breadcrumb">
+                <SidebarTrigger client:only="solid-js"/><strong>{activeTitles.chapter}</strong>
+                <i>{activeTitles.section}</i>
+              </p>
+              <input type="hidden" name="active-titles" value={JSON.stringify(activeTitles)} data-has={Object.keys(activeTitles).join(' ')}>
+              <div class={`${pageType}--content book--content`}>
+                <slot />
+              </div>
             </div>
+            <Paging
+              prevPage={Astro.props.prevPage}
+              nextPage={Astro.props.nextPage}
+              nextPageOptions={Astro.props.nextPageOptions}
+              journeyMap={chaptersWithSections}
+              module={activePage}
+              chapter={chapter}
+              section={section || activeSection}
+              baseURL={base_url}
+              client:only="solid-js"
+            />
           </div>
-          <Paging
-            prevPage={Astro.props.prevPage}
-            nextPage={Astro.props.nextPage}
-            nextPageOptions={Astro.props.nextPageOptions}
-            journeyMap={chaptersWithSections}
-            module={activePage}
-            chapter={chapter}
-            section={section || activeSection}
-            baseURL={base_url}
-            client:only="solid-js"
-          />
-        </div>
-      </div>
-    </main>
+      </main>
+    </SidebarProvider>
   </body>
 </html>

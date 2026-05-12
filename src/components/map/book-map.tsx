@@ -2,7 +2,7 @@ import {
   personalJourneySections, checkChapterWithJourney,
   searchParamsToChoices, settersByName, setIsSetFromLink,
   isSetFromLink, showAllMap, setShowAllMap, isSearchForFullMap,
-  
+  searchString, setSearchString,
 } from "../../store/navigation"
 import { createEffect, createSignal } from "solid-js"
 
@@ -17,6 +17,10 @@ export default function JourneyBookMap({
   const [isFullyLoaded, setIsFullyLoaded] = createSignal(false)
 
   createEffect(() => {
+    setSearchString(window.location.search)
+  })
+
+  createEffect(() => {
     if (!isSetFromLink()) {
       searchParamsToChoices().forEach((choice) => {
         settersByName[choice.key](choice.option)
@@ -25,7 +29,7 @@ export default function JourneyBookMap({
       setIsSetFromLink(true)
     }
     document.querySelectorAll('.book--content a:not([href^="http"])').forEach((el) => {
-      el.setAttribute('href', `${el.href}${window.location.search}`)
+      el.setAttribute('href', `${el.href}${searchString()}`)
     })
     return searchParamsToChoices()
   })
@@ -54,7 +58,7 @@ export default function JourneyBookMap({
     `${base_url}chapters/${earliestMatchingChapter().chapter}/${earliestMatchingSection().section}/${(
       earliestMatchingSection().modules.length &&
         `${earliestMatchingSection().modules[0].module}/`) ||
-      ""}${window.location.search}`
+      ""}${searchString()}`
   )
 
   const needsToRedirect = () => (
@@ -72,14 +76,7 @@ export default function JourneyBookMap({
   const anyPartialChapters = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded && !topLevel.isFullChapterIncluded)))
 
   return (
-    <div class="menu-wrapper">
-    {!isSearchForFullMap() && (<fieldset>
-      <label>
-        <input name="map-show" type="checkbox" role="switch" checked={showAllMap()} onChange={updateShowHide}/>
-        {/* {showAllMap() && 'All content. Click to return to personal map' || 'Click to explore all'} */}
-        Explore all
-      </label>
-    </fieldset>) || <></>}
+    <div class="menu-wrapper w-full">
     <aside class="menu journey-map" data-mode="side">
       <ol class="menu-list">
         {yourJourneyMap()
@@ -90,7 +87,7 @@ export default function JourneyBookMap({
               role="link"
               data-menu-type="chapter"
               class={(topLevel.chapter === activeChapter && "is-active") || ""}
-              href={`${base_url}chapters/${topLevel.chapter}/${window.location.search}`}
+              href={`${base_url}chapters/${topLevel.chapter}/${searchString()}`}
             >
               <div data-order={topLevel.order}>{topLevel.title}</div>
             </a>
@@ -113,7 +110,7 @@ export default function JourneyBookMap({
                       (midLevel.modules.length &&
                         `${midLevel.modules[0].module}/`) ||
                       ""
-                    }${window.location.search}`}
+                    }${searchString()}`}
                   >
                     {midLevel.title}
                   </a>
@@ -131,7 +128,7 @@ export default function JourneyBookMap({
                                   "is-active") ||
                                 ""
                               }
-                              href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/${window.location.search}`}
+                              href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/${searchString()}`}
                             >
                               {pageLevel.item.data.name}
                             </a>
@@ -146,7 +143,7 @@ export default function JourneyBookMap({
                   role="link"
                   data-menu-type="section"
                   class={("Review" === activeSection && "is-active") || ""}
-                  href={`${base_url}chapters/${topLevel.chapter}/review/${window.location.search}`}
+                  href={`${base_url}chapters/${topLevel.chapter}/review/${searchString()}`}
                 >
                   Review
                 </a>
