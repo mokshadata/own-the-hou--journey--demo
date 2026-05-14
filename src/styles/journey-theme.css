@@ -177,11 +177,12 @@ html {
 .book--content p a.example-link,
 .book--content li a.example-link {
   --pico-text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
+  /* overflow-wrap: break-word; */
   border-bottom: 2px solid var(--oth2--link-type--color);
   --pico-color: var(--oth2--twilight-indigo);
   background-color: hsla(var(--oth2--link-type--color--hsl), 0.25);
-  transition: transform 50ms linear;
+  /* transition: transform 50ms linear; */
   padding-left: 2px;
   padding-right: 2px;
   cursor: pointer;
@@ -193,7 +194,8 @@ html {
 .book--content p a.example-link,
 .book--content li a.example-link {
   --pico-text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
+  /* overflow-wrap: break-word; */
   border-bottom: 1px solid var(--oth2--link-type--color);
 }
 .book--content p :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
@@ -202,7 +204,12 @@ html {
 .book--content li [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
     --pico-text-decoration: none;
     color: var(--oth2--link-type--color);
-    transform: skew(-10deg, 0);
+    /* transform: skew(-10deg, 0); */
+    /* font-style: italic; */
+}
+
+.book--content li p {
+    margin-bottom: 0.4rem;
 }
 
 .main--layout,
