@@ -28,8 +28,8 @@ export default function JourneyBookMap({
 
       setIsSetFromLink(true)
     }
-    document.querySelectorAll('.book--content a:not([href^="http"])').forEach((el) => {
-      el.setAttribute('href', `${el.href}${searchString()}`)
+    document.querySelectorAll('.book--content a[href]:not([href^="http"])').forEach((el) => {
+      el.setAttribute('href', `${el.getAttribute('href')}${searchString()}`)
       el.setAttribute('target', '_blank')
     })
     return searchParamsToChoices()

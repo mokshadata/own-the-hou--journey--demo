@@ -8,7 +8,7 @@ const termsList = [
 {"field1":"","Term":"equity","Definition":"The portion of the home that you truly own.","slug":"t--equity","Chapter":"c02-what-s-your-budget"},
 {"field1":"","Term":"interest","Definition":"The lender’s fee for letting you borrow money.","slug":"t--interest","Chapter":"c02-what-s-your-budget"}
 ,
-{"field1":"","Term":"escrow account","Definition":"A holding account.","slug":"t--escrow-account","Chapter":"c02-what-s-your-budget"},
+{"field1":"","Term":"escrow account","Definition":"A holding account for certain home buying costs.","slug":"t--escrow-account","Chapter":"c02-what-s-your-budget"},
 {"field1":"","Term":"down payment","Definition":"Down payment is the cash you contribute toward the home’s purchase price.","slug":"t--down-payment","Chapter":"c02-what-s-your-budget"}
 ,
 {"field1":"","Term":"earnest money","Definition":"This is a portion of your down payment that you put into an escrow account during the purchase process.","slug":"t--earnest-money","Chapter":"c02-what-s-your-budget"},

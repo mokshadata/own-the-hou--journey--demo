@@ -3,7 +3,7 @@
 ,principal,The amount you borrow to buy your home.,t--principal,c02-what-s-your-budget
 ,equity,The portion of the home that you truly own.,t--equity,c02-what-s-your-budget
 ,interest,The lender’s fee for letting you borrow money.,t--interest,c02-what-s-your-budget
-,escrow account,A holding account.,t--escrow-account,c02-what-s-your-budget
+,escrow account,A holding account for certain homebuying costs.,t--escrow-account,c02-what-s-your-budget
 ,down payment,Down payment is the cash you contribute toward the home’s purchase price.,t--down-payment,c02-what-s-your-budget
 ,earnest money,This is a portion of your down payment that you put into an escrow account during the purchase process. A larger deposit that shows the seller you're serious about buying the home that goes towards down payment and closing costs if the sale goes through.,t--earnest-money,c02-what-s-your-budget
 ,closing costs,"Fees for the lender, title company, appraisal, inspections, and other costs. It is typically 2% - 5% of the purchase price.",t--closing-costs,c02-what-s-your-budget

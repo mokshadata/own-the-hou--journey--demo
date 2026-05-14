@@ -96,33 +96,112 @@ html {
 
     font-size: 18px;
 }
+/* .book--content a:not([href^="http"] */
+/* --oth2--autumn-leaf, --oth2--amber-flame--hsl */
+
+
+.book--content p a[href^="https://"],
+.book--content li a[href^="https://"],
+.book--content p a.secondary[href^="https://"],
+.book--content p a.contrast[href^="https://"],
+.book--content li a.secondary[href^="https://"],
+.book--content li a.contrast[href^="https://"],
+.book--content p :where(a[href^="https://"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p [role="link"][href^="https://"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li :where(a[href^="https://"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li [role="link"][href^="https://"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p a.example--external-link,
+.book--content li a.example--external-link {
+    --oth2--link-type--color: var(--oth--chapter--autumn-leaf);
+    --oth2--link-type--color--hsl: var(--oth--chapter--autumn-leaf--hsl);
+}
+
+.book--content p a[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content li a[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content p a.secondary[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content p a.contrast[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content li a.secondary[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content li a.contrast[href^="https://"]:not([href*="forms.connectivetx.org"]):not([href*="ownthehou"])::after,
+.book--content p a.example--external-link::after,
+.book--content li a.example--external-link::after {
+    content: " ↗";
+}
+
+.book--content p a[href^="https://ownthehou"],
+.book--content li a[href^="https://ownthehou"],
+.book--content p a.secondary[href^="https://ownthehou"],
+.book--content p a.contrast[href^="https://ownthehou"],
+.book--content li a.secondary[href^="https://ownthehou"],
+.book--content li a.contrast[href^="https://ownthehou"],
+.book--content p :where(a[href^="https://ownthehou"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p [role="link"][href^="https://ownthehou"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li :where(a[href^="https://ownthehou"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li [role="link"][href^="https://ownthehou"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p a.example--ownthehou-link,
+.book--content li a.example--ownthehou-link {
+    --oth2--link-type--color: var(--oth2--twilight-indigo);
+    --oth2--link-type--color--hsl: var(--oth2--twilight-indigo--hsl);
+}
+.book--content p a[href^="https://forms.connectivetx.org"],
+.book--content li a[href^="https://forms.connectivetx.org"],
+.book--content p a.secondary[href^="https://forms.connectivetx.org"],
+.book--content p a.contrast[href^="https://forms.connectivetx.org"],
+.book--content li a.secondary[href^="https://forms.connectivetx.org"],
+.book--content li a.contrast[href^="https://forms.connectivetx.org"],
+.book--content p :where(a[href^="https://forms.connectivetx.org"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p [role="link"][href^="https://forms.connectivetx.org"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li :where(a[href^="https://forms.connectivetx.org"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li [role="link"][href^="https://forms.connectivetx.org"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
+    --oth2--link-type--color: var(--oth2--twilight-indigo);
+    --oth2--link-type--color--hsl: var(--oth2--twilight-indigo--hsl);
+}
+
+.book--content p a[href]:not([href^="http"]),
+.book--content li a[href]:not([href^="http"]),
+.book--content p a.secondary[href]:not([href^="http"]),
+.book--content p a.contrast[href]:not([href^="http"]),
+.book--content li a.secondary[href]:not([href^="http"]),
+.book--content li a.contrast[href]:not([href^="http"]),
+.book--content p :where(a[href]:not([href^="http"]):not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content p [role="link"][href]:not([href^="http"]):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li :where(a[href]:not([href^="http"]):not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li [role="link"][href]:not([href^="http"]):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
+.book--content li a.example--toolkit-link,
+.book--content p a.example--toolkit-link {
+    --oth2--link-type--color: var(--oth--chapter--lavender-purple);
+    --oth2--link-type--color--hsl: var(--oth--chapter--lavender-purple--hsl);
+}
 
 .book--content p a[href],
-.book--content li a[href] {
+.book--content li a[href],
+.book--content p a.example-link,
+.book--content li a.example-link {
   --pico-text-decoration: none;
   display: inline-block;
-  border-bottom: 2px solid var(--oth2--autumn-leaf);
+  border-bottom: 2px solid var(--oth2--link-type--color);
   --pico-color: var(--oth2--twilight-indigo);
-  background-color: hsla(var(--oth2--amber-flame--hsl), 0.25);
+  background-color: hsla(var(--oth2--link-type--color--hsl), 0.25);
   transition: transform 50ms linear;
   padding-left: 2px;
   padding-right: 2px;
+  cursor: pointer;
 }
 .book--content p a.secondary,
 .book--content p a.contrast,
 .book--content li a.secondary,
-.book--content li a.contrast {
+.book--content li a.contrast,
+.book--content p a.example-link,
+.book--content li a.example-link {
   --pico-text-decoration: none;
   display: inline-block;
-  border-bottom: 1px solid var(--oth2--autumn-leaf);
+  border-bottom: 1px solid var(--oth2--link-type--color);
 }
 .book--content p :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content p [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content li :where(a:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content li [role="link"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
     --pico-text-decoration: none;
-    /* font-style: italic; */
-    color: var(--oth2--autumn-leaf);
+    color: var(--oth2--link-type--color);
     transform: skew(-10deg, 0);
 }
 
