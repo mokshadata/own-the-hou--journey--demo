@@ -97,8 +97,8 @@ export default function Paging({
             href={`${baseURL}chapters/${[prevPageGetter().params.chapter, prevPageGetter().params.section, prevPageGetter().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
           >
             <div>
-              <small>{(chapter !== prevPageGetter().params.chapter) && <strong>{prevPageGetter().props.chapterTitle}</strong> || <></>} {false && <i>{prevPageGetter().props.sectionTitle}</i> || <></>}</small>
-              <strong>{prevPageGetter().props.siblings === 1 && prevPageGetter().props.sectionTitle || prevPageGetter().props.moduleTitle}</strong>
+              {/* <small>{(chapter !== prevPageGetter().params.chapter) && <strong>{prevPageGetter().props.chapterTitle}</strong> || <></>} {false && <i>{prevPageGetter().props.sectionTitle}</i> || <></>}</small> */}
+              {(chapter !== prevPageGetter().params.chapter) && <strong>{prevPageGetter().props.chapterTitle}</strong> || <></>} <strong>{prevPageGetter().props.siblings === 1 && prevPageGetter().props.sectionTitle || prevPageGetter().props.moduleTitle}</strong>
             </div>
           </a>
         ) || <></>}
@@ -111,8 +111,8 @@ export default function Paging({
             href={`${baseURL}chapters/${[nextPageGetterDyn().params.chapter, nextPageGetterDyn().params.section, nextPageGetterDyn().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
           >
             <div>
-              <small>{(chapter !== nextPageGetterDyn().params.chapter) && <strong>{nextPageGetterDyn().props.chapterTitle}</strong> || <></>} {false && <i>{nextPageGetter().props.sectionTitle}</i> || <></>}</small>
-              <strong>{nextPageGetterDyn().props.moduleOrder === 1 && nextPageGetterDyn().props.sectionTitle || nextPageGetterDyn().props.moduleTitle}</strong>
+              {/* <small>{(chapter !== nextPageGetterDyn().params.chapter) && <strong>{nextPageGetterDyn().props.chapterTitle}</strong> || <></>} {false && <i>{nextPageGetter().props.sectionTitle}</i> || <></>}</small> */}
+              {(chapter !== nextPageGetterDyn().params.chapter) && <strong>{nextPageGetterDyn().props.chapterTitle}</strong> || <></>} <strong>{nextPageGetterDyn().props.moduleOrder === 1 && nextPageGetterDyn().props.sectionTitle || nextPageGetterDyn().props.moduleTitle}</strong>
             </div>
           </a>
         ) || <></>}

@@ -30,6 +30,7 @@ export default function JourneyBookMap({
     }
     document.querySelectorAll('.book--content a:not([href^="http"])').forEach((el) => {
       el.setAttribute('href', `${el.href}${searchString()}`)
+      el.setAttribute('target', '_blank')
     })
     return searchParamsToChoices()
   })

@@ -93,7 +93,7 @@ const base_url = `${import.meta.env.BASE_URL}`;
     <h2>Terms</h2>
     <dl>
         {reviewItems.terms.map((term) => (
-            <dt class="term--term">{term.text}</dt>
+            <dt>{term.text}</dt>
             <dd>{term.lookup.data.definition}</dd>
         ))}
     </dl>

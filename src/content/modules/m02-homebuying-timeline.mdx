@@ -5,19 +5,50 @@ slug: m02-homebuying-timeline
 ---
 import Term from '../../components/term/index.tsx'
 import YoutubePlayer from '../../components/video/youtube.tsx'
+import { Timeline } from "~/components/ui/timeline"
+import ExploreAllMessage from "../../components/map/explore-message.tsx"
 
 The steps to buying and owning a home are:
 
-1. Get ready by learning what to expect
-2. Set your budget
-3. Choose your homebuying team
-4. Get pre-approved for a mortgage
-5. Find a home and make an offer
-6. Finalize your mortgage
-7. Close on your home
-8. Protect your home as a homeowner
+<Timeline
+  class="timeline"
+  activeItem={0}
+  items={[{
+    "title": "Step 1 - Welcome",
+    "description": "Get ready by learning what to expect",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 2 - What's Your Budget?",
+    "description": "Learn about homebuying costs, estimate your budget, learn about credit and how to increase your home budget",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 3 - Choose Your Homebuying Team",
+    "description": "Learn what to look for in a housing counselor, realtor and lender",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 4 - Get Pre-Approved for a Mortgage",
+    "description": "Learn how to shop for loans and get pre-approved",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 5 - Find a Home and Make an Offer",
+    "description": "Learn about the offer process and details about fees, inspection, and appraisal",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 6 - Finalize Your Mortgage",
+    "description": "Get an introduction to reviewing your mortgage terms",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 7 - Close on Your Home",
+    "description": "Learn about what closing day will be like",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  },{
+    "title": "Step 8 - Protect Your Home as a Homeowner",
+    "description": "Get an overview on what to do as a homeowner",
+    "class": ['pb-3', 'pl-4', "mb-0"],
+  }]}
+/>
 
-Your steps and chapters on the left may be customized to your journey. To switch between all steps and your custom steps, toggle the "Explore all" switch at the top of the chapters list.
+<ExploreAllMessage client:load/>
 
 This video walks through the steps and the information you can expect in each chapter.
 

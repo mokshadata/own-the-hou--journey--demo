@@ -285,15 +285,21 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 }
 
 .term--term {
+    font-weight: 500;
     transition: 100ms all linear;
     border-bottom: 1px dotted var(--pico-color);
     cursor: pointer;
     margin-right: 0.2rem;
-    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.25);
+    background-color: hsla(var(--oth--hsl--blue-bell), 0.15);
+}
+
+.chapter--review--terms dt {
+    border-bottom: 1px dotted var(--pico-color);
 }
 
 .term--term:hover {
-    background-color: hsla(var(--journey--chapter--scheme--hsl), 0.1);
+    background-color: hsla(var(--oth--hsl--blue-bell), 0.25);
+    border-bottom: 1px solid var(--pico-color);
 }
 
 /* .term--definition {
@@ -1506,4 +1512,18 @@ label[data-mask-pattern]::after {
 .monthly-estimator--entry [type="checkbox"],
 .monthly-estimator--entry [type="radio"] {
     margin-inline-end: 0.2em;
+}
+
+ul.timeline {
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+ul.timeline li {
+    list-style: none;
+}
+
+ul.timeline li p:last-child {
+    margin-bottom: 0;
 }
