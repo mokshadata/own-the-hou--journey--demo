@@ -371,7 +371,7 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 }
 
 .term--term {
-    font-weight: 500;
+    font-weight: inherit;
     transition: 100ms all linear;
     border-bottom: 1px dotted var(--pico-color);
     cursor: pointer;
