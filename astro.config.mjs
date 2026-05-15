@@ -14,7 +14,7 @@ import { remarkTestArgs } from './src/plugins/remark-register-definitions.mjs';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://toolkit.ownthehou.org',
-  base: '/own-the-hou--journey--demo/',
+  // base: '/own-the-hou--journey--demo/',
   integrations: [
     // tailwind({
     //   applyBaseStyles: false
