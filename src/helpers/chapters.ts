@@ -196,31 +196,35 @@ export async function getChapterIntros() {
         }
     ))
     .map((page, index, pages) => {
-        let firstChapterModule
+
+      let base = {
+        params: page.params,
+        props: {
+          ...page.props,
+        }
+      }
+
+      let firstChapterModule
+      if (structure[index].sections.length) {
 
         if (structure[index].sections[0].modules.length) {
             firstChapterModule = structure[index].sections[0].modules[0].item
         }
-        let base = {
-            params: page.params,
+        base.props.nextPage = {
+            params: {
+                ...page.params,
+                section: structure[index].sections[0].section,
+                module: structure[index].sections[0].modules.length && structure[index].sections[0].modules[0].module || null,
+            },
             props: {
-                ...page.props,
-                nextPage: {
-                    params: {
-                        ...page.params,
-                        section: structure[index].sections[0].section,
-                        module: structure[index].sections[0].modules.length && structure[index].sections[0].modules[0].module || null,
-                    },
-                    props: {
-                        chapterTitle: structure[index].title,
-                        chapterOrder: structure[index].order,
-                        sectionTitle: structure[index].sections[0].title,
-                        moduleTitle: firstChapterModule?.data.name,
-                        moduleOrder: 1,
-                    }
-                }
+                chapterTitle: structure[index].title,
+                chapterOrder: structure[index].order,
+                sectionTitle: structure[index].sections[0].title,
+                moduleTitle: firstChapterModule?.data.name,
+                moduleOrder: 1,
             }
         }
+      }
 
         if (index > 0) {
             base.props.prevPage = {
@@ -336,34 +340,40 @@ export async function getChapterReviews() {
       }
     ))
     .map((page, index, pages) => {
-        let lastChapterModule
 
-        const modules = structure[index].sections.map(({ modules }) => (modules)).reduce((acc, curr) => ([...acc, ...curr]), [])
+      let base = {
+        params: page.params,
+        props: {
+          ...page.props,
+        }
+      }
+
+      let lastChapterModule
+
+      const modules = structure[index].sections.map(({ modules }) => (modules)).reduce((acc, curr) => ([...acc, ...curr]), [])
+
+      if (structure[index].sections[structure[index].sections.length - 1]) {
 
         if (structure[index].sections[structure[index].sections.length - 1].modules.length) {
             lastChapterModule = modules[modules.length -1]
         }
 
-        let base = {
-            params: page.params,
+        base.props.prevPage = {
+            params: {
+                ...page.params,
+                section: structure[index].sections[structure[index].sections.length - 1].section,
+                module: structure[index].sections[structure[index].sections.length - 1].modules.length && structure[index].sections[structure[index].sections.length - 1].modules[structure[index].sections[structure[index].sections.length - 1].modules.length-1].module || null,
+            },
             props: {
-                ...page.props,
-                prevPage: {
-                    params: {
-                        ...page.params,
-                        section: structure[index].sections[structure[index].sections.length - 1].section,
-                        module: structure[index].sections[structure[index].sections.length - 1].modules.length && structure[index].sections[structure[index].sections.length - 1].modules[structure[index].sections[structure[index].sections.length - 1].modules.length-1].module || null,
-                    },
-                    props: {
-                        chapterTitle: structure[index].title,
-                        chapterOrder: structure[index].order,
-                        sectionTitle: structure[index].sections[structure[index].sections.length - 1].title,
-                        moduleTitle: lastChapterModule?.item.data.name,
+                chapterTitle: structure[index].title,
+                chapterOrder: structure[index].order,
+                sectionTitle: structure[index].sections[structure[index].sections.length - 1].title,
+                moduleTitle: lastChapterModule?.item.data.name,
 
-                    }
-                }
             }
         }
+        
+      }
 
         if (index < pages.length - 1) {
             base.props.nextPage = {
@@ -373,7 +383,7 @@ export async function getChapterReviews() {
                 props: {
                     chapterTitle: structure[index+1].title,
                     chapterOrder: structure[index+1].order,
-                    moduleTitle: 'Introduction',
+                    // moduleTitle: 'Introduction',
                 },
             }
         }

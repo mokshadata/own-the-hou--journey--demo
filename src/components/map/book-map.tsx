@@ -95,7 +95,7 @@ export default function JourneyBookMap({
             <ol
               class={(topLevel.chapter !== activeChapter && "is-hidden") || ""}
             >
-              {topLevel.sections
+            {topLevel.sections
                 .filter((section)=> (section.isSectionIncluded || showAllMap()))
                 .map((midLevel) => (
                 <li>
@@ -139,16 +139,18 @@ export default function JourneyBookMap({
                   )}
                 </li>
               ))}
-              <li>
-                <a
-                  role="link"
-                  data-menu-type="section"
-                  class={("Chapter Review" === activeSection && "is-active") || ""}
-                  href={`${base_url}chapters/${topLevel.chapter}/review/${searchString()}`}
-                >
-                  Chapter Review
-                </a>
-              </li>
+              {topLevel.sections.length && (
+                <li>
+                  <a
+                    role="link"
+                    data-menu-type="section"
+                    class={("Chapter Review" === activeSection && "is-active") || ""}
+                    href={`${base_url}chapters/${topLevel.chapter}/review/${searchString()}`}
+                  >
+                    Chapter Review
+                  </a>
+                </li>
+              )}
             </ol>
           </li>
         ))}

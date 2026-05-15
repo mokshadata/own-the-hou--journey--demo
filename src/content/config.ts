@@ -9,7 +9,7 @@ const chapters = defineCollection({
         id: item['slug'],
         title: item['Name'],
         order: item['Order'] * 1,
-        contains: item['Related Sections'].split(', ').filter((section) => (!section.includes('s00'))),
+        contains: item['Related Sections'].split(', ').map((section) => (section.trim())).filter((section) => (section.length > 0)).filter((section) => (!section.includes('s00'))),
       }))
     }
   }),
@@ -28,7 +28,7 @@ const sections = defineCollection({
           id: item['slug'],
           title: item['Name'],
           order: item['Order'] * 1,
-          contains: item['Modules'].split(', ').filter((module) => (module.length > 0)),
+          contains: item['Modules'].split(', ').map((module) => (module.trim())).filter((module) => (module.length > 0)),
         }
       })
       .filter((items) => (items.order > 0))

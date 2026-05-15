@@ -372,28 +372,32 @@ nav .journey-map > ol.menu-list > li > ol > li > ol > li > a {
 .term--term {
     font-weight: inherit;
     transition: 100ms all linear;
-    border-bottom: 1px dotted var(--pico-color);
+    border-bottom: 1px dotted hsla(var(--oth--hsl--blue-bell), 1);
     cursor: pointer;
     margin-right: 0.2rem;
     background-color: hsla(var(--oth--hsl--blue-bell), 0.15);
+    color: var(--oth2--twilight-indigo);
+    font-style: normal;
 }
 
 .chapter--review--terms dt {
-    border-bottom: 1px dotted var(--pico-color);
+    border-bottom: 1px dotted hsla(var(--oth--hsl--blue-bell), 1);
 }
 
 .term--term:hover {
     background-color: hsla(var(--oth--hsl--blue-bell), 0.25);
-    border-bottom: 1px solid var(--pico-color);
+    border-bottom: 1px solid hsla(var(--oth--hsl--blue-bell), 1);
+    color: hsla(var(--oth--hsl--blue-bell), 1);
+    font-style: italic;
 }
 
 /* .term--definition {
     background-color: hsla(var(--journey--chapter--scheme--hsl), 0.1);
 } */
-
+/* 
 .term--term:hover + .term--definition {
     display: block;
-}
+} */
 
 .book--breadcrumb {
     margin-bottom: 0;
@@ -585,8 +589,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c02-what-s-your-budget"],
 .journey-map .menu-list a.is-active[data-destination*="c02-what-s-your-budget"] {
 
-    --journey--chapter--scheme: var(--oth2--vintage-grape);
-    --journey--chapter--scheme--hsl: var(--oth2--vintage-grape--hsl);
+    --journey--chapter--scheme: var(--oth2--twilight-indigo-2);
+    --journey--chapter--scheme--hsl: var(--oth2--twilight-indigo-2--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--emerald); */
@@ -604,8 +608,9 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c03-build-your-homebuying-team"],
 .journey-map .menu-list a.is-active[data-destination*="c03-build-your-homebuying-team"] {
 
-    --journey--chapter--scheme: var(--oth2--taupe-grey);
-    --journey--chapter--scheme--hsl: var(--oth2--taupe-grey--hsl);
+
+    --journey--chapter--scheme: var(--oth2--vintage-grape);
+    --journey--chapter--scheme--hsl: var(--oth2--vintage-grape--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--full-spectrum-blue); */
@@ -622,8 +627,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c04-get-pre-approved-for-a-mortgage"],
 .journey-map .menu-list a.is-active[data-destination*="c04-get-pre-approved-for-a-mortgage"] {
 
-    --journey--chapter--scheme: var(--oth2--smoky-rose);
-    --journey--chapter--scheme--hsl: var(--oth2--smoky-rose--hsl);
+    --journey--chapter--scheme: var(--oth2--taupe-grey);
+    --journey--chapter--scheme--hsl: var(--oth2--taupe-grey--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--forest-green); */
@@ -640,8 +645,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c05-find-a-home-and-make-an-offer"],
 .journey-map .menu-list a.is-active[data-destination*="c05-find-a-home-and-make-an-offer"] {
 
-    --journey--chapter--scheme: var(--oth2--cinnamon-wood);
-    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
+    --journey--chapter--scheme: var(--oth2--smoky-rose);
+    --journey--chapter--scheme--hsl: var(--oth2--smoky-rose--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
 
     /* --journey--chapter--scheme: var(--oth--autumn-leaf); */
@@ -658,8 +663,8 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c06-finalize-your-mortgage"],
 .journey-map .menu-list a.is-active[data-destination*="c06-finalize-your-mortgage"] {
 
-    --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
-    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
+    --journey--chapter--scheme: var(--oth2--cinnamon-wood);
+    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--twilight-indigo); */
 }
@@ -674,9 +679,9 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="section"][data-destination*="c07-close-on-your-home"],
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c07-close-on-your-home"],
 .journey-map .menu-list a.is-active[data-destination*="c07-close-on-your-home"] {
+    --journey--chapter--scheme: var(--oth2--cinnamon-wood-2);
+    --journey--chapter--scheme--hsl: var(--oth2--cinnamon-wood-2--hsl);
 
-    --journey--chapter--scheme: var(--oth2--toasted-almond);
-    --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
     --journey--chapter--scheme--subtitle: #FFF;
     /* --journey--chapter--scheme: var(--oth--aquamarine); */
 }
@@ -692,8 +697,28 @@ color: var(--journey--chapter--scheme--subtitle); */
 .journey-map .menu-list a[data-menu-type="page"][data-destination*="c08-you-re-a-homeowner-protect-your-home"],
 .journey-map .menu-list a.is-active[data-destination*="c08-you-re-a-homeowner-protect-your-home"] {
 
+    --journey--chapter--scheme: var(--oth2--toasted-almond);
+    --journey--chapter--scheme--hsl: var(--oth2--toasted-almond--hsl);
+    --journey--chapter--scheme--subtitle: #FFF;
+    
+    /* --journey--chapter--scheme: var(--oth--blue-bell); */
+}
+
+[data-chapter="c09-your-next-chapter"],
+.journey-map .menu-list a[data-menu-type="chapter"][href*="c09-your-next-chapter"],
+.journey-map .menu-list a[data-menu-type="section"][href*="c09-your-next-chapter"],
+.journey-map .menu-list a[data-menu-type="page"][href*="c09-your-next-chapter"],
+.journey-map .menu-list a.is-active[href*="c09-your-next-chapter"],
+
+.journey-map .menu-list a[data-menu-type="chapter"][data-destination*="c09-your-next-chapter"],
+.journey-map .menu-list a[data-menu-type="section"][data-destination*="c09-your-next-chapter"],
+.journey-map .menu-list a[data-menu-type="page"][data-destination*="c09-your-next-chapter"],
+.journey-map .menu-list a.is-active[data-destination*="c09-your-next-chapter"] {
+
     --journey--chapter--scheme: var(--oth2--tangerine-dream);
     --journey--chapter--scheme--hsl: var(--oth2--tangerine-dream--hsl);
+    /* --journey--chapter--scheme: var(--oth2--autumn-leaf);
+    --journey--chapter--scheme--hsl: var(--oth2--autumn-leaf--hsl); */
     --journey--chapter--scheme--subtitle: #FFF;
     
     /* --journey--chapter--scheme: var(--oth--blue-bell); */

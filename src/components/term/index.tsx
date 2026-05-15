@@ -84,7 +84,7 @@ export default function TermPopover(props) {
       <HoverCardTrigger class="term--term" as="dfn" role="term">
         {props.children}
       </HoverCardTrigger>
-      <HoverCardContent class="w-80 p-2" role="definition">
+      <HoverCardContent class="w-80 p-2 term--definition" role="definition">
         {item?.Definition}
       </HoverCardContent>
     </HoverCard>

@@ -8,6 +8,7 @@ import OfferGraphic from '../../assets/diagrams/c05--find-a-home-and-make-an-off
 import FinalizeYourMortgageGraphic from '../../assets/diagrams/c06--finalize-your-mortgage'
 import ClosingGraphic from '../../assets/diagrams/c07--close-on-your-home'
 import HomeownershipGraphic from '../../assets/diagrams/c08--youre-a-homeowner--protect-your-home'
+import YourNextChapter from '../../assets/diagrams/c09--your-next-chapter'
 
 const diagrams = {
   'c01-welcome': WelcomeGraphic,
@@ -18,6 +19,7 @@ const diagrams = {
   'c06-finalize-your-mortgage': FinalizeYourMortgageGraphic,
   'c07-close-on-your-home': ClosingGraphic,
   'c08-you-re-a-homeowner-protect-your-home': HomeownershipGraphic,
+  'c09-your-next-chapter': YourNextChapter,
 }
 
 export default function ({ chapterID }) {
