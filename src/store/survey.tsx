@@ -267,6 +267,7 @@ export const JourneyMapSurvey = [
       'c06-finalize-your-mortgage',
       'c07-close-on-your-home',
       'c08-you-re-a-homeowner-protect-your-home',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -298,6 +299,7 @@ export const JourneyMapSurvey = [
       'c06-finalize-your-mortgage',
       'c07-close-on-your-home',
       'c08-you-re-a-homeowner-protect-your-home',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -328,6 +330,7 @@ export const JourneyMapSurvey = [
       'c06-finalize-your-mortgage',
       'c07-close-on-your-home',
       'c08-you-re-a-homeowner-protect-your-home',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -356,6 +359,7 @@ export const JourneyMapSurvey = [
       'c06-finalize-your-mortgage',
       'c07-close-on-your-home',
       'c08-you-re-a-homeowner-protect-your-home',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -385,6 +389,7 @@ export const JourneyMapSurvey = [
     options: [
       'c01-welcome',
       's04-understanding-your-credit', 's05-how-to-increase-your-budget', 's00-intro-meet-the-team', 's01-start-with-a-housing-counselor',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -416,6 +421,7 @@ export const JourneyMapSurvey = [
       'c02-what-s-your-budget',
       's02-finding-a-realtor', 's03-choosing-a-lender',
       'c04-get-pre-approved-for-a-mortgage',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -449,6 +455,7 @@ export const JourneyMapSurvey = [
       'c04-get-pre-approved-for-a-mortgage',
 
       's00-intro-time-to-find-your-home', 's01-decide-what-you-need-and-want-in-a-home', 's02-what-to-research-about-any-home', 's03-making-an-offer',
+      'c09-your-next-chapter',
     ],
   },
   {
@@ -480,6 +487,7 @@ export const JourneyMapSurvey = [
       's03-choosing-a-lender',
       's04-finding-financial-help-to-buy-a-home',
       's02-shopping-for-loans-and-finding-a-lender',
+      'c09-your-next-chapter',
     ],
   },
   {
