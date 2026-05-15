@@ -138,7 +138,7 @@ html {
 .book--content li [role="link"][href^="https://ownthehou"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content p a.example--ownthehou-link,
 .book--content li a.example--ownthehou-link {
-    --oth2--link-type--color: var(--oth2--twilight-indigo);
+    --oth2--link-type--color: var(--rebecca-purple);
     --oth2--link-type--color--hsl: var(--oth2--twilight-indigo--hsl);
 }
 .book--content p a[href^="https://forms.connectivetx.org"],
@@ -151,7 +151,7 @@ html {
 .book--content p [role="link"][href^="https://forms.connectivetx.org"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content li :where(a[href^="https://forms.connectivetx.org"]:not([role="button"])):is([aria-current]:not([aria-current="false"]), :hover, :active, :focus),
 .book--content li [role="link"][href^="https://forms.connectivetx.org"]:is([aria-current]:not([aria-current="false"]), :hover, :active, :focus) {
-    --oth2--link-type--color: var(--oth2--twilight-indigo);
+    --oth2--link-type--color: var(--rebecca-purple);
     --oth2--link-type--color--hsl: var(--oth2--twilight-indigo--hsl);
 }
 
@@ -1125,15 +1125,16 @@ figure.video-placeholder.video--has-not-played:hover img {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.book--decision details p:last-child {
+    padding: 1rem;
     margin-bottom: 0;
 }
+/* 
+.book--decision details p:last-child {
+    margin-bottom: 0;
+} */
 
 .book--decision details {
     margin: 0;
-    padding: 1rem;
     border-top: 1px solid var(--journey--chapter--scheme);
     border-bottom: 1px solid var(--journey--chapter--scheme);
     border-left: 2px solid var(--journey--chapter--scheme);
@@ -1152,6 +1153,16 @@ figure.video-placeholder.video--has-not-played:hover img {
     border-bottom-left-radius: var(--pico-border-radius);
     border-bottom-right-radius: var(--pico-border-radius);
 }
+
+.book--decision details iframe {
+    margin-bottom: 0;
+}
+
+.book--decision details p {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 
 .chapter--review--videolist--playlist,
 .chapter--review--checklists ul {
