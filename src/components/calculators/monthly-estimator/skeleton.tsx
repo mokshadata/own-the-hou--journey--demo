@@ -34,24 +34,28 @@ export function Input({ item, calculator, inputs }) {
   if (['loanTerm'].includes(item.setting.key)) {
     return (
       <fieldset>
-        <input
-          name={`decision--c03-budget--monthly-estimator--${item.setting.key}`}
-          type="radio"
-          id="15-years"
-          value={15}
-          checked={item.rate() === 15}
-          onChange={handleChange}
-        />
-        <label for="15-years">15 years</label>
-        <input
-          name={`decision--c03-budget--monthly-estimator--${item.setting.key}`}
-          type="radio"
-          id="30-years"
-          value={30}
-          checked={item.rate() === 30}
-          onChange={handleChange}
-        />
-        <label for="30-years">30 years</label>
+        <div>
+          <input
+            name={`decision--c03-budget--monthly-estimator--${item.setting.key}`}
+            type="radio"
+            id="15-years"
+            value={15}
+            checked={item.rate() === 15}
+            onChange={handleChange}
+          />
+          <label for="15-years">15 years</label>
+        </div>
+        <div>
+          <input
+            name={`decision--c03-budget--monthly-estimator--${item.setting.key}`}
+            type="radio"
+            id="30-years"
+            value={30}
+            checked={item.rate() === 30}
+            onChange={handleChange}
+          />
+          <label for="30-years">30 years</label>
+        </div>
       </fieldset>
     )
   }
@@ -85,7 +89,7 @@ export function Input({ item, calculator, inputs }) {
         maxValue={calculator.affordableHomePrice()}
         defaultValue={[item.rate()]}
         getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} out of ${formatter(item.setting.key)(calculator.affordableHomePrice())}`}
-        step={10000}
+        step={calculator.affordableHomePrice() - 100000 > 50000 && 5000 || 1000}
         class="w-full space-y-3"
         onChangeEnd={item.setter}
       >
@@ -100,7 +104,7 @@ export function Input({ item, calculator, inputs }) {
     )
    }
 
-  return <MoneyInput item={item} prefix={`decision--c03-budget--monthly-estimator`}/>
+  return <MoneyInput item={item} prefix={`decision--c03-budget--monthly-estimator`} step={item.setting.key === 'monthlyDebts' && 100 || 1000}/>
 }
 
 export function MonthlyRow({ item, calculator, inputs }) {
@@ -138,7 +142,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
       type: 'input',
       key: 'annualIncome',
       label: 'Gross Annual Income',
-      notes: () => (<><strong>Gross Annual Income</strong>: This is your annual (pre-tax) income, and the income of your co-signer (if applicable).</>),
+      notes: () => (<>Your annual (pre-tax) income, and the income of your co-signer (if applicable).</>),
     },
     {
       type: 'input',
@@ -286,7 +290,7 @@ export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) 
     setting,
   }))
 
-  return (<div class="monthly-estimator">
+  return (<div class="monthly-estimator workbook--exercise">
     <For each={inputItems}>
       {(item, index) => (
         <MonthlyRow item={item} calculator={calculator} inputs={inputs}/>

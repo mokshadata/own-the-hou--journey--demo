@@ -20,6 +20,7 @@ export default function AnnualEstimatorSkeleton({ handleAnnualIncomeChange, annu
                                 rate: annualIncomeValue,
                                 setter: handleAnnualIncomeChange,
                             }}
+                            step={1000}
                         />
                     </div>
                 </div>
