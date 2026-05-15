@@ -65,10 +65,10 @@ export function Input({ item, calculator, inputs }) {
       <Slider
         minValue={0}
         maxValue={Math.floor(inputs.targetBudget[0]()/2000) * 1000}
-        defaultValue={[item.rate()]}
         getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} (${formatter('downPaymentPercent')(params.values[0]/inputs.targetBudget[0]())})`}
         step={1000}
         class="w-full space-y-3"
+        value={[item.rate()]}
         onChangeEnd={item.setter}
       >
         <div class="flex w-full justify-between">
@@ -131,7 +131,16 @@ export function MonthlyRow({ item, calculator, inputs }) {
 export default function MonthlyEstimatorSkeleton({ inputs, rates, calculator }) {
 
   createEffect(() => {
-    if (inputs.targetBudget[0]() === null || inputs.targetBudget[0]() === 0 || inputs.targetBudget[0]() > calculator.affordableHomePrice()) {
+    // console.log({
+    //   empt: inputs.targetBudget[0]() === null,
+    //   zero: inputs.targetBudget[0]() === 0,
+    //   over: inputs.targetBudget[0]() > calculator.affordableHomePrice(),
+    // })
+    if (
+      inputs.targetBudget[0]() === null ||
+      inputs.targetBudget[0]() === 0 ||
+      inputs.targetBudget[0]() > calculator.affordableHomePrice()
+    ) {
       inputs.targetBudget[1](calculator.affordableHomePrice())
     }
     return calculator.affordableHomePrice()
