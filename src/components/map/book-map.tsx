@@ -143,10 +143,10 @@ export default function JourneyBookMap({
                 <a
                   role="link"
                   data-menu-type="section"
-                  class={("Review" === activeSection && "is-active") || ""}
+                  class={("Chapter Review" === activeSection && "is-active") || ""}
                   href={`${base_url}chapters/${topLevel.chapter}/review/${searchString()}`}
                 >
-                  Review
+                  Chapter Review
                 </a>
               </li>
             </ol>

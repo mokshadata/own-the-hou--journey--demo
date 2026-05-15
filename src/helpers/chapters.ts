@@ -72,7 +72,7 @@ export function mapStructureToPages(structure) {
         props: {
           chapterTitle, chapterOrder,
           sectionTitle: null, sectionOrder: sections.length + 1,
-          moduleTitle: 'Review',
+          moduleTitle: 'Chapter Review',
           grouping: null,
         },
       }],
@@ -110,7 +110,7 @@ export function mapStructureToPages(structure) {
       [{
         params: { chapter, section: 'review', },
         props: {
-          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Chapter Review',
           structure, moduleOrder: null,
         },
       }],
@@ -162,7 +162,7 @@ export async function getAllSections() {
         {
             params: { chapter, section: 'review', },
             props: {
-                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review', moduleOrder: null,
+                chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Chapter Review', moduleOrder: null,
             },
         },
     ]))
@@ -232,7 +232,7 @@ export async function getChapterIntros() {
                     chapterTitle: structure[index-1].title,
                     chapterOrder: structure[index-1].order,
                     sectionTitle: null,
-                    moduleTitle: 'Review',
+                    moduleTitle: 'Chapter Review',
                     moduleOrder: null,
                 },
             }

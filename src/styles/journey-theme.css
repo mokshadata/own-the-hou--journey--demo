@@ -99,7 +99,6 @@ html {
 /* .book--content a:not([href^="http"] */
 /* --oth2--autumn-leaf, --oth2--amber-flame--hsl */
 
-
 .book--content p a[href^="https://"],
 .book--content li a[href^="https://"],
 .book--content p a.secondary[href^="https://"],
@@ -967,12 +966,11 @@ figure.video-placeholder.video--has-not-played:hover img {
     width: 180px;
 }
 
-
-.chapter--intro--content > ol {
+.chapter--intro--content .book--content--body > ol {
     list-style-type: lower-alpha;
 }
 
-.chapter--intro--content > ol ol {
+.chapter--intro--content .book--content--body > ol ol {
     list-style-type: lower-roman;
 }
 

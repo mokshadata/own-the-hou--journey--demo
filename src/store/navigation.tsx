@@ -307,7 +307,7 @@ export function mapStructureToPages(structure) {
         props: {
           chapterTitle, chapterOrder,
           sectionTitle: null, sectionOrder: sections.length + 1,
-          moduleTitle: 'Review',
+          moduleTitle: 'Chapter Review',
           grouping: null,
         },
       }],
@@ -344,7 +344,7 @@ export function mapStructureToPages(structure) {
       [{
         params: { chapter, section: 'review', },
         props: {
-          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Review',
+          chapterTitle, chapterOrder, sectionTitle: null, moduleTitle: 'Chapter Review',
           structure,
         },
       }],

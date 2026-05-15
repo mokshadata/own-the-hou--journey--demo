@@ -478,6 +478,8 @@ export const JourneyMapSurvey = [
     options: [
       'c01-welcome',
       's03-choosing-a-lender',
+      's04-finding-financial-help-to-buy-a-home',
+      's02-shopping-for-loans-and-finding-a-lender',
     ],
   },
   {
@@ -534,9 +536,11 @@ export const JourneyMapSurvey = [
     icon: null,
     layout: 'horizontal--icon',
     options: [
-      'c01-welcome',
-      's00-intro-meet-the-team', 's01-start-with-a-housing-counselor',
+      // 'c01-welcome',
+      // 's00-intro-meet-the-team', 's01-start-with-a-housing-counselor',
+      's04-learn-more-about-mortgage-options',
     ],
+    // destination: 's04-learn-more-about-mortgage-options',
   },
 
   {
