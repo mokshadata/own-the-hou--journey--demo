@@ -1,11 +1,16 @@
-
+import { createSignal } from "solid-js"
 
 export default function YoutubePlayer(props) {
+  const [locale, setLocale] = createSignal(document.documentElement.lang);
+  const localedURL = () => (
+    `${props.baseSource.replace('youtube.com', 'youtube-nocookie.com')}&cc_lang_pref=${locale()}-US&hl=${locale()}-US&cc_load_policy=1`
+  )
+
   return (
     <iframe
       width="560"
       height="315"
-      src={props.baseSource.replace('youtube.com', 'youtube-nocookie.com')}
+      src={localedURL()}
       title={props.alt}
       id={props.slug}
       frameborder="0"
