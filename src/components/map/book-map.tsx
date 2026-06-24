@@ -15,7 +15,10 @@ export default function JourneyBookMap({
 }) {
 
   const [isFullyLoaded, setIsFullyLoaded] = createSignal(false)
-
+  const [locale, setLocale] = createSignal(document.documentElement.lang);
+  const localedURL = () => (
+    locale() && locale() !== 'en' && `${base_url}${locale()}/` || base_url
+  )
   createEffect(() => {
     setSearchString(window.location.search)
   })
@@ -56,7 +59,7 @@ export default function JourneyBookMap({
   const earliestMatchingChapter = () => (yourJourneyMap().find((topLevel) => (topLevel.isChapterIncluded)))
   const earliestMatchingSection = () => (earliestMatchingChapter() && earliestMatchingChapter().sections || []).find((midLevel) => (midLevel.isSectionIncluded))
   const destination = () => (
-    `${base_url}chapters/${earliestMatchingChapter().chapter}/${earliestMatchingSection().section}/${(
+    `${localedURL()}chapters/${earliestMatchingChapter().chapter}/${earliestMatchingSection().section}/${(
       earliestMatchingSection().modules.length &&
         `${earliestMatchingSection().modules[0].module}/`) ||
       ""}${searchString()}`
@@ -88,7 +91,7 @@ export default function JourneyBookMap({
               role="link"
               data-menu-type="chapter"
               class={(topLevel.chapter === activeChapter && "is-active") || ""}
-              href={`${base_url}chapters/${topLevel.chapter}/${searchString()}`}
+              href={`${localedURL()}chapters/${topLevel.chapter}/${searchString()}`}
             >
               <div data-order={topLevel.order}>{topLevel.title}</div>
             </a>
@@ -105,7 +108,7 @@ export default function JourneyBookMap({
                     class={
                       (midLevel.section === activeSection && "is-active") || ""
                     }
-                    href={`${base_url}chapters/${topLevel.chapter}/${
+                    href={`${localedURL()}chapters/${topLevel.chapter}/${
                       midLevel.section
                     }/${
                       (midLevel.modules.length &&
@@ -129,7 +132,7 @@ export default function JourneyBookMap({
                                   "is-active") ||
                                 ""
                               }
-                              href={`${base_url}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/${searchString()}`}
+                              href={`${localedURL()}chapters/${topLevel.chapter}/${midLevel.section}/${pageLevel.module}/${searchString()}`}
                             >
                               {pageLevel.item.data.name}
                             </a>
@@ -145,7 +148,7 @@ export default function JourneyBookMap({
                     role="link"
                     data-menu-type="section"
                     class={("Chapter Review" === activeSection && "is-active") || ""}
-                    href={`${base_url}chapters/${topLevel.chapter}/review/${searchString()}`}
+                    href={`${localedURL()}chapters/${topLevel.chapter}/review/${searchString()}`}
                   >
                     Chapter Review
                   </a>
