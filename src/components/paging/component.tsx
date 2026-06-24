@@ -1,4 +1,5 @@
-import { createEffect } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
+// import * as i18n from "@solid-primitives/i18n";
 import { nextPageByDecision, checkChapterWithJourney, mapStructureToPages, showAllMap } from "../../store/navigation";
 import PageButton from "./button";
 
@@ -12,6 +13,12 @@ export default function Paging({
   baseURL,
   journeyMap,
 }) {
+
+  const [locale, setLocale] = createSignal(document.documentElement.lang);
+  const localedURL = () => (
+    locale() && locale() !== 'en' && `${baseURL}${locale()}/` || baseURL
+  )
+
   const nextPageGetter = () => (
     module &&
     nextPageOptions.length &&
@@ -79,6 +86,7 @@ export default function Paging({
       nextPageGetterDyn: nextPageGetterDyn(),
       nextPageGetter: nextPageGetter(),
       nextPage: nextPage,
+      locale: locale(),
     })
   })
 
@@ -94,7 +102,7 @@ export default function Paging({
           <a
             role="button"
             aria-label="Previous"
-            href={`${baseURL}chapters/${[prevPageGetter().params.chapter, prevPageGetter().params.section, prevPageGetter().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
+            href={`${localedURL()}chapters/${[prevPageGetter().params.chapter, prevPageGetter().params.section, prevPageGetter().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
           >
             <div>
               {/* <small>{(chapter !== prevPageGetter().params.chapter) && <strong>{prevPageGetter().props.chapterTitle}</strong> || <></>} {false && <i>{prevPageGetter().props.sectionTitle}</i> || <></>}</small> */}
@@ -108,7 +116,7 @@ export default function Paging({
           <a
             role="button"
             aria-label="Next"
-            href={`${baseURL}chapters/${[nextPageGetterDyn().params.chapter, nextPageGetterDyn().params.section, nextPageGetterDyn().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
+            href={`${localedURL()}chapters/${[nextPageGetterDyn().params.chapter, nextPageGetterDyn().params.section, nextPageGetterDyn().params.module].filter((param) => (param)).join('/')}/${window.location.search}`}
           >
             <div>
               {/* <small>{(chapter !== nextPageGetterDyn().params.chapter) && <strong>{nextPageGetterDyn().props.chapterTitle}</strong> || <></>} {false && <i>{nextPageGetter().props.sectionTitle}</i> || <></>}</small> */}
