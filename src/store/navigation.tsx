@@ -6,6 +6,14 @@ import { JourneyMapSurvey } from "./survey";
 
 export const [searchString, setSearchString] = createSignal('')
 
+export const [householdIncome, setHouseholdIncome, initializeHouseholdIncome] = makePersisted(createSignal(0), {
+    name: 'c03.householdIncome',
+})
+
+export const [householdSize, setHouseholdSize, initializeHouseholdSize] = makePersisted(createSignal(0), {
+    name: 'c03.householdSize',
+})
+
 export const [annualIncome, setAnnualIncome, initializeAnnualIncome] = makePersisted(createSignal(0), {
     name: 'c03.annualIncome',
 })

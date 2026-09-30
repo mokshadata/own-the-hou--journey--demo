@@ -85,7 +85,7 @@ export function Input({ item, calculator, inputs }) {
    if (['targetBudget'].includes(item.setting.key)) {
     return (
       <Slider
-        minValue={100000}
+        minValue={calculator.affordableHomePrice() > 100000 && 100000 || 0}
         maxValue={calculator.affordableHomePrice()}
         defaultValue={[item.rate()]}
         getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} out of ${formatter(item.setting.key)(calculator.affordableHomePrice())}`}
