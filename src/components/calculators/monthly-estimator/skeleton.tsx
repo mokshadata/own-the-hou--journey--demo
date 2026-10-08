@@ -68,7 +68,7 @@ export function Input({ item, calculator, inputs }) {
         getValueLabel={(params) => `${formatter(item.setting.key)(params.values[0])} (${formatter('downPaymentPercent')(params.values[0]/inputs.targetBudget[0]())})`}
         step={1000}
         class="w-full space-y-3"
-        value={[item.rate()]}
+        defaultValue={[item.rate()]}
         onChangeEnd={item.setter}
       >
         <div class="flex w-full justify-between">
