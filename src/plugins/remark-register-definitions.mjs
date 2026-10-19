@@ -63,7 +63,7 @@ export function remarkTestArgs() {
         data.astro.frontmatter.videos.push(nodeAttrsToObj(node))
       }
 
-      if (node.name === 'iframe') {
+      if (node.name === 'Checklist') {
         data.astro.frontmatter.checklists.push(nodeAttrsToObj(node))
       }
 
