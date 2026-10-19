@@ -8,6 +8,7 @@ import MonthlyEstimator from '../../../components/calculators/monthly-estimator/
 import BookDecisions from '../../../components/decisions/component';
 
 import YoutubePlayer from '../../../components/video/youtube';
+import Checklist from '../../../components/checklist';
 
 import Map from "../../../assets/images/journey-map.png"
 import { Image } from 'astro:assets';
@@ -106,7 +107,11 @@ const base_url = `${import.meta.env.BASE_URL}`;
                 .map((item) => (
                     <details>
                         <summary>{item.title}</summary>
-                        <iframe id={item.id} src={item.src} width="100%" height="500px"></iframe>
+                        <Checklist
+                          slug={item.slug}
+                          title={item.title}
+                          client:only="solid-js"
+                        />
                     </details>
                 ))
         }

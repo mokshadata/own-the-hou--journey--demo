@@ -4,6 +4,7 @@ order: 1
 slug: m01-selecting-an-inspector
 ---
 import Term from '../../components/term/index.tsx';
+import Checklist from '../../components/checklist/index.tsx';
 
 Once your offer is accepted, one of the most important next steps is hiring a home inspector. A <Term client:load term="home inspector" mode="definer">**home inspector**</Term> conducts an inspection to examine major systems and components of the house, such as the roof, foundation, plumbing, electrical systems, heating and cooling, and appliances. They look for safety issues, signs of damage, and potential repairs you may need to plan for. The goal isn’t to find a “perfect” home — it’s to help you understand what you’re buying. 
 
@@ -17,8 +18,8 @@ You, as the homebuyer, are responsible for paying for the inspection – this is
 
 Your realtor may recommend inspectors they’ve worked with before, but the choice is ultimately yours. Look for an inspector who is licensed, experienced, and willing to explain their findings in plain language. You should feel comfortable asking questions and attending the inspection if possible. Inspections can last anywhere from 1-3 hours.
 
-<iframe
-  id="document-list-inspector"
-  src="/checklists/Own the Hou - Questions to Ask Your Home Inspector - checklist.pdf"
+<Checklist
+  client:only
+  slug="document-list-inspector"
   title="Questions to Ask Your Home Inspector"
-  width="100%" height="500px"></iframe>
+  />
