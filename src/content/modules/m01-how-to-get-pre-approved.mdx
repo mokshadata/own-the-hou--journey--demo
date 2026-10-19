@@ -4,6 +4,7 @@ order: 1
 slug: m01-how-to-get-pre-approved
 ---
 import Term from '../../components/term/index.tsx'
+import Checklist from '../../components/checklist/index.tsx'
 
 Once you have selected a <Term client:load term="lenders">lender</Term> to work with, it’s time to think about getting pre-approved – which is one of the most important steps in the homebuying process. A <Term client:load term="pre-approval" mode="definer">pre-approval</Term> is a lender’s written estimate of how much they may be willing to lend you, based on a review of your financial information. It helps you understand your price range, shows sellers that you’re a serious buyer, and can make your offer more competitive.
 
@@ -24,8 +25,8 @@ These two terms sound similar, but they are not the same.
 
 Once you’re ready to apply, the below checklist helps you understand some of the documents you should start gathering for a pre-approval. Your lender should give you a full list of what they need based on your situation.
 
-<iframe
-  id="document-list-for-pre-approval"
-  src="/checklists/Own the Hou - Document List for a Pre-Approval - checklist.pdf"
+<Checklist
+  client:only
+  slug="document-list-for-pre-approval"
   title="Document List for a Pre-Approval"
-  width="100%" height="500px"></iframe>
+  />
